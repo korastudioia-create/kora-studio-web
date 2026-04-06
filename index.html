@@ -779,6 +779,7 @@ footer{background:var(--black);padding:64px 48px 36px}
             </select>
           </div>
         </div>
+        <div class="form-group"><label>Tu web actual (opcional)</label><input type="url" placeholder="https://tuweb.com — si ya tienes una y quieres que la veamos" id="fweburl"></div>
         <div class="form-group"><label>Cuéntanos tu proyecto *</label><textarea placeholder="¿Qué quieres conseguir? Cuanto más nos cuentes, mejor podremos ayudarte..." id="fmessage"></textarea></div>
         <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
           <label>Website</label>
@@ -902,6 +903,7 @@ async function submitForm(){
   const c=document.getElementById('fcompany').value.trim();
   const s=document.getElementById('fservice').value.trim();
   const m=document.getElementById('fmessage').value.trim();
+  const u=document.getElementById('fweburl').value.trim();
   const w=document.getElementById('fwebsite').value.trim();
   if(!n||!e||!m){alert('Por favor rellena nombre, email y mensaje.');return;}
   const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -925,6 +927,7 @@ async function submitForm(){
         Empresa:c,
         Servicio:s,
         Mensaje:m,
+        'Web actual':u||'(no indicada)',
         Website:w
       })
     });
@@ -939,6 +942,7 @@ async function submitForm(){
     document.getElementById('fcompany').value='';
     document.getElementById('fservice').value='';
     document.getElementById('fmessage').value='';
+    document.getElementById('fweburl').value='';
   }catch(err){
     btn.textContent='✗ Error — escríbenos por WhatsApp';
     btn.style.background='#dc2626';
