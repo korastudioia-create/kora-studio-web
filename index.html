@@ -769,6 +769,10 @@ footer{background:var(--black);padding:64px 48px 36px}
           </div>
         </div>
         <div class="form-group"><label>Cuéntanos tu proyecto *</label><textarea placeholder="¿Qué quieres conseguir? Cuanto más nos cuentes, mejor podremos ayudarte..." id="fmessage"></textarea></div>
+        <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+          <label>Website</label>
+          <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <button class="form-submit" onclick="submitForm()">Solicitar presupuesto gratuito →</button>
         <p class="form-note">Te respondemos en menos de 24h · Sin compromiso</p>
       </div>
@@ -877,6 +881,7 @@ async function submitForm(){
   const c=document.getElementById('fcompany').value.trim();
   const s=document.getElementById('fservice').value.trim();
   const m=document.getElementById('fmessage').value.trim();
+  const w=document.getElementById('fwebsite').value.trim();
   if(!n||!e||!m){alert('Por favor rellena nombre, email y mensaje.');return;}
   const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!emailRegex.test(e)){alert('Por favor introduce un email válido.');return;}
@@ -890,7 +895,7 @@ async function submitForm(){
     const res=await fetch(WEBHOOK_URL,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({nombre:n,email:e,empresa:c,servicio:s,mensaje:m})
+      body:JSON.stringify({nombre:n,email:e,empresa:c,servicio:s,mensaje:m,website:w})
     });
     if(!res.ok)throw new Error('Error en el envío');
 

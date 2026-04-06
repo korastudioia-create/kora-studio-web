@@ -3,10 +3,32 @@
 .DS_Store
 Thumbs.db
 
-# Archivos de configuración local
+# Workflows JSON de n8n y scripts internos
+form_workflow_*.json
 form_webhook_workflow.json
+backup_workflow.json
+backup_to_github.json
+error_handler_workflow.json
+calendar_subworkflow.json
+current_workflow.json
+updated_kora.json
+backup_kora.json
+wf_*.json
+exec*.json
+execs.json
+
+# Scripts de desarrollo
+improve_*.js
+fix_*.js
+update_*.js
+connect_*.js
+rebuild_*.js
+finalize_*.js
+
+# Variables de entorno
 .env
 .env.local
+.env.*.local
 
 # IDE
 .vscode/
