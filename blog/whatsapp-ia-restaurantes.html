@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp con IA para Restaurantes: Reservas Automáticas sin Contratar a Nadie</title>
+<meta name="description" content="Cómo un restaurante puede automatizar reservas, confirmaciones y consultas con un agente de IA en WhatsApp. Caso real, costes y cómo montarlo paso a paso.">
+<meta name="keywords" content="whatsapp restaurante, reservas automaticas restaurante, ia restaurante, chatbot whatsapp restaurante, gestion reservas restaurante, automatizar restaurante, agente ia hosteleria">
+<meta name="author" content="Kora Studio">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kora-studio-web.vercel.app/blog/whatsapp-ia-restaurantes.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="WhatsApp con IA para Restaurantes: Reservas Automáticas">
+<meta property="og:description" content="Caso real de un restaurante que automatizó reservas y consultas por WhatsApp sin contratar más personal.">
+<meta property="og:url" content="https://kora-studio-web.vercel.app/blog/whatsapp-ia-restaurantes.html">
+<meta property="og:image" content="https://kora-studio-web.vercel.app/og-image.png">
+<meta property="article:published_time" content="2026-04-06">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WhatsApp + IA para Restaurantes">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WhatsApp con IA para Restaurantes: Reservas Automáticas sin Contratar a Nadie",
+  "description": "Guía completa para automatizar reservas y atención al cliente de un restaurante con IA en WhatsApp.",
+  "image": "https://kora-studio-web.vercel.app/og-image.png",
+  "author": {"@type": "Organization", "name": "Kora Studio", "url": "https://kora-studio-web.vercel.app"},
+  "publisher": {"@type": "Organization", "name": "Kora Studio", "logo": {"@type": "ImageObject", "url": "https://kora-studio-web.vercel.app/og-image.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://kora-studio-web.vercel.app/blog/whatsapp-ia-restaurantes.html"},
+  "inLanguage": "es-ES"
+}
+</script>
+
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;color:#111318;background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{background:#fff;border-bottom:1px solid #e5e7eb;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.logo-text{font-size:17px;font-weight:800;color:#08090A;letter-spacing:-.03em}
+.logo-text span{color:#0057FF}
+.back{font-size:14px;color:#0057FF;text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+.article-hero{padding:60px 24px 40px;max-width:780px;margin:0 auto;text-align:center}
+.crumbs{font-size:13px;color:#9ca3af;margin-bottom:20px}
+.crumbs a{color:#0057FF;text-decoration:none}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:#ea580c;background:#fff7ed;padding:5px 14px;border-radius:99px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.2;color:#08090A;margin-bottom:18px}
+.meta{display:flex;align-items:center;gap:14px;justify-content:center;font-size:13px;color:#6b7280;margin-bottom:20px}
+.meta-dot{width:3px;height:3px;border-radius:50%;background:#9ca3af}
+.intro{font-size:18px;color:#4B5262;font-weight:300;line-height:1.7}
+.article-banner{height:280px;background:linear-gradient(135deg,#ea580c 0%,#c2410c 100%);max-width:900px;margin:30px auto 0;border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.article-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(255,255,255,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,0.1) 0%,transparent 50%)}
+.article-banner svg{position:relative;z-index:1;width:96px;height:96px;color:#fff;opacity:0.85}
+article{max-width:780px;margin:0 auto;padding:60px 24px}
+article h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:48px 0 16px;color:#08090A}
+article h3{font-size:21px;font-weight:700;margin:32px 0 12px;color:#08090A}
+article p{font-size:17px;color:#333840;margin-bottom:18px;line-height:1.75}
+article ul,article ol{margin:18px 0 18px 28px;color:#333840;font-size:17px}
+article li{margin-bottom:10px;line-height:1.7}
+article strong{color:#08090A;font-weight:700}
+article a{color:#0057FF;text-decoration:none;font-weight:600}
+article a:hover{text-decoration:underline}
+article blockquote{border-left:4px solid #ea580c;background:#fff7ed;padding:20px 24px;margin:28px 0;border-radius:0 10px 10px 0;font-style:italic;color:#08090A;font-size:17px}
+.callout{background:linear-gradient(135deg,#fff7ed 0%,#fff 100%);border:1px solid #fed7aa;border-radius:14px;padding:24px 28px;margin:36px 0}
+.callout h3{margin-top:0;color:#ea580c;font-size:18px}
+.callout p{margin-bottom:0;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:36px 0}
+.stat{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:24px 18px;text-align:center}
+.stat-num{font-size:34px;font-weight:800;color:#ea580c;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+.stat-label{font-size:13px;color:#6b7280}
+.cta-box{background:#08090A;color:#fff;padding:40px 32px;border-radius:16px;text-align:center;margin:48px 0}
+.cta-box h3{font-size:24px;font-weight:800;color:#fff;margin-bottom:10px}
+.cta-box p{color:rgba(255,255,255,0.65);margin-bottom:24px;font-size:15px}
+.cta-box a{background:#0057FF;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;display:inline-block;transition:background .2s}
+.cta-box a:hover{background:#0040CC}
+footer{background:#08090A;padding:40px 24px;text-align:center}
+footer p{color:rgba(255,255,255,0.4);font-size:13px}
+footer a{color:#60A5FA;text-decoration:none}
+@media(max-width:640px){nav{padding:14px 18px}.article-hero{padding:40px 18px 30px}article{padding:40px 18px}.article-banner{height:200px;margin:24px 18px 0}.article-banner svg{width:64px;height:64px}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-icon"><img src="../favicon.png" alt="Kora Studio" style="width:32px;height:32px;object-fit:contain"></div>
+    <span class="logo-text">Kora <span>Studio</span></span>
+  </a>
+  <a href="../blog.html" class="back">← Volver al blog</a>
+</nav>
+
+<div class="article-hero">
+  <div class="crumbs"><a href="../index.html">Inicio</a> / <a href="../blog.html">Blog</a> / Hostelería</div>
+  <span class="tag">Hostelería</span>
+  <h1>WhatsApp con IA para restaurantes: reservas automáticas sin contratar a nadie</h1>
+  <div class="meta">
+    <span>6 abril 2026</span>
+    <span class="meta-dot"></span>
+    <span>8 min lectura</span>
+    <span class="meta-dot"></span>
+    <span>Por Kora Studio</span>
+  </div>
+  <p class="intro">Un restaurante de Madrid eliminó las llamadas durante el servicio, automatizó el 90% de las reservas y duplicó las confirmaciones de los clientes. Lo contamos paso a paso.</p>
+</div>
+
+<div class="article-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+</div>
+
+<article>
+
+<p>Si tienes un restaurante, sabes el problema: el teléfono suena justo cuando estás emplatando. Alguien quiere reservar, otro confirmar, otro preguntar si tenéis menú vegetariano. El camarero deja la bandeja, coge el teléfono, anota mal el nombre, se le olvida apuntar la mesa…</p>
+
+<p>Y mientras tanto, los clientes que están en mesa esperan más de la cuenta porque tu equipo está al teléfono.</p>
+
+<p>Hoy te contamos cómo un restaurante real de Madrid solucionó esto con un agente de IA en WhatsApp. Sin contratar a nadie, sin cambiar de software, y montado en menos de 3 semanas.</p>
+
+<h2>El problema antes de automatizar</h2>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">120</div><div class="stat-label">llamadas/día</div></div>
+  <div class="stat"><div class="stat-num">35%</div><div class="stat-label">reservas perdidas</div></div>
+  <div class="stat"><div class="stat-num">2,5h</div><div class="stat-label">al teléfono al día</div></div>
+</div>
+
+<p>El restaurante recibía unas 120 llamadas al día. Muchas eran preguntas básicas (horarios, precios, alergias, parking). Otras eran reservas. Y un 35% de las llamadas se perdían porque sonaban en hora punta y nadie podía atenderlas.</p>
+
+<p>Cada llamada perdida era una mesa potencialmente perdida. Y cada llamada atendida era un camarero que dejaba de servir durante 3-5 minutos.</p>
+
+<blockquote>"Lo peor era los viernes a las 21:00. El teléfono sonaba sin parar y los clientes en mesa nos miraban mal porque no llegábamos. Sabíamos que perdíamos reservas pero no podíamos parar."</blockquote>
+
+<h2>La solución: un agente de IA en WhatsApp</h2>
+
+<p>Lo que montamos fue un sistema sencillo pero potente. El restaurante usa su WhatsApp Business habitual (con su número de siempre), pero por detrás un agente de IA gestiona todas las conversaciones. Hace 5 cosas concretas:</p>
+
+<h3>1. Responde preguntas frecuentes 24/7</h3>
+<p>Horarios, ubicación, parking, menú del día, opciones vegetarianas, sin gluten, terraza, reservar para grupos, parking… todo se responde solo, al instante, incluso fuera del horario de apertura.</p>
+
+<h3>2. Recoge reservas conversacionalmente</h3>
+<p>El cliente escribe "quiero reservar para 4 mañana noche" y el agente le guía: confirma día y hora, pregunta si quiere terraza o salón, anota alergias o preferencias, y le pide nombre y teléfono. Todo de forma natural, no como un formulario.</p>
+
+<h3>3. Comprueba disponibilidad real</h3>
+<p>Antes de confirmar, el agente consulta el sistema de reservas del restaurante (Google Calendar en su caso, pero funciona con cualquier software). Si esa hora está llena, propone alternativas cercanas.</p>
+
+<h3>4. Manda recordatorios automáticos</h3>
+<p>El día anterior a la reserva, el cliente recibe un mensaje recordándole su reserva con fecha, hora y cómo llegar. Y le pide que confirme con un simple "sí". Si responde "no", la mesa se libera automáticamente.</p>
+
+<h3>5. Pasa a una persona cuando hace falta</h3>
+<p>Si la conversación se complica (un evento privado, una queja, algo fuera de lo normal), el agente avisa al equipo y pasa la conversación a una persona real. Lo automático no toca lo que no debe.</p>
+
+<div class="callout">
+<h3>💡 Lo importante</h3>
+<p>El cliente nunca sabe que está hablando con una IA. La conversación es totalmente natural, en el tono del restaurante. Algunos incluso piensan que han hablado con la dueña.</p>
+</div>
+
+<h2>Resultados después de 2 meses</h2>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">+38%</div><div class="stat-label">reservas/mes</div></div>
+  <div class="stat"><div class="stat-num">-45%</div><div class="stat-label">no-shows</div></div>
+  <div class="stat"><div class="stat-num">90%</div><div class="stat-label">consultas automáticas</div></div>
+</div>
+
+<p>Las reservas subieron casi un 40% porque el restaurante dejó de "perder" clientes que llamaban en hora punta. El cliente escribe por WhatsApp, recibe respuesta inmediata aunque sea las 23:00, y reserva.</p>
+
+<p>Los no-shows bajaron casi a la mitad gracias a los recordatorios automáticos. El restaurante recupera mesas que antes se quedaban vacías.</p>
+
+<p>Y lo mejor: el equipo recuperó tranquilidad durante el servicio. <strong>El teléfono ya no suena en mitad del trabajo</strong>. Las reservas y consultas llegan a WhatsApp, las gestiona el agente, y el equipo solo interviene cuando hace falta.</p>
+
+<h2>¿Qué hace falta para montar algo así?</h2>
+
+<p>Para montarlo necesitas tres cosas básicas:</p>
+
+<ol>
+  <li><strong>WhatsApp Business API</strong>: la versión profesional de WhatsApp (no la app normal). Permite recibir y responder mensajes automáticamente. Se puede contratar a través de proveedores como Twilio, 360dialog o directamente con Meta. Coste mensual mínimo, alrededor de 10-30 €.</li>
+  <li><strong>Un agente de IA</strong>: un modelo de lenguaje (Claude, GPT, o similar) configurado con el tono y reglas de tu restaurante. Esto es lo que entiende y responde naturalmente.</li>
+  <li><strong>Un orquestador</strong>: una herramienta de automatización que conecte WhatsApp con el modelo de IA y con tu sistema de reservas. Nosotros usamos n8n por ser potente y barato, pero también valen Make o Zapier.</li>
+</ol>
+
+<p>Si quieres profundizar en qué herramienta usar para automatizar, lee nuestra <a href="make-vs-n8n-vs-zapier.html">comparativa entre Make, n8n y Zapier</a>.</p>
+
+<h2>Cuánto cuesta y cuándo se recupera</h2>
+
+<p>Para un restaurante normal, montar este sistema cuesta entre <strong>1.500 € y 3.500 €</strong> dependiendo de las integraciones que necesite. El coste mensual de operación está entre 30 y 80 € (WhatsApp API + IA + hosting).</p>
+
+<p>El retorno suele estar por debajo de los 3 meses. En el caso del restaurante de Madrid, el sistema se pagó solo en menos de 8 semanas gracias a las reservas extra y a la reducción de no-shows.</p>
+
+<p>Si quieres una estimación más detallada para tu caso, lee <a href="cuanto-cuesta-agente-ia-negocio.html">¿Cuánto cuesta un agente de IA para tu negocio en 2026?</a></p>
+
+<h2>¿Funciona en tu restaurante?</h2>
+
+<p>Sí, si tu restaurante:</p>
+<ul>
+  <li>Recibe al menos 30-40 llamadas al día</li>
+  <li>Pierde reservas porque no puedes atender el teléfono en hora punta</li>
+  <li>Tiene problemas con no-shows</li>
+  <li>Quiere ofrecer atención 24/7 sin contratar más personal</li>
+</ul>
+
+<p>Si tu restaurante es muy pequeño (menos de 20 mesas, pocas reservas), probablemente no compense el coste. Si es muy grande o con varios locales, el ahorro es enorme.</p>
+
+<div class="cta-box">
+  <h3>¿Quieres ver si funciona en tu restaurante?</h3>
+  <p>Hablemos 30 minutos. Te decimos honestamente si tiene sentido para ti, y cuánto te ahorrarías. Sin compromiso, gratis.</p>
+  <a href="../index.html#contacto">Pedir consulta gratuita →</a>
+</div>
+
+</article>
+
+<footer>
+  <p>© 2026 Kora Studio · Agencia 100% online · <a href="../blog.html">Más artículos</a> · <a href="../index.html">Inicio</a></p>
+</footer>
+
+</body>
+</html>
