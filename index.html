@@ -851,7 +851,9 @@ footer{background:var(--black);padding:64px 48px 36px}
 </div>
 
 <script>
-const CHAT_URL = 'http://localhost:5678/webhook/kora-demo-chat/chat';
+const CHAT_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5678'
+  : 'https://impact-helped-expressed-studying.trycloudflare.com') + '/webhook/kora-demo-chat/chat';
 let chatLoaded = false;
 function toggleChat(){
   const w = document.getElementById('chatWindow');
@@ -872,8 +874,11 @@ setTimeout(()=>{
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
-// URL del webhook de n8n - cambiar al desplegar a producción si tu n8n está en otro host
-const WEBHOOK_URL = 'http://localhost:5678/webhook/kora-form';
+// URL del webhook de n8n (vía Cloudflare Tunnel para acceso desde producción)
+const N8N_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5678'
+  : 'https://impact-helped-expressed-studying.trycloudflare.com';
+const WEBHOOK_URL = N8N_BASE + '/webhook/kora-form';
 
 async function submitForm(){
   const n=document.getElementById('fname').value.trim();
