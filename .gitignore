@@ -1,0 +1,16 @@
+# Archivos temporales y de desarrollo
+*.log
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración local
+form_webhook_workflow.json
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/

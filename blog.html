@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog de IA y Automatización para Negocios — Kora Studio</title>
+<meta name="description" content="Aprende cómo la inteligencia artificial puede transformar tu negocio. Guías, casos reales y estrategias de automatización para PYMEs y startups en España.">
+<meta name="keywords" content="blog inteligencia artificial, automatización pymes, ia para negocios, chatbot whatsapp, n8n tutoriales, agencia ia españa">
+<meta name="author" content="Kora Studio">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://korastudio.com/blog.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://korastudio.com/blog.html">
+<meta property="og:title" content="Blog de IA y Automatización para Negocios — Kora Studio">
+<meta property="og:description" content="Guías, casos reales y estrategias de IA para hacer crecer tu negocio sin contratar más gente.">
+<meta property="og:image" content="https://korastudio.com/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Kora Studio">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog de IA y Automatización — Kora Studio">
+<meta name="twitter:description" content="Guías y casos reales de IA para negocios.">
+
+<!-- Schema.org Blog -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog de Kora Studio",
+  "description": "Blog sobre inteligencia artificial, automatización y marketing digital para negocios",
+  "url": "https://korastudio.com/blog.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kora Studio",
+    "url": "https://korastudio.com"
+  },
+  "inLanguage": "es-ES"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230057FF'/><path d='M9 16l5 5 9-10' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0057FF;--blue-dark:#0040CC;--blue-light:#EEF4FF;--black:#08090A;--g900:#111318;--g700:#333840;--g600:#4B5262;--g500:#6B7280;--g400:#9CA3AF;--g200:#E5E7EB;--g100:#F3F4F6;--g50:#F9FAFB;--white:#FFFFFF;--green:#16a34a;--r:16px;--rsm:10px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--g900);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:34px;height:34px;background:var(--blue-light);border:1.5px solid var(--blue);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.logo-text{font-size:17px;font-weight:800;color:var(--black);letter-spacing:-.03em}
+.logo-text span{color:var(--blue)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--g600);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.active{color:var(--blue);font-weight:700}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:var(--rsm);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none}
+.nav-cta:hover{background:var(--blue-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--g900);border-radius:2px;display:block}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:199;background:var(--white);border-bottom:1px solid var(--g200);padding:20px;flex-direction:column;gap:14px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:600;color:var(--g700);text-decoration:none}
+
+.hero-blog{padding:140px 48px 60px;text-align:center;background:linear-gradient(180deg,var(--blue-light) 0%,var(--white) 100%)}
+.hero-blog .eyebrow{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;display:inline-block;background:var(--white);padding:7px 16px;border-radius:99px;border:1px solid var(--g200)}
+.hero-blog h1{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--black);margin-bottom:18px;max-width:780px;margin-left:auto;margin-right:auto}
+.hero-blog h1 span{color:var(--blue)}
+.hero-blog p{font-size:17px;color:var(--g500);max-width:600px;margin:0 auto;line-height:1.7;font-weight:300}
+
+.blog-section{padding:80px 48px;max-width:1100px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:40px}
+.blog-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,87,255,0.08);border-color:rgba(0,87,255,0.25)}
+.blog-thumb{height:180px;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.blog-thumb::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(255,255,255,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,0.1) 0%,transparent 50%)}
+.blog-thumb svg{position:relative;z-index:1;width:64px;height:64px;color:#fff;opacity:0.85}
+.blog-thumb-2{background:linear-gradient(135deg,#16a34a 0%,#0d7a36 100%)}
+.blog-thumb-3{background:linear-gradient(135deg,#9333ea 0%,#6b21a8 100%)}
+.blog-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.blog-tag{font-size:10px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:4px 10px;border-radius:99px;display:inline-block;margin-bottom:12px;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start}
+.blog-card h2{font-size:19px;font-weight:800;letter-spacing:-.02em;color:var(--black);margin-bottom:10px;line-height:1.3}
+.blog-card p{font-size:14px;color:var(--g500);line-height:1.6;margin-bottom:18px;flex:1}
+.blog-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--g400);padding-top:14px;border-top:1px solid var(--g100)}
+.blog-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--g400)}
+.read-more{color:var(--blue);font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:5px;margin-top:auto}
+
+.cta-blog{background:var(--g900);padding:80px 48px;text-align:center;color:#fff}
+.cta-blog h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.04em;margin-bottom:14px;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-blog p{font-size:16px;color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto 28px;font-weight:300}
+.cta-blog-btn{background:var(--blue);color:#fff;padding:14px 32px;border-radius:var(--rsm);font-size:15px;font-weight:700;text-decoration:none;display:inline-block;transition:background .2s,transform .2s}
+.cta-blog-btn:hover{background:var(--blue-dark);transform:translateY(-2px)}
+
+footer{background:var(--black);padding:48px 48px 32px;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,0.4)}
+footer a{color:#60A5FA;text-decoration:none}
+
+@media(max-width:768px){
+  nav{padding:0 16px;height:60px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{top:60px}
+  .hero-blog{padding:96px 16px 40px}
+  .blog-section{padding:48px 16px}
+  .cta-blog{padding:56px 16px}
+  footer{padding:36px 16px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 5" stroke="#0057FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span class="logo-text">Kora <span>Studio</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#servicios">Servicios</a></li>
+    <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+  <a href="index.html#contacto" class="nav-cta">Solicitar presupuesto</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#servicios">Servicios</a>
+  <a href="index.html#como-funciona">Cómo funciona</a>
+  <a href="index.html#portfolio">Portfolio</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contacto">Contacto</a>
+</div>
+
+<section class="hero-blog">
+  <div class="eyebrow">Blog</div>
+  <h1>Aprende a usar la <span>IA</span><br>para hacer crecer tu negocio</h1>
+  <p>Guías prácticas, casos reales y estrategias de automatización para PYMEs y startups. Sin teoría, solo lo que funciona.</p>
+</section>
+
+<section class="blog-section">
+  <div class="blog-grid">
+
+    <a href="blog/automatizar-citas-clinica-whatsapp-ia.html" class="blog-card">
+      <div class="blog-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <div class="blog-body">
+        <span class="blog-tag">Automatización</span>
+        <h2>Cómo automatizar las citas de tu clínica con WhatsApp e IA</h2>
+        <p>Descubre cómo una clínica dental redujo un 40% sus no-shows y liberó a su recepcionista usando un agente de IA en WhatsApp.</p>
+        <div class="blog-meta">
+          <span>6 abril 2026</span>
+          <span class="blog-meta-dot"></span>
+          <span>7 min lectura</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog/5-procesos-automatizar-pyme.html" class="blog-card">
+      <div class="blog-thumb blog-thumb-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/></svg>
+      </div>
+      <div class="blog-body">
+        <span class="blog-tag">Productividad</span>
+        <h2>5 procesos que cualquier PYME puede automatizar hoy mismo</h2>
+        <p>Desde el envío de presupuestos hasta el seguimiento de leads. Procesos concretos que ahorran horas cada semana sin contratar más gente.</p>
+        <div class="blog-meta">
+          <span>5 abril 2026</span>
+          <span class="blog-meta-dot"></span>
+          <span>8 min lectura</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog/cuanto-cuesta-agente-ia-negocio.html" class="blog-card">
+      <div class="blog-thumb blog-thumb-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="blog-body">
+        <span class="blog-tag">Precios</span>
+        <h2>¿Cuánto cuesta un agente de IA para tu negocio en 2026?</h2>
+        <p>Análisis honesto de precios, modelos y opciones disponibles. Lo que realmente vas a pagar y lo que vas a recuperar en los primeros meses.</p>
+        <div class="blog-meta">
+          <span>4 abril 2026</span>
+          <span class="blog-meta-dot"></span>
+          <span>6 min lectura</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section class="cta-blog">
+  <h2>¿Quieres aplicar esto en tu negocio?</h2>
+  <p>Hablemos 30 minutos. Te decimos qué se puede automatizar en tu caso y cuánto te ahorrarías. Sin compromiso.</p>
+  <a href="index.html#contacto" class="cta-blog-btn">Solicitar consulta gratuita →</a>
+</section>
+
+<footer>
+  <p>© 2026 Kora Studio · Agencia 100% online · <a href="index.html">Volver al inicio</a></p>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+</script>
+</body>
+</html>
