@@ -892,8 +892,9 @@ setTimeout(()=>{
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
-// FormSubmit: envía cada cuestionario a kora.studio.ia@gmail.com (gratis, sin backend)
-const WEBHOOK_URL = 'https://formsubmit.co/ajax/kora.studio.ia@gmail.com';
+// Web3Forms: envía cada cuestionario a kora.studio.ia@gmail.com (gratis, sin backend)
+const WEBHOOK_URL = 'https://api.web3forms.com/submit';
+const WEB3FORMS_KEY = 'b627ddbe-5b8f-466c-949c-4f6de353bcd5';
 
 async function submitForm(){
   const n=document.getElementById('fname').value.trim();
@@ -916,16 +917,15 @@ async function submitForm(){
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({
+        access_key:WEB3FORMS_KEY,
+        subject:'🟢 Nuevo lead desde kora-studio.com',
+        from_name:'Kora Studio Web',
         Nombre:n,
         Email:e,
         Empresa:c,
         Servicio:s,
         Mensaje:m,
-        Website:w,
-        _subject:'🟢 Nuevo lead desde kora-studio.com',
-        _template:'table',
-        _captcha:'false',
-        _autoresponse:'¡Hola '+n+'!\n\nGracias por contactar con Kora Studio. Hemos recibido tu mensaje y te responderemos en menos de 24h con una propuesta personalizada.\n\nMientras tanto, puedes echar un vistazo a nuestro blog donde compartimos casos reales, ideas y aprendizajes sobre IA aplicada a negocios:\nhttps://kora-studio-web.vercel.app/blog.html\n\nSi tu caso es urgente, escríbenos directamente por WhatsApp y te atendemos al momento.\n\nUn saludo,\nEl equipo de Kora Studio\nkora.studio.ia@gmail.com'
+        Website:w
       })
     });
     if(!res.ok)throw new Error('Error en el envío');
