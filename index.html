@@ -27,7 +27,8 @@
 <meta name="twitter:image" content="https://kora-studio-web.vercel.app/og-image.png">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230057FF'/><path d='M9 16l5 5 9-10' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-128.png">
 
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -165,7 +166,8 @@ html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:var(--g900);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.06);transition:box-shadow .3s}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-icon{width:34px;height:34px;background:var(--blue-light);border:1.5px solid var(--blue);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.nav-logo-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.nav-logo-icon img{width:36px;height:36px;object-fit:contain}
 .logo-text{font-size:17px;font-weight:800;color:var(--black);letter-spacing:-.03em}
 .logo-text span{color:var(--blue)}
 .nav-links{display:flex;gap:32px;list-style:none}
@@ -313,7 +315,8 @@ footer{background:var(--black);padding:64px 48px 36px}
 .ft{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:48px}
 .fb{max-width:280px}
 .fb-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.fb-logo-icon{width:32px;height:32px;background:rgba(0,87,255,0.2);border:1.5px solid rgba(77,159,255,0.35);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.fb-logo-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.fb-logo-icon img{width:36px;height:36px;object-fit:contain;filter:brightness(1.4)}
 .fb-name{font-size:16px;font-weight:800;color:var(--white);letter-spacing:-.03em}
 .fb-name span{color:#60A5FA}
 .fb-desc{font-size:13px;color:rgba(255,255,255,0.3);line-height:1.7;font-weight:300;margin-bottom:18px}
@@ -400,7 +403,7 @@ footer{background:var(--black);padding:64px 48px 36px}
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L7 12L13 5" stroke="#0057FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <img src="favicon.png" alt="Kora Studio">
     </div>
     <span class="logo-text">Kora <span>Studio</span></span>
   </a>
@@ -785,7 +788,7 @@ footer{background:var(--black);padding:64px 48px 36px}
     <div class="ft">
       <div class="fb">
         <div class="fb-logo">
-          <div class="fb-logo-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L6 10.5L11.5 4" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="fb-logo-icon"><img src="favicon.png" alt="Kora Studio"></div>
           <span class="fb-name">Kora <span>Studio</span></span>
         </div>
         <p class="fb-desc">Agencia de IA para startups y PYMEs en España. Webs, automatización y marketing con inteligencia artificial.</p>
