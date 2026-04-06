@@ -564,7 +564,7 @@ footer{background:var(--black);padding:64px 48px 36px}
     <div class="fade-up">
       <div class="eyebrow">Casos reales</div>
       <h2 class="stitle">Proyectos que hemos construido</h2>
-      <p class="ssub">Webs reales para clientes reales. Cada proyecto con su propio reto y solución a medida.</p>
+      <p class="ssub">Proyectos entregados en días, no meses. Web, IA y automatización en un solo sprint.</p>
     </div>
     <div class="port-grid">
       <div class="port-card fade-up">
@@ -577,9 +577,9 @@ footer{background:var(--black);padding:64px 48px 36px}
             </svg>
           </div>
           <div class="port-body">
-            <span class="port-tag">Web corporativa</span>
+            <span class="port-tag">Web + IA + Automatización</span>
             <h3>JP Europe Capital</h3>
-            <p class="port-result">Plataforma digital premium para empresa de inversión europea. Diseño de alto nivel para inversores exigentes.</p>
+            <p class="port-result">De cero a online en 1 semana: web corporativa, chatbot de ventas personalizado y automatización de facturación. Cliente operativo y captando en 7 días.</p>
           </div>
         </a>
       </div>
@@ -892,8 +892,8 @@ setTimeout(()=>{
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
-// URL del webhook de n8n - cambiar al desplegar a producción si tu n8n está en otro host
-const WEBHOOK_URL = 'http://localhost:5678/webhook/kora-form';
+// FormSubmit: envía cada cuestionario a kora.studio.ia@gmail.com (gratis, sin backend)
+const WEBHOOK_URL = 'https://formsubmit.co/ajax/kora.studio.ia@gmail.com';
 
 async function submitForm(){
   const n=document.getElementById('fname').value.trim();
@@ -914,8 +914,18 @@ async function submitForm(){
   try{
     const res=await fetch(WEBHOOK_URL,{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({nombre:n,email:e,empresa:c,servicio:s,mensaje:m,website:w})
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        Nombre:n,
+        Email:e,
+        Empresa:c,
+        Servicio:s,
+        Mensaje:m,
+        Website:w,
+        _subject:'🟢 Nuevo lead desde kora-studio.com',
+        _template:'table',
+        _captcha:'false'
+      })
     });
     if(!res.ok)throw new Error('Error en el envío');
 
