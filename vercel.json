@@ -1,6 +1,24 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {"source": "/blog/automatizar-citas-clinica-whatsapp-ia", "destination": "/blog/ia-chatarreria-aumentar-toneladas-compra", "permanent": true},
+    {"source": "/blog/automatizar-citas-clinica-whatsapp-ia.html", "destination": "/blog/ia-chatarreria-aumentar-toneladas-compra.html", "permanent": true},
+    {"source": "/blog/5-procesos-automatizar-pyme", "destination": "/blog/automatizacion-reciclaje-plastico", "permanent": true},
+    {"source": "/blog/5-procesos-automatizar-pyme.html", "destination": "/blog/automatizacion-reciclaje-plastico.html", "permanent": true},
+    {"source": "/blog/cuanto-cuesta-agente-ia-negocio", "destination": "/blog/memoria-anual-ambiental-automatica", "permanent": true},
+    {"source": "/blog/cuanto-cuesta-agente-ia-negocio.html", "destination": "/blog/memoria-anual-ambiental-automatica.html", "permanent": true},
+    {"source": "/blog/make-vs-n8n-vs-zapier", "destination": "/blog/ia-fundiciones-gestion-chatarra-metalica", "permanent": true},
+    {"source": "/blog/make-vs-n8n-vs-zapier.html", "destination": "/blog/ia-fundiciones-gestion-chatarra-metalica.html", "permanent": true},
+    {"source": "/blog/whatsapp-ia-restaurantes", "destination": "/blog/whatsapp-ia-compra-chatarra-proveedores", "permanent": true},
+    {"source": "/blog/whatsapp-ia-restaurantes.html", "destination": "/blog/whatsapp-ia-compra-chatarra-proveedores.html", "permanent": true},
+    {"source": "/blog/senales-tu-negocio-necesita-ia", "destination": "/blog/transformacion-digital-empresa-reciclaje", "permanent": true},
+    {"source": "/blog/senales-tu-negocio-necesita-ia.html", "destination": "/blog/transformacion-digital-empresa-reciclaje.html", "permanent": true},
+    {"source": "/blog/chatgpt-vs-claude-vs-gemini", "destination": "/blog/alertas-precio-lme-reciclaje", "permanent": true},
+    {"source": "/blog/chatgpt-vs-claude-vs-gemini.html", "destination": "/blog/alertas-precio-lme-reciclaje.html", "permanent": true},
+    {"source": "/blog/automatizar-leads-inmobiliaria", "destination": "/blog/gestion-vfu-nfu-raee-automatizada", "permanent": true},
+    {"source": "/blog/automatizar-leads-inmobiliaria.html", "destination": "/blog/gestion-vfu-nfu-raee-automatizada.html", "permanent": true}
+  ],
   "headers": [
     {
       "source": "/(.*)",

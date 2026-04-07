@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4BK1FWG162"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4BK1FWG162');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA para Fundiciones: Optimiza la Compra de Chatarra y la Trazabilidad | Kora Studio</title>
+<meta name="description" content="Cómo la inteligencia artificial ayuda a las fundiciones a comprar chatarra mejor con datos LME, controlar la calidad de entrada y cumplir con la trazabilidad de colada.">
+<meta name="keywords" content="ia fundicion, gestion chatarra fundicion, automatizar fundicion, trazabilidad chatarra metalica, control calidad fundicion ia, compra chatarra automatica">
+<meta name="author" content="Kora Studio">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://korastudio.es/blog/ia-fundiciones-gestion-chatarra-metalica.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="IA para Fundiciones: Cómo Optimizar la Compra de Chatarra y la Trazabilidad del Material">
+<meta property="og:description" content="Scoring de proveedores, precios LME en tiempo real, control de calidad de entrada y trazabilidad de colada. Caso real: ahorro del 8% en coste de chatarra.">
+<meta property="og:url" content="https://korastudio.es/blog/ia-fundiciones-gestion-chatarra-metalica.html">
+<meta property="og:image" content="https://korastudio.es/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta property="article:published_time" content="2026-04-07">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IA para Fundiciones: Compra de Chatarra y Trazabilidad con Datos Reales">
+<meta name="twitter:description" content="Precios LME integrados, scoring de proveedores y trazabilidad completa de colada. Así ahorran las fundiciones en chatarra con IA.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "IA para Fundiciones: Cómo Optimizar la Compra de Chatarra y la Trazabilidad del Material",
+  "description": "Cómo la inteligencia artificial ayuda a las fundiciones a comprar chatarra mejor con datos LME, controlar la calidad de entrada y cumplir con la trazabilidad de colada.",
+  "image": "https://korastudio.es/og-image.png",
+  "author": {"@type": "Organization", "name": "Kora Studio", "url": "https://korastudio.es"},
+  "publisher": {"@type": "Organization", "name": "Kora Studio", "logo": {"@type": "ImageObject", "url": "https://korastudio.es/og-image.png"}},
+  "datePublished": "2026-04-07",
+  "dateModified": "2026-04-07",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://korastudio.es/blog/ia-fundiciones-gestion-chatarra-metalica.html"},
+  "inLanguage": "es-ES"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://korastudio.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://korastudio.es/blog.html"},
+    {"@type": "ListItem", "position": 3, "name": "IA para Fundiciones", "item": "https://korastudio.es/blog/ia-fundiciones-gestion-chatarra-metalica.html"}
+  ]
+}
+</script>
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;color:#111318;background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{background:#fff;border-bottom:1px solid #e5e7eb;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.logo-text{font-size:17px;font-weight:800;color:#08090A;letter-spacing:-.03em}
+.logo-text span{color:#0057FF}
+.back{font-size:14px;color:#0057FF;text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+.article-hero{padding:60px 24px 40px;max-width:780px;margin:0 auto;text-align:center}
+.crumbs{font-size:13px;color:#9ca3af;margin-bottom:20px}
+.crumbs a{color:#0057FF;text-decoration:none}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:#0057FF;background:#EEF4FF;padding:5px 14px;border-radius:99px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.2;color:#08090A;margin-bottom:18px}
+.meta{display:flex;align-items:center;gap:14px;justify-content:center;font-size:13px;color:#6b7280;margin-bottom:20px}
+.meta-dot{width:3px;height:3px;border-radius:50%;background:#9ca3af}
+.intro{font-size:18px;color:#4B5262;font-weight:300;line-height:1.7}
+.article-banner{height:280px;background:linear-gradient(135deg,#92400e 0%,#78350f 100%);max-width:900px;margin:30px auto 0;border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.article-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(255,255,255,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,0.1) 0%,transparent 50%)}
+.article-banner svg{position:relative;z-index:1;width:96px;height:96px;color:#fff;opacity:0.85}
+article{max-width:780px;margin:0 auto;padding:60px 24px}
+article h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:48px 0 16px;color:#08090A}
+article h3{font-size:21px;font-weight:700;margin:32px 0 12px;color:#08090A}
+article p{font-size:17px;color:#333840;margin-bottom:18px;line-height:1.75}
+article ul,article ol{margin:18px 0 18px 28px;color:#333840;font-size:17px}
+article li{margin-bottom:10px;line-height:1.7}
+article strong{color:#08090A;font-weight:700}
+article a{color:#0057FF;text-decoration:none;font-weight:600}
+article a:hover{text-decoration:underline}
+article blockquote{border-left:4px solid #0057FF;background:#EEF4FF;padding:20px 24px;margin:28px 0;border-radius:0 10px 10px 0;font-style:italic;color:#08090A;font-size:17px}
+.callout{background:linear-gradient(135deg,#EEF4FF 0%,#fff 100%);border:1px solid #cdd9ff;border-radius:14px;padding:24px 28px;margin:36px 0}
+.callout h3{margin-top:0;color:#0057FF;font-size:18px}
+.callout p{margin-bottom:0;font-size:15px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0}
+.stat-box{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:20px;text-align:center}
+.stat-box .num{font-size:32px;font-weight:800;color:#0057FF;letter-spacing:-.03em}
+.stat-box .label{font-size:13px;color:#6B7280;margin-top:4px}
+.cta-box{background:#08090A;color:#fff;padding:40px 32px;border-radius:16px;text-align:center;margin:48px 0}
+.cta-box h3{font-size:24px;font-weight:800;color:#fff;margin-bottom:10px}
+.cta-box p{color:rgba(255,255,255,0.65);margin-bottom:24px;font-size:15px}
+.cta-box a{background:#0057FF;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;display:inline-block;transition:background .2s}
+.cta-box a:hover{background:#0040CC}
+footer{background:#08090A;padding:40px 24px;text-align:center}
+footer p{color:rgba(255,255,255,0.4);font-size:13px}
+footer a{color:#60A5FA;text-decoration:none}
+@media(max-width:640px){nav{padding:14px 18px}.article-hero{padding:40px 18px 30px}article{padding:40px 18px}.article-banner{height:200px;margin:24px 18px 0}.article-banner svg{width:64px;height:64px}.stat-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon"><img src="/favicon.png" alt="Kora Studio" style="width:32px;height:32px;object-fit:contain"></div>
+    <span class="logo-text">Kora <span>Studio</span></span>
+  </a>
+  <a href="/blog.html" class="back">← Volver al blog</a>
+</nav>
+
+<div class="article-hero">
+  <div class="crumbs"><a href="/">Inicio</a> / <a href="/blog.html">Blog</a> / Fundiciones</div>
+  <span class="tag">Fundiciones</span>
+  <h1>IA para Fundiciones: Cómo Optimizar la Compra de Chatarra y la Trazabilidad del Material</h1>
+  <div class="meta">
+    <span>7 abril 2026</span>
+    <span class="meta-dot"></span>
+    <span>9 min lectura</span>
+    <span class="meta-dot"></span>
+    <span>Por Kora Studio</span>
+  </div>
+  <p class="intro">Una fundición consume cientos o miles de toneladas de chatarra metálica al mes. Comprar bien, controlar la calidad en la entrada y cumplir con la trazabilidad son la diferencia entre ganar y perder margen. La IA cambia las reglas del juego en los tres frentes.</p>
+</div>
+
+<div class="article-banner">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.62a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.461zm0 0A15.932 15.932 0 0112 5c.318 0 .635.009.95.027" />
+  </svg>
+</div>
+
+<article>
+
+  <h2>Los problemas de gestión que toda fundición conoce</h2>
+
+  <p>Las fundiciones operan en un entorno de márgenes ajustados donde el coste de la chatarra metálica supone entre el 50% y el 70% del coste de producción total. Un movimiento de 5 €/tonelada en el precio de compra de la chatarra puede marcar la diferencia entre un trimestre rentable y uno en pérdidas. Y sin embargo, muchas fundiciones siguen comprando chatarra con información de mercado de días o incluso semanas de retraso.</p>
+
+  <p>Los problemas que encontramos de forma sistemática cuando auditamos la gestión de una fundición son estos:</p>
+
+  <ul>
+    <li><strong>Compra de chatarra sin benchmark LME en tiempo real.</strong> El comprador negocia con su experiencia y su relación con el proveedor, pero sin saber si el precio que ofrece está por encima o por debajo del mercado. Eso significa a veces pagar de más, y otras veces perder la entrega por ofrecer poco.</li>
+    <li><strong>Control de calidad de entrada manual y tardío.</strong> La chatarra llega, se descarga, y solo se descubre que hay material fuera de especificación cuando ya está en el horno o, peor, cuando la colada sale con defectos de composición.</li>
+    <li><strong>Trazabilidad de colada inexistente o en Excel.</strong> Saber exactamente qué chatarra entró en qué colada, con qué resultado de composición química, es una exigencia de clientes de automoción y aeronáutica que muchas fundiciones no pueden cumplir de forma rigurosa.</li>
+    <li><strong>Gestión de proveedores basada en relaciones personales.</strong> Sin datos de historial de calidad, puntualidad y precio, la elección del proveedor es subjetiva. Un proveedor que lleva seis meses entregando material fuera de especificación en un 15% de los casos puede seguir siendo considerado "de confianza" porque el comprador lo conoce de hace años.</li>
+    <li><strong>Documentación para auditorías de calidad.</strong> Las fundiciones que trabajan con clientes de automoción (Tier 1, Tier 2) necesitan documentar sus procesos de forma exhaustiva. Preparar esa documentación manualmente consume decenas de horas al año.</li>
+  </ul>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="num">8%</div>
+      <div class="label">Reducción media en coste de chatarra con compra basada en LME</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">15h</div>
+      <div class="label">Ahorro semanal en tareas administrativas y documentación</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">0</div>
+      <div class="label">Reclamaciones por trazabilidad tras implementar el sistema</div>
+    </div>
+  </div>
+
+  <h2>Sistema de compra de chatarra conectado al LME y al historial de proveedores</h2>
+
+  <p>El London Metal Exchange (LME) publica precios de referencia para los principales metales no férreos (cobre, aluminio, plomo, zinc, níquel, estaño) en tiempo real durante el horario de mercado. El precio del hierro y acero para chatarra tiene referencias adicionales como los índices de ferralla de Metsec o ISRI en Estados Unidos. Para una fundición, tener estos precios integrados en el sistema de compra no es un lujo; es una necesidad competitiva.</p>
+
+  <p>El sistema que implementamos funciona así:</p>
+
+  <ol>
+    <li>Los precios LME y los índices de ferralla relevantes se actualizan automáticamente cada hora.</li>
+    <li>Cuando un proveedor ofrece un lote de chatarra, el comprador introduce las condiciones en el sistema: tipo de material, toneladas, calidad declarada, plazo de entrega.</li>
+    <li>El sistema calcula automáticamente el precio máximo recomendado basándose en el LME actual más el spread histórico que esa categoría de chatarra ha tenido respecto al LME.</li>
+    <li>También muestra el scoring del proveedor: historial de calidad (% de material fuera de especificación en las últimas 20 entregas), puntualidad, precio histórico vs precio acordado.</li>
+    <li>Si el proveedor ofrece un precio por debajo del precio máximo recomendado, el sistema alerta: "Oportunidad de compra favorable — este precio está un 6% por debajo del máximo calculado".</li>
+  </ol>
+
+  <p>El resultado no es que la IA negocie por ti, sino que el comprador negocia con datos objetivos en lugar de con intuición. Eso cambia la conversación con el proveedor: en lugar de "creo que tu precio es alto", el comprador puede decir "según el LME de hoy y la calidad declarada, mi precio máximo es X". Negociación basada en datos, no en percepciones.</p>
+
+  <div class="callout">
+    <h3>El scoring de proveedores: qué mide y para qué sirve</h3>
+    <p>El scoring automático evalúa cada proveedor en cuatro dimensiones: calidad de entrega (% de material dentro de especificación), fiabilidad (cumple el peso y plazo acordados), precio (relación precio ofertado vs precio LME de referencia) y historial de incidencias (reclamaciones formales, rechazos). Ese score se actualiza con cada entrega y permite tomar decisiones de compra con criterio objetivo, premiando a los proveedores fiables con más volumen y penalizando a los que generan problemas recurrentes.</p>
+  </div>
+
+  <h2>Control de calidad de entrada con IA</h2>
+
+  <p>El control de calidad de la chatarra en el momento de recepción es uno de los puntos de mayor impacto en la rentabilidad de una fundición. Un camión de chatarra que llega con un 20% de material de composición química diferente a la declarada puede arruinar una colada completa: el resultado de composición no es el esperado, hay que hacer ajustes en caliente, se genera scrap, y en el peor caso se producen piezas defectuosas que llegan al cliente.</p>
+
+  <p>La integración del control de calidad en el sistema digital funciona así:</p>
+
+  <ul>
+    <li>El resultado del análisis espectrométrico de entrada (ya sea con un espectrómetro portátil o de laboratorio) se introduce en el sistema manualmente o, si el equipo tiene salida digital, se integra directamente.</li>
+    <li>El sistema compara automáticamente el resultado con las especificaciones declaradas por el proveedor y con los límites de aceptación definidos para cada tipo de material.</li>
+    <li>Si el material está dentro de especificación: la recepción se confirma automáticamente y se genera el albarán.</li>
+    <li>Si el material está fuera de especificación en uno o más parámetros: alerta inmediata al responsable de compras y al responsable de calidad, con el detalle del desvío. Se activa el protocolo de reclamación o rechazo según el grado de desviación.</li>
+    <li>Todo el historial queda registrado en la ficha del proveedor, actualizando su scoring.</li>
+  </ul>
+
+  <p>El beneficio inmediato es que los problemas se detectan antes de que el material entre en el proceso productivo. El beneficio a medio plazo es aún mayor: con seis meses de datos, puedes ver que un proveedor concreto tiene un 18% de entregas fuera de especificación en aluminio de segunda fusión, mientras que otro tiene un 2%. Esa información cambia radicalmente tus decisiones de compra.</p>
+
+  <h2>Trazabilidad de la colada: de la chatarra al producto terminado</h2>
+
+  <p>La trazabilidad completa de colada es una exigencia creciente en los mercados de automoción, aeronáutica y bienes de equipo de alta exigencia. El cliente quiere poder saber, si se produce un fallo en una pieza, qué material entró en esa colada, quién lo fabricó, en qué condiciones y qué resultados de inspección tuvo.</p>
+
+  <p>Con un sistema de trazabilidad digital, cada colada tiene su propia ficha completa:</p>
+
+  <ul>
+    <li><strong>Composición de carga:</strong> qué lotes de chatarra se usaron, en qué proporción, con qué composición química de entrada declarada y analizada.</li>
+    <li><strong>Parámetros de proceso:</strong> temperatura de fusión, tiempo en horno, adiciones de aleantes, operario responsable, horno utilizado.</li>
+    <li><strong>Resultado de análisis de colada:</strong> composición química final, comparativa con especificación del cliente.</li>
+    <li><strong>Piezas producidas:</strong> referencia de pieza, cantidad, número de colada, resultado de inspección (visual, dimensional, por ultrasonidos si aplica).</li>
+    <li><strong>Destino:</strong> cliente, pedido, fecha de entrega.</li>
+  </ul>
+
+  <p>Si un cliente de automoción llama seis meses después con un problema en un lote de brazos de suspensión, en menos de cinco minutos puedes tener delante toda la trazabilidad: qué chatarra entró en esa colada, de qué proveedor, qué análisis dio, qué operario la fundió, qué temperatura se alcanzó, qué análisis de producto terminado se hizo. Eso no solo resuelve la reclamación con datos; en muchos casos permite demostrar que el problema no está en el material fundido sino en el proceso posterior (mecanizado, tratamiento térmico).</p>
+
+  <h2>Optimización de la mezcla de chatarra (burden)</h2>
+
+  <p>Uno de los puntos donde la IA aporta más valor en una fundición es la optimización de la mezcla de chatarra para conseguir la composición química deseada al menor coste posible. Es lo que los técnicos de fundición llaman "cálculo de burden".</p>
+
+  <p>El proceso manual es complejo: el fundidor sabe por experiencia qué mezcla de materiales da aproximadamente la composición que busca, y va ajustando en caliente con adiciones de ferroaleaciones. Ese ajuste en caliente tiene un coste (las ferroaleaciones son caras) y un riesgo (puede no conseguirse la composición objetivo a la primera).</p>
+
+  <p>La optimización asistida por IA funciona así:</p>
+
+  <ol>
+    <li>El sistema conoce la composición química del stock de chatarra disponible (por los análisis de entrada registrados).</li>
+    <li>El responsable técnico introduce la composición química objetivo de la colada (según el pedido del cliente).</li>
+    <li>El sistema calcula la combinación óptima de materiales del stock actual para conseguir esa composición al menor coste, minimizando la necesidad de ferroaleaciones de ajuste.</li>
+    <li>Sugiere: "Para conseguir fundición gris GJL-250, usa 45% lote A de chatarra de automoción + 30% retorno propio de la semana pasada + 25% lingote de hierro. Coste estimado de carga: X €/ton. Necesitarás añadir aproximadamente 2 kg/ton de FeSi para ajuste de silicio."</li>
+  </ol>
+
+  <p>El ahorro en ferroaleaciones de ajuste puede ser significativo en fundiciones de mediano y gran volumen. Pero el beneficio más importante es la consistencia: coladas más homogéneas, menos retrabajos, menos scrap.</p>
+
+  <h2>Reporting automático para dirección y clientes</h2>
+
+  <p>La carga administrativa que genera una fundición de mediano tamaño es enorme: informes de producción, informes de calidad, certificados de material para clientes, reporting de costes para dirección, documentación para auditorías ISO. Buena parte de ese trabajo consiste en recopilar datos que ya existen en distintos sistemas y presentarlos de forma estructurada.</p>
+
+  <p>Con el sistema integrado, los reportes más habituales se generan automáticamente:</p>
+
+  <ul>
+    <li><strong>Dashboard semanal de dirección:</strong> consumo de chatarra por categoría, coste medio por tonelada de producto, tasa de defectos, desviación respecto a presupuesto. Enviado automáticamente cada lunes.</li>
+    <li><strong>Certificados de material automáticos para clientes:</strong> cuando se cierra una colada y sus piezas pasan el control de calidad, el sistema genera el certificado con la composición química garantizada y el número de colada trazable. Sin intervención manual.</li>
+    <li><strong>Informe de proveedores mensual:</strong> ranking de proveedores por scoring, evolución de calidad, alertas de proveedores que han bajado del umbral mínimo de aceptación.</li>
+    <li><strong>Preparación de auditorías:</strong> cuando llega una auditoría de cliente o de certificación, el sistema puede exportar toda la documentación de trazabilidad de un período en el formato requerido, lo que antes requería días de trabajo.</li>
+  </ul>
+
+  <h2>Caso tipo — Fundición del Norte, empresa mediana en País Vasco</h2>
+
+  <p>Fundición del Norte es una empresa mediana del País Vasco, con 45 empleados y una capacidad de producción de 250 toneladas al mes de fundición gris y nodular. Trabajan principalmente para el sector de la maquinaria agrícola y, en menor medida, para un Tier 2 del sector de automoción que exige trazabilidad completa de colada.</p>
+
+  <p>Cuando iniciamos el diagnóstico, encontramos tres problemas principales:</p>
+
+  <ul>
+    <li>La compra de chatarra se hacía sin consulta sistemática al LME. El comprador usaba los precios de la semana anterior como referencia y negociaba a ojo con los proveedores habituales.</li>
+    <li>El control de calidad de entrada era visual y por muestreo: solo se hacía análisis espectrométrico a uno de cada cuatro camiones. Eso significaba que el 75% de las entregas entraban sin verificación de composición.</li>
+    <li>La trazabilidad de colada existía en papel: cuadernos de colada escritos a mano que se archivaban en carpetas. Cuando el cliente de automoción pedía trazabilidad de un lote de seis meses atrás, un técnico tardaba medio día en encontrar y transcribir la información.</li>
+  </ul>
+
+  <p>Implementamos en tres fases a lo largo de cuatro meses:</p>
+
+  <ul>
+    <li><strong>Fase 1 (mes 1-2):</strong> Integración de LME en sistema de compras + scoring de proveedores + digitalización del control de calidad de entrada.</li>
+    <li><strong>Fase 2 (mes 2-3):</strong> Trazabilidad digital de colada + generación automática de certificados de material.</li>
+    <li><strong>Fase 3 (mes 3-4):</strong> Dashboard de dirección + optimizador de burden + reporting automático.</li>
+  </ul>
+
+  <p>Los resultados a los seis meses:</p>
+
+  <ul>
+    <li><strong>Reducción del 8% en el coste de chatarra</strong> (mejor timing de compra y mejor negociación con datos LME).</li>
+    <li><strong>Reducción del scrap de producción de un 4,2% a un 2,8%</strong>, gracias al mejor control de calidad de entrada y a la optimización del burden.</li>
+    <li><strong>0 incidencias de trazabilidad</strong> con el cliente de automoción en los seis meses posteriores a la implementación (vs 2 requerimientos de información urgente en los seis meses anteriores).</li>
+    <li><strong>Ahorro de 15 horas semanales</strong> en tareas administrativas: generación de certificados, reporting, búsqueda de información histórica.</li>
+  </ul>
+
+  <blockquote>
+    "Antes de esto, cuando el cliente de automoción nos pedía la trazabilidad de una colada de hace tres meses, yo perdía medio día buscando en los cuadernos. Ahora son cinco clics y un PDF. Eso solo ya justifica el sistema."
+  </blockquote>
+
+  <p>Si procesas 500 toneladas al mes y reduces el coste de chatarra en 5 €/tonelada gracias a mejor información y mejor timing de compra, eso son 2.500 € al mes de ahorro directo. La inversión en el sistema completo se amortiza en menos de dos meses.</p>
+
+  <p>Para entender mejor cómo funcionan las alertas de precio LME y cómo integrarlas en tu proceso de compra, <a href="/blog/alertas-precio-lme-reciclaje.html">consulta este artículo específico sobre alertas LME para el sector del reciclaje</a>. Y si quieres ver el proceso completo de transformación digital de una empresa industrial del sector, <a href="/blog/transformacion-digital-empresa-reciclaje.html">aquí tienes la guía paso a paso</a>.</p>
+
+  <h2>Inversión y retorno</h2>
+
+  <p>El coste de implementación varía según el volumen de producción, el número de proveedores activos y las funcionalidades que se activan. Como referencia orientativa:</p>
+
+  <ul>
+    <li><strong>Sistema de compra con LME + scoring proveedores:</strong> desde 400 €/mes</li>
+    <li><strong>Control de calidad digital + trazabilidad de colada:</strong> desde 400 €/mes adicionales</li>
+    <li><strong>Optimizador de burden + dashboard dirección:</strong> desde 400 €/mes adicionales</li>
+    <li><strong>Sistema completo para fundición mediana (200-500 ton/mes):</strong> entre 800 y 1.200 €/mes</li>
+  </ul>
+
+  <p>En una fundición que procesa 300 toneladas al mes, una reducción del 5% en el coste de chatarra (que es un resultado conservador basado en los casos que hemos implementado) supone 15 €/ton x 300 ton = 4.500 €/mes de ahorro. El sistema se paga en menos de un mes.</p>
+
+  <div class="callout">
+    <h3>¿Qué necesita la fundición para empezar?</h3>
+    <p>No se necesita cambiar el ERP ni los sistemas existentes. La integración se hace sobre lo que ya tienes: si tienes báscula con salida digital, la conectamos; si el espectrométro tiene software propio, importamos los datos; si no tienes nada digital, empezamos con entrada manual y vamos automatizando. El plazo de implementación de la fase 1 es de 2 a 3 semanas.</p>
+  </div>
+
+<div class="cta-box">
+  <h3>¿Cuánto estás pagando de más por chatarra este mes?</h3>
+  <p>Hacemos un análisis gratuito de tu proceso de compra y te decimos exactamente cuánto podrías ahorrar con datos en tiempo real y un sistema de scoring de proveedores.</p>
+  <a href="/#contacto">Pedir diagnóstico gratuito →</a>
+</div>
+
+</article>
+
+<footer>
+  <p>© 2026 Kora Studio · Agencia 100% online · <a href="/blog.html">Más artículos</a> · <a href="/">Inicio</a></p>
+</footer>
+
+</body>
+</html>
