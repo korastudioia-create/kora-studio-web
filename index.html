@@ -290,10 +290,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-tags{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:52px;padding-top:28px;border-top:1px solid var(--g200);animation:fadeUp .7s .4s ease both}
 .hero-tag{font-size:13px;color:var(--g500);display:flex;align-items:center;gap:7px}
 .tag-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);opacity:.5}
-.logos-bar{background:var(--g50);border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);padding:26px 48px;text-align:center}
-.logos-label{font-size:11px;color:var(--g400);font-weight:600;margin-bottom:16px;text-transform:uppercase;letter-spacing:.1em}
-.logos-row{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
-.brand-logo{font-size:14px;font-weight:800;color:var(--g200);letter-spacing:-.02em}
+.logos-bar{background:var(--g50);border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);padding:28px 0;text-align:center;overflow:hidden}
+.logos-label{font-size:11px;color:var(--g400);font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.12em}
+.logos-track-wrap{position:relative;overflow:hidden;mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%)}
+.logos-track{display:flex;align-items:center;gap:0;width:max-content;animation:marquee 28s linear infinite}
+.logos-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.brand-logo{display:inline-flex;align-items:center;gap:8px;padding:0 32px;font-size:13px;font-weight:700;color:var(--g400);letter-spacing:-.01em;white-space:nowrap;transition:color .2s}
+.brand-logo:hover{color:var(--g700)}
+.brand-logo img{width:18px;height:18px;opacity:.45;filter:grayscale(100%);transition:opacity .2s}
+.brand-logo:hover img{opacity:.75}
+.logos-sep{width:1px;height:16px;background:var(--g200);flex-shrink:0}
 section{padding:100px 48px}
 .si{max-width:1100px;margin:0 auto}
 .eyebrow{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
@@ -471,8 +478,7 @@ footer{background:var(--black);padding:64px 48px 36px}
   .cta-banner{padding:48px 16px!important}
   .cta-banner-btns{flex-direction:column;align-items:stretch}
   .btn-white,.btn-wa-white{width:100%;text-align:center;justify-content:center}
-  .logos-bar{padding:18px 16px!important}
-  .logos-row{gap:16px}
+  .logos-bar{padding:20px 0!important}
   .srv-card{padding:22px}
   .contact-form{padding:20px}
   footer{padding:40px 16px 24px!important}
@@ -541,16 +547,52 @@ footer{background:var(--black);padding:64px 48px 36px}
 </section>
 
 <div class="logos-bar">
-  <div class="logos-label">Herramientas que dominamos</div>
-  <div class="logos-row">
-    <span class="brand-logo">Make</span>
-    <span class="brand-logo">n8n</span>
-    <span class="brand-logo">Shopify</span>
-    <span class="brand-logo">Webflow</span>
-    <span class="brand-logo">HubSpot</span>
-    <span class="brand-logo">OpenAI</span>
-    <span class="brand-logo">Zapier</span>
-    <span class="brand-logo">Claude AI</span>
+  <div class="logos-label">Trabajamos con</div>
+  <div class="logos-track-wrap">
+    <div class="logos-track">
+      <!-- set 1 -->
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/n8n/000000" alt="n8n">n8n</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/make/000000" alt="Make">Make</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI">OpenAI</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/anthropic/000000" alt="Claude AI">Claude AI</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/vercel/000000" alt="Vercel">Vercel</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/shopify/000000" alt="Shopify">Shopify</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/webflow/000000" alt="Webflow">Webflow</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/hubspot/000000" alt="HubSpot">HubSpot</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/googlechrome/000000" alt="Google">Google</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/zapier/000000" alt="Zapier">Zapier</span>
+      <div class="logos-sep"></div>
+      <!-- set 2 (duplicado para loop infinito) -->
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/n8n/000000" alt="n8n">n8n</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/make/000000" alt="Make">Make</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI">OpenAI</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/anthropic/000000" alt="Claude AI">Claude AI</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/vercel/000000" alt="Vercel">Vercel</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/shopify/000000" alt="Shopify">Shopify</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/webflow/000000" alt="Webflow">Webflow</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/hubspot/000000" alt="HubSpot">HubSpot</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/googlechrome/000000" alt="Google">Google</span>
+      <div class="logos-sep"></div>
+      <span class="brand-logo"><img src="https://cdn.simpleicons.org/zapier/000000" alt="Zapier">Zapier</span>
+      <div class="logos-sep"></div>
+    </div>
   </div>
 </div>
 
