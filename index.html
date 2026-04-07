@@ -491,6 +491,21 @@ footer{background:var(--black);padding:64px 48px 36px}
   .fb-bottom{flex-direction:column;align-items:flex-start;gap:6px}
   .port-thumb{height:130px}
 }
+
+/* ── Before / After section ── */
+.ba-section{padding:80px 0;background:#f8faff}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ba-col{border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px}
+.ba-before{background:#fff5f5;border:1.5px solid #fecaca}
+.ba-after{background:#f0fdf4;border:1.5px solid #bbf7d0}
+.ba-col-header{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;margin-bottom:4px}
+.ba-before .ba-col-header{color:#dc2626}
+.ba-after .ba-col-header{color:#16a34a}
+.ba-item{display:flex;gap:14px;align-items:flex-start}
+.ba-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.ba-item strong{display:block;font-size:14px;font-weight:600;color:#111;margin-bottom:4px}
+.ba-item p{font-size:13px;color:#555;margin:0;line-height:1.55}
+@media(max-width:768px){.ba-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -514,7 +529,7 @@ footer{background:var(--black);padding:64px 48px 36px}
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       WhatsApp
     </a>
-    <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Solicitar presupuesto</button>
+    <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Diagnóstico gratuito</button>
   </div>
   <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
@@ -529,19 +544,19 @@ footer{background:var(--black);padding:64px 48px 36px}
     <svg width="18" height="18" viewBox="0 0 24 24" fill="#16a34a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     WhatsApp
   </a>
-  <button class="mob-cta" onclick="toggleMenu();document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Solicitar presupuesto</button>
+  <button class="mob-cta" onclick="toggleMenu();document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Diagnóstico gratuito</button>
 </div>
 
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-dots"></div>
   <div class="hero-content">
-    <div class="hero-badge"><div class="badge-dot"></div>Especialistas en reciclaje y economía circular · España</div>
-    <h1>Inteligencia artificial<br>para el <span class="accent">sector del reciclaje</span></h1>
-    <p class="hero-sub">Inteligencia artificial y automatización diseñadas exclusivamente para empresas del sector del reciclaje y la economía circular. Trabajamos 100% online, sin desplazamientos y sin migrar tu ERP. Conocemos los precios LME, los códigos LER y la operativa real del día a día.</p>
+    <div class="hero-badge"><div class="badge-dot"></div>El único especialista en IA para el sector del reciclaje en España</div>
+    <h1>Cada semana pierdes toneladas<br>porque no puedes atender <span class="accent">las 24 horas</span></h1>
+    <p class="hero-sub">Automatizamos la captación de proveedores, la cotización con LME y el papeleo normativo para que tu empresa del reciclaje funcione sola. Sin contratar a nadie, sin cambiar tu ERP.</p>
     <div class="hero-btns">
-      <a href="/servicios" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px">Ver áreas de trabajo →</a>
-      <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Diagnóstico gratuito</button>
+      <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Pide tu diagnóstico gratuito →</button>
+      <a href="/servicios" class="btn-secondary" style="text-decoration:none">Ver áreas de trabajo</a>
     </div>
     <div class="hero-tags">
       <div class="hero-tag"><div class="tag-dot"></div>100% sector reciclaje</div>
@@ -602,6 +617,85 @@ footer{background:var(--black);padding:64px 48px 36px}
   </div>
 </div>
 
+<section class="ba-section">
+  <div class="si">
+    <div class="fade-up" style="text-align:center;margin-bottom:48px">
+      <div class="eyebrow">La diferencia en el día a día</div>
+      <h2 class="stitle">Lo que cambia cuando<br>automatizas tu empresa</h2>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-col ba-before">
+        <div class="ba-col-header">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#ef4444" stroke-width="1.5"/><path d="M6 6l6 6M12 6l-6 6" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Sin Kora Studio</span>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">😤</div>
+          <div>
+            <strong>Un proveedor llama a las 10 de la noche</strong>
+            <p>Nadie atiende. Al día siguiente te dice que ya cerró con otra empresa. Perdiste la tonelada.</p>
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">📄</div>
+          <div>
+            <strong>Albaranes en papel sobre la mesa</strong>
+            <p>La administrativa tarda 2 horas cada mañana pasando datos a mano. Errores, retrasos, facturas tardías.</p>
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">😰</div>
+          <div>
+            <strong>Memoria ambiental: dos fines de semana perdidos</strong>
+            <p>Cada año, el responsable juntan datos de distintos sitios en un Excel. Un error y llega una sanción.</p>
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">📉</div>
+          <div>
+            <strong>Cotizas a ojo porque el LME cambia cada hora</strong>
+            <p>Das un precio sin saber el cierre del día. Margen perdido o cliente perdido, según el lado en que caigas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ba-col ba-after">
+        <div class="ba-col-header">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#22c55e" stroke-width="1.5"/><path d="M5 9l3 3 5-5" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Con Kora Studio</span>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">🤖</div>
+          <div>
+            <strong>El chatbot cualifica, cotiza y agenda solo</strong>
+            <p>A las 11 de la noche el proveedor recibe precio y confirmación. Tú lo ves por la mañana ya cerrado.</p>
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">⚡</div>
+          <div>
+            <strong>El albarán entra por foto y se vuelca solo</strong>
+            <p>OCR + IA lee el albarán desde el móvil y lo mete directamente en tu sistema. La administrativa llega a trabajar y todo está hecho.</p>
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">✅</div>
+          <div>
+            <strong>La memoria anual se genera automáticamente</strong>
+            <p>El sistema recoge los datos que ya tienes y monta el documento en el formato exigido. Un clic para revisar y firmar.</p>
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">📊</div>
+          <div>
+            <strong>Motor de cotización conectado al LME en tiempo real</strong>
+            <p>El cliente recibe un PDF con tu marca y precio exacto en menos de 60 segundos. Cierras más porque respondes primero.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="services" id="soluciones">
   <div class="si">
     <div class="fade-up">
@@ -614,47 +708,47 @@ footer{background:var(--black);padding:64px 48px 36px}
         <div class="srv-num">01</div>
         <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 5h16v10H7l-4 4V5z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 9h8M7 12h5" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <h3>Captación y ventas</h3>
-        <p>Cualificador AI de leads en WhatsApp, motor de cotización B2B con precios LME en tiempo real, calculadora de precios embebida y chatbot web. Recupera los leads que hoy se pierden fuera de horario de oficina.</p>
+        <p>Los proveedores que llaman de noche ya no se van a la competencia. Cualificador AI en WhatsApp, cotización automática con precios LME y chatbot web que trabaja cuando tú no puedes.</p>
         <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">02</div>
         <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" stroke="#0057FF" stroke-width="1.7"/><path d="M11 1v3M11 18v3M1 11h3M18 11h3M4.2 4.2l2.1 2.1M15.7 15.7l2.1 2.1M4.2 17.8l2.1-2.1M15.7 6.3l2.1-2.1" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <h3>Operaciones diarias</h3>
-        <p>Trazabilidad de material entrada-tratamiento-salida, OCR de albaranes en papel y dashboard operativo en tiempo real. La administrativa deja de teclear; el dueño ve el stock desde el móvil.</p>
+        <p>Fin a las 2 horas diarias pasando albaranes a mano. OCR que lee papel, foto o PDF y lo vuelca al sistema. Trazabilidad entrada-salida y stock visible desde el móvil en tiempo real.</p>
         <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">03</div>
         <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 5v6c0 4.5 3.5 8 8 9 4.5-1 8-4.5 8-9V5l-8-3z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Cumplimiento normativo</h3>
-        <p>Memoria anual ambiental automatizada, alertas de vencimiento de licencias y CMR automático para gestores autorizados. Cero multas por papeles olvidados, cero fines de semana rellenando formularios.</p>
+        <p>La memoria anual ambiental se genera sola con los datos que ya tienes. Alertas automáticas antes de que venza cualquier licencia. Nunca más un fin de semana rellenando formularios ni una multa por un papel olvidado.</p>
         <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">04</div>
         <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11v6a2 2 0 002 2h12a2 2 0 002-2v-6" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/><path d="M16 7l-5-5-5 5M11 2v13" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Marketing y reputación local</h3>
-        <p>Web B2B con SEO local optimizado para "precio cobre Sevilla" o "chatarrería Murcia", Google My Business activo, blog técnico sectorial y reseñas Google automáticas tras cada operación.</p>
+        <p>Cuando alguien busca "precio chatarra Murcia" o "recicladora cobre Valencia", apareces tú primero. Web B2B optimizada, Google My Business activo y reseñas que llegan solas después de cada operación.</p>
         <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">05</div>
         <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#0057FF" stroke-width="1.7"/><path d="M2 11h18M11 2c2.5 3 4 6 4 9s-1.5 6-4 9c-2.5-3-4-6-4-9s1.5-6 4-9z" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Trade internacional</h3>
-        <p>Sistema multidioma para clientes en Europa, Asia y Turquía, y documentación de exportación automatizada (packing list, certificados de origen, fichas técnicas) compatible con aduanas europeas.</p>
+        <p>Abre mercados en Europa, Asia y Turquía sin contratar a nadie nuevo. Comunicación multidioma automatizada y toda la documentación de exportación —packing list, certificados, fichas— lista en minutos.</p>
         <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">06</div>
         <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 19V3M3 19h16" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/><rect x="6" y="11" width="3" height="5" stroke="#0057FF" stroke-width="1.7"/><rect x="11" y="7" width="3" height="9" stroke="#0057FF" stroke-width="1.7"/><rect x="16" y="4" width="3" height="12" stroke="#0057FF" stroke-width="1.7"/></svg></div>
         <h3>Análisis y datos</h3>
-        <p>Dashboard de KPIs ejecutivos para dirección, alertas inteligentes de precios LME, alertas comerciales de clientes dormidos e integración contable con Sage, A3 o Holded. Decisiones basadas en datos reales, no en intuición.</p>
+        <p>Sabes exactamente qué material entra, qué margen deja y qué clientes llevan meses sin llamar. Alertas de precios LME, dashboard ejecutivo y conexión contable con Sage, A3 o Holded. Nada de gestionar a ojo.</p>
         <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
       </div>
     </div>
     <div style="text-align:center;margin-top:48px" class="fade-up">
-      <a href="/servicios" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px">Ver áreas de trabajo →</a>
+      <button class="btn-primary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Pide tu diagnóstico gratuito →</button>
     </div>
   </div>
 </section>
@@ -903,10 +997,10 @@ footer{background:var(--black);padding:64px 48px 36px}
       <div class="contact-form fade-up">
         <div class="form-row">
           <div class="form-group"><label>Nombre *</label><input type="text" placeholder="Tu nombre" id="fname"></div>
-          <div class="form-group"><label>Email *</label><input type="email" placeholder="tu@empresa.com" id="femail"></div>
+          <div class="form-group"><label>WhatsApp *</label><input type="tel" placeholder="+34 600 000 000" id="fphone"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa" id="fcompany"></div>
+          <div class="form-group"><label>Email *</label><input type="email" placeholder="tu@empresa.com" id="femail"></div>
           <div class="form-group"><label>Subsector</label>
             <select id="fservice">
               <option value="">¿En qué subsector operas?</option>
@@ -922,13 +1016,12 @@ footer{background:var(--black);padding:64px 48px 36px}
             </select>
           </div>
         </div>
-        <div class="form-group"><label>Tu web actual (opcional)</label><input type="url" placeholder="https://tuweb.com — si ya tienes una y quieres que la veamos" id="fweburl"></div>
-        <div class="form-group"><label>Cuéntanos cómo operas *</label><textarea placeholder="Tamaño aproximado (empleados o facturación), ERP actual si tienes, qué problema te duele más (captación, albaranes, normativa, exportación...). Cuanto más nos cuentes, mejor diagnóstico te damos." id="fmessage"></textarea></div>
+        <div class="form-group"><label>¿Cuál es tu problema principal? *</label><textarea placeholder="Cuéntanos en dos líneas qué te quita el sueño: proveedores que no puedes atender, albaranes en papel, memoria ambiental, precios LME, exportación... Lo que sea." id="fmessage"></textarea></div>
         <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
           <label>Website</label>
           <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">
         </div>
-        <button class="form-submit" onclick="submitForm()">Solicitar presupuesto gratuito →</button>
+        <button class="form-submit" onclick="submitForm()">Pide tu diagnóstico gratuito →</button>
         <p class="form-note">Te respondemos en menos de 24h · Sin compromiso</p>
       </div>
     </div>
@@ -980,7 +1073,6 @@ footer{background:var(--black);padding:64px 48px 36px}
     </div>
     <div class="fb-bottom">
       <span class="fb-copy">© 2026 Kora Studio · Especialistas en IA para el sector del reciclaje</span>
-      <span class="fb-made">Hecho con <span>IA</span> · Por nosotros mismos</span>
     </div>
   </div>
 </footer>
