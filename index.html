@@ -222,6 +222,30 @@
         "@type": "Answer",
         "text": "En servicios de captación (cualificador AI, motor de cotización), una sola operación recuperada al mes suele cubrir el coste del servicio entre 8 y 12 veces. En servicios de operaciones (OCR, trazabilidad), el ROI llega por las horas administrativas ahorradas en 1 a 3 meses. En cumplimiento, una multa evitada paga el servicio durante años."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Tengo a alguien en mi equipo que sabe de informatica. ¿Por que no lo monta el?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puede. La diferencia es el conocimiento del sector. Un informático genérico tarda meses en entender qué es un código LER, cómo funciona el LME, cómo se cotiza un latón rojo o qué formato exige tu CCAA para la memoria ambiental. Nosotros ya lo sabemos el primer día. Lo que a él le llevaría 6 meses de aprender, a nosotros nos lleva una semana de implementar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo empezar solo con una cosa y ver como funciona antes de meterme en mas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y de hecho es lo que recomendamos. En la llamada de diagnóstico identificamos el dolor que más te cuesta ahora mismo y empezamos solo por ahí. Cuando veas que funciona y recuperes las horas o los leads, ampliamos a otra área. Nunca vendemos el paquete completo a un cliente nuevo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Que pasa si os contrato y dentro de unos meses quiero cancelar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cancelas y ya. No hay permanencia ni penalización. Mensualidad sin candado: si el servicio no te está aportando valor real, avisas y lo cortamos. Y si tienes una reclamación legítima durante los primeros meses, devolvemos el dinero."
+      }
     }
   ]
 }
@@ -699,9 +723,9 @@ footer{background:var(--black);padding:64px 48px 36px}
 <section class="services" id="soluciones">
   <div class="si">
     <div class="fade-up">
-      <div class="eyebrow">Soluciones por área</div>
-      <h2 class="stitle">Tecnología hecha<br>para tu sector</h2>
-      <p class="ssub">Cada área cubre los problemas reales que vive una empresa del sector cada día. Sin abstracciones, sin teoría: herramientas concretas que se integran sobre lo que ya tienes. Cuéntanos cómo operas y te decimos por dónde tendría más sentido empezar.</p>
+      <div class="eyebrow">Lo que hacemos</div>
+      <h2 class="stitle">6 áreas donde te quitamos<br>horas, multas y toneladas perdidas</h2>
+      <p class="ssub">No vendemos tecnología. Vendemos que no pierdas operaciones de noche, que tu administrativa deje de teclear albaranes a mano y que enero deje de ser el mes de la memoria ambiental. Cuéntanos cómo operas y te decimos por dónde tiene más sentido empezar.</p>
     </div>
     <div class="services-grid">
       <div class="srv-card fade-up">
@@ -853,7 +877,7 @@ footer{background:var(--black);padding:64px 48px 36px}
     <div class="why-top fade-up">
       <div class="eyebrow">Por qué Kora Studio</div>
       <h2 class="stitle">El único proveedor de IA<br>especializado en el sector</h2>
-      <p class="ssub">No somos una agencia genérica que se ha tropezado con una empresa de reciclaje. Somos una agencia construida desde dentro del sector: presencia en BIR y FER, conocimiento de Alba Gestión y otros ERPs sectoriales, dominio de precios LME, normativa de gestores autorizados y operativa real del día a día.</p>
+      <p class="ssub">No somos una agencia genérica que se ha tropezado con una recicladora. Venimos del sector. Conocemos Alba Gestión y Wastewin, sabemos qué es el HMS 1&amp;2 80:20, diferenciamos un cobre nº1 de un nº2 y nos sabemos el formato de memoria anual ambiental de cada CCAA. No tenemos que aprender nada para trabajar contigo: ya venimos aprendidos.</p>
     </div>
     <div class="why-grid">
       <div class="why-card fade-up"><div class="why-val">100<span>%</span></div><div class="why-label">Sector reciclaje. Único proveedor de IA construido exclusivamente para tu sector en España</div></div>
@@ -954,14 +978,38 @@ footer{background:var(--black);padding:64px 48px 36px}
         <div class="faq-a"><p>En servicios de captación (cualificador AI, motor de cotización), una sola operación recuperada al mes suele cubrir el coste del servicio entre 8 y 12 veces. En servicios de operaciones (OCR, trazabilidad), el ROI llega por las horas administrativas ahorradas en 1 a 3 meses. En cumplimiento, una multa evitada paga el servicio durante años.</p></div>
       </div>
 
+      <div class="faq-item fade-up" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h3>Tengo a alguien en mi equipo que sabe de informática. ¿Por qué no lo monta él?</h3>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Puede. La diferencia es el conocimiento del sector. Un informático genérico tarda meses en entender qué es un código LER, cómo funciona el LME, cómo se cotiza un latón rojo o qué formato exige tu CCAA para la memoria ambiental. Nosotros ya lo sabemos el primer día. Lo que a él le llevaría 6 meses de aprender, a nosotros nos lleva una semana de implementar. Y mientras tanto tu negocio sigue perdiendo operaciones.</p></div>
+      </div>
+
+      <div class="faq-item fade-up" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h3>¿Puedo empezar solo con una cosa y ver cómo funciona antes de meterme en más?</h3>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Sí, y de hecho es lo que recomendamos. En la llamada de diagnóstico identificamos el dolor que más te cuesta ahora mismo (normalmente captación fuera de horario o albaranes en papel) y empezamos solo por ahí. Cuando veas que funciona y recuperes las horas o los leads, ampliamos a otra área. Nunca vendemos el paquete completo a un cliente nuevo: no tiene sentido y genera rechazo.</p></div>
+      </div>
+
+      <div class="faq-item fade-up" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h3>¿Qué pasa si os contrato y dentro de unos meses quiero cancelar?</h3>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Cancelas y ya. No hay permanencia ni penalización. Nuestro modelo es mensualidad sin candado: si el servicio no te está aportando valor real, avisas y lo cortamos. Y si tienes una reclamación legítima durante los primeros meses, devolvemos el dinero. Trabajamos así porque el único motivo real para seguir con un proveedor es que funcione.</p></div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <div class="cta-banner">
   <div class="cta-banner-inner fade-up">
-    <h2>Cuéntanos cómo opera tu empresa.<br>Te decimos por dónde empezar.</h2>
-    <p>Diagnóstico inicial gratuito de 30 minutos por videollamada. 100% online, sin compromiso. Si decidimos que no encajamos, te lo decimos en la misma llamada y te ahorramos el tiempo.</p>
+    <h2>Cuéntanos dónde se te va el tiempo.<br>Te decimos en 30 minutos si podemos ayudarte.</h2>
+    <p>Diagnóstico gratuito de 30 min por videollamada. 100% online, sin compromiso. Si vemos que no encajamos, te lo decimos en la misma llamada y te ahorramos el resto.</p>
     <div class="cta-banner-btns">
       <button class="btn-white" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Solicitar diagnóstico gratuito</button>
       <a href="/servicios" class="btn-wa-white" style="text-decoration:none">Ver áreas de trabajo →</a>
