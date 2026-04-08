@@ -1174,9 +1174,10 @@ setTimeout(()=>{
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
-// Web3Forms: envía cada cuestionario a kora.studio.ia@gmail.com (gratis, sin backend)
-const WEBHOOK_URL = 'https://api.web3forms.com/submit';
+// Envío del formulario: Web3Forms (email) + ntfy.sh (push al móvil) en paralelo
+const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 const WEB3FORMS_KEY = 'b627ddbe-5b8f-466c-949c-4f6de353bcd5';
+const NTFY_URL = 'https://ntfy.sh/kora-leads-adrian-xk39z7';
 
 async function submitForm(){
   const getVal=(id)=>{const el=document.getElementById(id);return el?el.value.trim():'';};
@@ -1189,40 +1190,69 @@ async function submitForm(){
   if(!n||!p||!e||!m){alert('Por favor rellena nombre, WhatsApp, email y tu problema principal.');return;}
   const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!emailRegex.test(e)){alert('Por favor introduce un email válido.');return;}
+  // Honeypot: si está relleno, es un bot
+  if(w){console.warn('Honeypot triggered, form ignored');return;}
 
   const btn=document.querySelector('.form-submit');
   const originalText=btn.textContent;
   btn.textContent='Enviando...';
   btn.disabled=true;
 
-  try{
-    const res=await fetch(WEBHOOK_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        access_key:WEB3FORMS_KEY,
-        subject:'Nuevo lead desde korastudio.es — Sector reciclaje',
-        from_name:'Kora Studio Web',
-        Nombre:n,
-        WhatsApp:p,
-        Email:e,
-        Subsector:s||'(no indicado)',
-        Mensaje:m,
-        Website:w
-      })
-    });
-    if(!res.ok)throw new Error('Error en el envío');
+  // 1) Envío a Web3Forms (email)
+  const web3formsPromise = fetch(WEB3FORMS_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      access_key:WEB3FORMS_KEY,
+      subject:'Nuevo lead desde korastudio.es — ' + n + ' · ' + (s||'Sin subsector'),
+      from_name:'Kora Studio Web',
+      Nombre:n,
+      WhatsApp:p,
+      Email:e,
+      Subsector:s||'(no indicado)',
+      Mensaje:m
+    })
+  }).then(r=>r.json()).then(j=>{
+    console.log('Web3Forms response:',j);
+    return j.success===true;
+  }).catch(err=>{
+    console.error('Web3Forms error:',err);
+    return false;
+  });
 
+  // 2) Envío a ntfy.sh en paralelo (push al móvil)
+  const ntfyBody = n + ' (' + p + ')\n' + (s||'Sin subsector') + '\n\n' + m + '\n\nEmail: ' + e;
+  const ntfyPromise = fetch(NTFY_URL,{
+    method:'POST',
+    headers:{
+      'Title':'Nuevo lead desde korastudio.es - ' + n,
+      'Priority':'high',
+      'Tags':'bell,mailbox',
+      'Click':'https://korastudio.es'
+    },
+    body:ntfyBody
+  }).then(r=>{
+    console.log('ntfy.sh response:',r.status);
+    return r.ok;
+  }).catch(err=>{
+    console.error('ntfy.sh error:',err);
+    return false;
+  });
+
+  // Esperamos ambos (Promise.allSettled no falla si uno falla)
+  const [web3ok, ntfyok] = await Promise.all([web3formsPromise, ntfyPromise]);
+
+  if(web3ok || ntfyok){
+    // Basta con que uno funcione para dar el éxito al usuario
     btn.textContent='Enviado — te contactamos en menos de 24h';
     btn.style.background='#16a34a';
-
-    // Limpiar formulario
     ['fname','fphone','femail','fservice','fmessage'].forEach(id=>{
       const el=document.getElementById(id);
       if(el)el.value='';
     });
-  }catch(err){
-    console.error('Form submit error:',err);
+    // Log para debug: qué canal funcionó
+    console.log('Form submitted: Web3Forms='+web3ok+' / ntfy='+ntfyok);
+  }else{
     btn.textContent='Error — escríbenos por WhatsApp';
     btn.style.background='#dc2626';
     btn.disabled=false;
