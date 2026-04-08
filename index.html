@@ -1179,14 +1179,14 @@ const WEBHOOK_URL = 'https://api.web3forms.com/submit';
 const WEB3FORMS_KEY = 'b627ddbe-5b8f-466c-949c-4f6de353bcd5';
 
 async function submitForm(){
-  const n=document.getElementById('fname').value.trim();
-  const e=document.getElementById('femail').value.trim();
-  const c=document.getElementById('fcompany').value.trim();
-  const s=document.getElementById('fservice').value.trim();
-  const m=document.getElementById('fmessage').value.trim();
-  const u=document.getElementById('fweburl').value.trim();
-  const w=document.getElementById('fwebsite').value.trim();
-  if(!n||!e||!m){alert('Por favor rellena nombre, email y mensaje.');return;}
+  const getVal=(id)=>{const el=document.getElementById(id);return el?el.value.trim():'';};
+  const n=getVal('fname');
+  const p=getVal('fphone');
+  const e=getVal('femail');
+  const s=getVal('fservice');
+  const m=getVal('fmessage');
+  const w=getVal('fwebsite');
+  if(!n||!p||!e||!m){alert('Por favor rellena nombre, WhatsApp, email y tu problema principal.');return;}
   const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!emailRegex.test(e)){alert('Por favor introduce un email válido.');return;}
 
@@ -1204,11 +1204,10 @@ async function submitForm(){
         subject:'Nuevo lead desde korastudio.es — Sector reciclaje',
         from_name:'Kora Studio Web',
         Nombre:n,
+        WhatsApp:p,
         Email:e,
-        Empresa:c,
-        Subsector:s,
+        Subsector:s||'(no indicado)',
         Mensaje:m,
-        'Web actual':u||'(no indicada)',
         Website:w
       })
     });
@@ -1218,13 +1217,12 @@ async function submitForm(){
     btn.style.background='#16a34a';
 
     // Limpiar formulario
-    document.getElementById('fname').value='';
-    document.getElementById('femail').value='';
-    document.getElementById('fcompany').value='';
-    document.getElementById('fservice').value='';
-    document.getElementById('fmessage').value='';
-    document.getElementById('fweburl').value='';
+    ['fname','fphone','femail','fservice','fmessage'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el)el.value='';
+    });
   }catch(err){
+    console.error('Form submit error:',err);
     btn.textContent='Error — escríbenos por WhatsApp';
     btn.style.background='#dc2626';
     btn.disabled=false;
