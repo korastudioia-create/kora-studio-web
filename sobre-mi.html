@@ -131,7 +131,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 /* MI HISTORIA */
 .story{background:var(--white);padding:120px 56px}
-.story-inner{max-width:720px;margin:0 auto}
+.story-inner{max-width:960px;margin:0 auto}
+.story-grid{display:grid;grid-template-columns:280px 1fr;gap:48px;margin-top:48px;align-items:start}
+.story-photo{position:sticky;top:100px}
+.story-photo img{width:100%;border-radius:var(--r);object-fit:cover;aspect-ratio:3/4;box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.story-photo-caption{display:block;margin-top:12px;font-size:13px;color:var(--g500);font-weight:500;text-align:center}
 .story-text p{font-size:17px;color:var(--g600);line-height:1.8;font-weight:400;margin-bottom:28px}
 .story-text p:last-child{margin-bottom:0}
 
@@ -198,6 +202,8 @@ footer{background:var(--black);padding:64px 48px 36px}
   .section{padding:80px 20px}
   .hero{padding:120px 20px 70px}
   .story{padding:80px 20px}
+  .story-grid{grid-template-columns:1fr;gap:32px}
+  .story-photo{position:static;max-width:240px;margin:0 auto}
   .story-text p{font-size:15px}
   .why-kora{padding:80px 20px}
   .why-cards{grid-template-columns:1fr;gap:18px}
@@ -266,10 +272,16 @@ footer{background:var(--black);padding:64px 48px 36px}
     <div class="story-inner fade-up">
       <div class="eyebrow">Mi historia</div>
       <h2 class="section-title">Del patio de chatarra <em>al código</em></h2>
-      <div class="story-text">
-        <p>Mi padre lleva más de 14 años en el sector del reciclaje. Yo me crié literalmente entre montañas de cobre, aluminio y chatarra férrica. Antes de saber lo que era un código LER, ya sabía distinguir un latón rojo de un latón amarillo. Antes de entender qué era el LME, ya veía cómo mi padre calculaba márgenes en una libreta.</p>
-        <p>Crecí viendo cómo funciona este sector de verdad: los albaranes en papel que se pierden, las llamadas de clientes a las 22:00 que nadie puede atender, las memorias ambientales que se hacen a contrarreloj en enero, los CMR que se rellenan a mano en cada viaje. Vi el problema desde dentro, no desde un despacho.</p>
-        <p>Cuando descubrí lo que la inteligencia artificial podía hacer — automatizar respuestas, digitalizar documentos, cotizar en segundos con el LME del día — supe que tenía que aplicarlo al sector que conocía mejor que nadie. No como un consultor genérico que acaba de googlear qué es una chatarrería, sino como alguien que se ha manchado las manos.</p>
+      <div class="story-grid">
+        <div class="story-photo">
+          <img src="/foto-adrian.jpeg" alt="Adrián Burgos, fundador de Kora Studio" loading="lazy" decoding="async">
+          <span class="story-photo-caption">Adrián Burgos · Fundador de Kora Studio</span>
+        </div>
+        <div class="story-text">
+          <p>Mi padre lleva más de 14 años en el sector del reciclaje. Yo me crié literalmente entre montañas de cobre, aluminio y chatarra férrica. Desde muy pequeño ya estaba en el patio limpiando aires acondicionados, desmontando motores eléctricos, separando materiales. Antes de saber lo que era un código LER, ya distinguía todos los tipos de metales. Antes de entender qué era el LME, ya veía cómo mi padre calculaba márgenes en una libreta.</p>
+          <p>Crecí viendo cómo funciona este sector de verdad: los albaranes en papel que se pierden, las llamadas de clientes a las 22:00 que nadie puede atender, las memorias ambientales que se hacen a contrarreloj en enero, los CMR que se rellenan a mano en cada viaje. Vi el problema desde dentro, no desde un despacho. Yo sí me manchaba las manos.</p>
+          <p>Cuando descubrí lo que la inteligencia artificial podía hacer — automatizar respuestas, digitalizar documentos, cotizar en segundos con el LME del día — supe que tenía que aplicarlo al sector que conocía mejor que nadie. No como un consultor genérico que acaba de googlear qué es una chatarrería, sino como alguien que ha crecido en una.</p>
+        </div>
       </div>
     </div>
   </div>
