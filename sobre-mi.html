@@ -154,12 +154,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .why-card-text{font-size:14.5px;color:var(--g500);line-height:1.65;font-weight:400}
 
 /* CTA FINAL */
-.cta-final{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff;text-align:center;padding:120px 56px;position:relative;overflow:hidden}
-.cta-final::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
-.cta-final-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
-.cta-final h2{font-size:clamp(34px,4.6vw,52px);font-weight:800;letter-spacing:-.05em;margin-bottom:20px;color:#fff;line-height:1.05}
-.cta-final p{font-size:19px;color:rgba(255,255,255,0.82);margin-bottom:44px;line-height:1.65;font-weight:300}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta-final{background:transparent;color:var(--g900);text-align:center;padding:48px 56px 80px}
+.cta-final-inner{max-width:780px;margin:0 auto;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);border-radius:24px;padding:72px 56px;position:relative;overflow:hidden}
+.cta-final-inner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
+.cta-final h2{font-size:clamp(34px,4.6vw,52px);font-weight:800;letter-spacing:-.05em;margin-bottom:20px;color:#fff;line-height:1.05;position:relative;z-index:1}
+.cta-final p{font-size:19px;color:rgba(255,255,255,0.82);margin-bottom:44px;line-height:1.65;font-weight:300;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
 
 /* FOOTER */
 footer{background:var(--black);padding:64px 48px 36px}
