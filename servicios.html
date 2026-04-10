@@ -138,13 +138,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stat-label{font-size:12px;color:var(--g500);margin-top:8px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 
 /* AUTHORITY */
-.authority{background:var(--g900);color:var(--white);padding:48px 56px;text-align:center;position:relative;overflow:hidden}
-.authority::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(0,87,255,0.15) 0%,transparent 60%)}
-.authority-inner{max-width:920px;margin:0 auto;position:relative;z-index:1}
-.authority-eyebrow{font-size:11px;font-weight:700;color:#60A5FA;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:inline-flex;align-items:center;gap:10px}
-.authority-eyebrow::before,.authority-eyebrow::after{content:'';width:30px;height:1px;background:rgba(96,165,250,0.4);display:block}
-.authority-text{font-size:17px;color:rgba(255,255,255,0.78);font-weight:300;line-height:1.75}
-.authority-text strong{color:var(--white);font-weight:600}
+.authority{background:var(--blue-light);color:var(--g900);padding:52px 56px;text-align:center;position:relative;overflow:hidden}
+.authority::before{content:'';position:absolute;top:-1px;left:0;right:0;height:48px;background:linear-gradient(to bottom,var(--white),transparent);z-index:1}
+.authority::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:48px;background:linear-gradient(to top,var(--white),transparent);z-index:1}
+.authority-inner{max-width:920px;margin:0 auto;position:relative;z-index:2}
+.authority-eyebrow{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:inline-flex;align-items:center;gap:10px}
+.authority-eyebrow::before,.authority-eyebrow::after{content:'';width:30px;height:1px;background:rgba(0,87,255,0.3);display:block}
+.authority-text{font-size:17px;color:var(--g600);font-weight:400;line-height:1.75}
+.authority-text strong{color:var(--g900);font-weight:700}
 
 /* AREAS */
 .areas{background:var(--white)}
