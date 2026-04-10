@@ -138,10 +138,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stat-label{font-size:12px;color:var(--g500);margin-top:8px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 
 /* AUTHORITY */
-.authority{background:var(--blue-light);color:var(--g900);padding:52px 56px;text-align:center;position:relative;overflow:hidden}
-.authority::before{content:'';position:absolute;top:-1px;left:0;right:0;height:48px;background:linear-gradient(to bottom,var(--white),transparent);z-index:1}
-.authority::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:48px;background:linear-gradient(to top,var(--white),transparent);z-index:1}
-.authority-inner{max-width:920px;margin:0 auto;position:relative;z-index:2}
+.authority{background:transparent;color:var(--g900);padding:0 56px 64px;text-align:center}
+.authority-inner{max-width:920px;margin:0 auto;background:linear-gradient(135deg,#E0ECFF 0%,#EEF4FF 100%);border:1.5px solid rgba(0,87,255,0.18);border-radius:24px;padding:48px 48px}
 .authority-eyebrow{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:inline-flex;align-items:center;gap:10px}
 .authority-eyebrow::before,.authority-eyebrow::after{content:'';width:30px;height:1px;background:rgba(0,87,255,0.3);display:block}
 .authority-text{font-size:17px;color:var(--g600);font-weight:400;line-height:1.75}
@@ -165,7 +163,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .area-meta svg{width:14px;height:14px;stroke-width:2.4;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
 .area-card:hover .area-meta svg{transform:translateX(4px)}
 
-.areas-cta{margin-top:64px;text-align:center;background:linear-gradient(135deg,var(--blue-light) 0%,#F5F8FF 100%);border:1.5px solid rgba(0,87,255,0.15);border-radius:24px;padding:56px 48px}
+.areas-cta{margin-top:64px;text-align:center;background:linear-gradient(135deg,#E0ECFF 0%,#EEF4FF 100%);border:1.5px solid rgba(0,87,255,0.18);border-radius:24px;padding:56px 48px}
 .areas-cta-eyebrow{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
 .areas-cta h3{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.04em;color:var(--g900);margin-bottom:14px;line-height:1.2}
 .areas-cta p{font-size:16px;color:var(--g600);max-width:580px;margin:0 auto 28px;line-height:1.65;font-weight:400}
