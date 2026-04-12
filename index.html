@@ -431,6 +431,9 @@ section{padding:100px 48px}
 .form-group textarea{min-height:100px;resize:vertical}
 .form-submit{width:100%;background:var(--blue);color:#fff;border:none;padding:15px;border-radius:var(--rsm);font-family:'Inter',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:background .2s,transform .15s}
 .form-submit:hover{background:var(--blue-dark);transform:translateY(-1px)}
+a:focus-visible,button:focus-visible,.nav-cta:focus-visible,.form-submit:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.form-group input:focus-visible,.form-group select:focus-visible,.form-group textarea:focus-visible{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,87,255,0.12)}
+.blog-card:focus-visible,.srv-card:focus-visible,.port-card:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:var(--r)}
 .form-note{font-size:12px;color:var(--g400);text-align:center;margin-top:10px}
 footer{background:var(--black);padding:64px 48px 36px}
 .fi{max-width:1100px;margin:0 auto}
@@ -545,6 +548,18 @@ footer{background:var(--black);padding:64px 48px 36px}
   footer{padding:40px 16px 24px!important}
   .fb-bottom{flex-direction:column;align-items:flex-start;gap:6px}
   .port-thumb{height:130px}
+}
+@media(max-width:480px){
+  section{padding:48px 16px!important}
+  .hero{padding:80px 16px 40px!important}
+  .hero h1{font-size:30px!important}
+  .hero-sub{font-size:14px}
+  .why{padding:48px 16px!important}
+  .why-grid{grid-template-columns:1fr 1fr!important}
+  .why-val{font-size:26px}
+  .ba-grid{grid-template-columns:1fr!important}
+  .cta-banner{padding:40px 16px!important}
+  .contact-grid{gap:20px}
 }
 
 /* ── Before / After section ── */
@@ -1070,11 +1085,11 @@ footer{background:var(--black);padding:64px 48px 36px}
       </div>
       <div class="contact-form fade-up">
         <div class="form-row">
-          <div class="form-group"><label for="fname">Nombre *</label><input type="text" placeholder="Tu nombre" id="fname"></div>
-          <div class="form-group"><label for="fphone">WhatsApp *</label><input type="tel" placeholder="+34 600 000 000" id="fphone"></div>
+          <div class="form-group"><label for="fname">Nombre *</label><input type="text" placeholder="Tu nombre" id="fname" required aria-required="true" autocomplete="name"></div>
+          <div class="form-group"><label for="fphone">WhatsApp *</label><input type="tel" placeholder="+34 600 000 000" id="fphone" required aria-required="true" autocomplete="tel"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label for="femail">Email *</label><input type="email" placeholder="tu@empresa.com" id="femail"></div>
+          <div class="form-group"><label for="femail">Email *</label><input type="email" placeholder="tu@empresa.com" id="femail" required aria-required="true" autocomplete="email"></div>
           <div class="form-group"><label for="fservice">Subsector</label>
             <select id="fservice">
               <option value="">¿En qué subsector operas?</option>
@@ -1090,7 +1105,7 @@ footer{background:var(--black);padding:64px 48px 36px}
             </select>
           </div>
         </div>
-        <div class="form-group"><label for="fmessage">¿Cuál es tu problema principal? *</label><textarea placeholder="Cuéntanos en dos líneas qué te quita el sueño: proveedores que no puedes atender, albaranes en papel, memoria ambiental, precios LME, exportación... Lo que sea." id="fmessage"></textarea></div>
+        <div class="form-group"><label for="fmessage">¿Cuál es tu problema principal? *</label><textarea placeholder="Cuéntanos en dos líneas qué te quita el sueño: proveedores que no puedes atender, albaranes en papel, memoria ambiental, precios LME, exportación... Lo que sea." id="fmessage" required aria-required="true" minlength="10"></textarea></div>
         <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
           <label for="fwebsite">Website</label>
           <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off">

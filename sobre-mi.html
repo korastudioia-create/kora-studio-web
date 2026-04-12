@@ -10,7 +10,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sobre mí — Adrián Burgos | Kora Studio</title>
+<title>Adrián Burgos — Fundador de Kora Studio, IA para el sector del reciclaje</title>
 <meta name="description" content="Conoce a Adrián Burgos, fundador de Kora Studio. Criado en el sector del reciclaje, ahora aplica IA y automatización para resolver los problemas que conoce de primera mano.">
 <meta name="keywords" content="Adrián Burgos, Kora Studio, IA reciclaje, automatización sector reciclaje, fundador Kora Studio, agencia IA reciclaje España">
 <meta name="author" content="Kora Studio">
@@ -189,6 +189,9 @@ footer{background:var(--black);padding:64px 48px 36px}
 .fade-up:nth-child(3){transition-delay:.14s}
 .fade-up:nth-child(4){transition-delay:.21s}
 
+/* FOCUS VISIBLE — accesibilidad teclado */
+a:focus-visible,button:focus-visible,.nav-cta:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .why-cards{grid-template-columns:repeat(2,1fr)}
@@ -214,6 +217,14 @@ footer{background:var(--black);padding:64px 48px 36px}
   .fb{max-width:100%}
   footer{padding:40px 16px 24px!important}
   .fb-bottom{flex-direction:column;align-items:flex-start;gap:6px}
+}
+@media(max-width:480px){
+  .section{padding:60px 16px}
+  .hero{padding:100px 16px 56px}
+  .section-title{font-size:28px!important}
+  .cta-final-inner{padding:40px 24px}
+  .why-cards{gap:12px}
+  .why-card{padding:24px 20px}
 }
 </style>
 </head>
@@ -273,7 +284,7 @@ footer{background:var(--black);padding:64px 48px 36px}
       <h2 class="section-title">Del patio de chatarra <em>al código</em></h2>
       <div class="story-grid">
         <div class="story-photo">
-          <img src="/foto-adrian.jpeg" alt="Adrián Burgos, fundador de Kora Studio" loading="lazy" decoding="async">
+          <img src="/foto-adrian.jpeg" alt="Adrián Burgos, fundador de Kora Studio" loading="lazy" decoding="async" width="280" height="373">
           <span class="story-photo-caption">Adrián Burgos · Fundador de Kora Studio</span>
         </div>
         <div class="story-text">
