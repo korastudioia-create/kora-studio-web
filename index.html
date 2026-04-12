@@ -452,11 +452,40 @@ footer{background:var(--black);padding:64px 48px 36px}
 .fb-copy,.fb-made{font-size:12px;color:rgba(255,255,255,0.25)}
 .fb-made span{color:#60A5FA}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 .fade-up.visible{opacity:1;transform:translateY(0)}
-.fade-up:nth-child(2){transition-delay:.07s}
-.fade-up:nth-child(3){transition-delay:.14s}
-.fade-up:nth-child(4){transition-delay:.21s}
+.fade-up:nth-child(2){transition-delay:.1s}
+.fade-up:nth-child(3){transition-delay:.2s}
+.fade-up:nth-child(4){transition-delay:.3s}
+
+/* ── Canvas hero ── */
+#heroCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;}
+
+/* ── Accent gradient animado ── */
+.hero h1 .accent{
+  background:linear-gradient(90deg,#0057FF 0%,#38bdf8 40%,#0057FF 80%,#6366f1 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gradShift 4s linear infinite;
+}
+@keyframes gradShift{0%{background-position:0% center}100%{background-position:200% center}}
+
+/* ── Contador animado ── */
+.why-val[data-count]{transition:none;}
+
+/* ── Card glow mejorado ── */
+.srv-card{transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .3s ease;}
+.srv-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,87,255,0.1),0 0 0 1px rgba(0,87,255,0.12);}
+
+/* ── Stagger para service cards ── */
+.srv-card:nth-child(1){transition-delay:.05s}
+.srv-card:nth-child(2){transition-delay:.1s}
+.srv-card:nth-child(3){transition-delay:.15s}
+.srv-card:nth-child(4){transition-delay:.2s}
+.srv-card:nth-child(5){transition-delay:.25s}
+.srv-card:nth-child(6){transition-delay:.3s}
 /* Chatbot widget */
 .chat-fab{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#0057FF;color:#fff;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(0,87,255,0.35);display:flex;align-items:center;justify-content:center;z-index:9998;transition:transform .2s,box-shadow .2s}
 .chat-fab:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,87,255,0.45)}
@@ -577,7 +606,7 @@ footer{background:var(--black);padding:64px 48px 36px}
 
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-dots"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-content">
     <div class="hero-badge"><div class="badge-dot"></div>El único especialista en IA para el sector del reciclaje en España</div>
     <h1>Cada día pierdes horas, toneladas y margen<br>en tareas que la <span class="accent">IA puede hacer sola</span></h1>
@@ -881,10 +910,10 @@ footer{background:var(--black);padding:64px 48px 36px}
       <p class="ssub">No somos una agencia genérica que se ha tropezado con una recicladora. Venimos del sector. Conocemos Alba Gestión y Wastewin, sabemos qué es el HMS 1&amp;2 80:20, diferenciamos un cobre nº1 de un nº2 y nos sabemos el formato de memoria anual ambiental de cada CCAA. No tenemos que aprender nada para trabajar contigo: ya venimos aprendidos.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card fade-up"><div class="why-val">100<span>%</span></div><div class="why-label">Sector reciclaje. Único proveedor de IA construido exclusivamente para tu sector en España</div></div>
-      <div class="why-card fade-up"><div class="why-val">100<span>%</span></div><div class="why-label">Online. Sin desplazamientos, sin agendas imposibles, sin reuniones presenciales</div></div>
-      <div class="why-card fade-up"><div class="why-val">0<span>€</span></div><div class="why-label">Coste del diagnóstico operativo inicial. Sin compromiso de continuidad</div></div>
-      <div class="why-card fade-up"><div class="why-val">24<span>h</span></div><div class="why-label">Para tener la propuesta personalizada lista en tu bandeja de entrada</div></div>
+      <div class="why-card fade-up"><div class="why-val" data-count="100" data-suffix="%">0%</div><div class="why-label">Sector reciclaje. Único proveedor de IA construido exclusivamente para tu sector en España</div></div>
+      <div class="why-card fade-up"><div class="why-val" data-count="100" data-suffix="%">0%</div><div class="why-label">Online. Sin desplazamientos, sin agendas imposibles, sin reuniones presenciales</div></div>
+      <div class="why-card fade-up"><div class="why-val" data-count="0" data-suffix="€">0€</div><div class="why-label">Coste del diagnóstico operativo inicial. Sin compromiso de continuidad</div></div>
+      <div class="why-card fade-up"><div class="why-val" data-count="24" data-suffix="h">0h</div><div class="why-label">Para tener la propuesta personalizada lista en tu bandeja de entrada</div></div>
     </div>
     <div class="why-reasons">
       <div class="why-reason fade-up">
@@ -1265,9 +1294,105 @@ async function submitForm(){
     setTimeout(()=>{btn.textContent=originalText;btn.style.background='';},5000);
   }
 }
-const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.1});
+// ── Counter animation ────────────────────────────────────────────────────────
+function animateCounter(el){
+  if(el._counted)return;
+  el._counted=true;
+  const target=parseInt(el.dataset.count,10);
+  const suffix=el.dataset.suffix||'';
+  if(target===0){el.innerHTML='0<span>'+suffix+'</span>';return;}
+  const duration=1600;
+  const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-p,3);
+    el.innerHTML=Math.round(ease*target)+'<span>'+suffix+'</span>';
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ── Scroll fade-up (+ activa contadores cuando la card entra en vista) ───────
+const obs=new IntersectionObserver(e=>{
+  e.forEach(el=>{
+    if(el.isIntersecting){
+      el.target.classList.add('visible');
+      // si la card tiene un contador dentro, arrancarlo con pequeño delay
+      el.target.querySelectorAll('.why-val[data-count]').forEach(c=>{
+        setTimeout(()=>animateCounter(c),200);
+      });
+    }
+  });
+},{threshold:0.12});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('navbar').style.boxShadow=window.scrollY>20?'0 2px 24px rgba(0,0,0,0.07)':'none'});
+
+// ── Hero canvas network ───────────────────────────────────────────────────────
+(function(){
+  const canvas=document.getElementById('heroCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,nodes;
+  const COUNT=55;
+  const MAX_DIST=160;
+  const SPEED=0.28;
+
+  function resize(){
+    W=canvas.offsetWidth;H=canvas.offsetHeight;
+    canvas.width=W;canvas.height=H;
+  }
+
+  function createNodes(){
+    nodes=[];
+    for(let i=0;i<COUNT;i++){
+      nodes.push({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*SPEED,vy:(Math.random()-.5)*SPEED,
+        r:Math.random()*1.8+1
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // lines
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x;
+        const dy=nodes[i].y-nodes[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<MAX_DIST){
+          const alpha=(1-d/MAX_DIST)*0.18;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.strokeStyle='rgba(0,87,255,'+alpha+')';
+          ctx.lineWidth=1;
+          ctx.stroke();
+        }
+      }
+    }
+    // dots
+    nodes.forEach(n=>{
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,87,255,0.22)';
+      ctx.fill();
+      // move
+      n.x+=n.vx;n.y+=n.vy;
+      if(n.x<-20)n.x=W+20;
+      if(n.x>W+20)n.x=-20;
+      if(n.y<-20)n.y=H+20;
+      if(n.y>H+20)n.y=-20;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  createNodes();
+  draw();
+  window.addEventListener('resize',()=>{resize();});
+})();
 </script>
 </body>
 </html>
