@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría gratis de tu negocio · Kora Studio</title>
+<meta name="description" content="35 minutos por videollamada. Te decimos los 3 puntos donde más estás perdiendo. Sin venderte nada después si no encajas. Auditoría gratuita de Kora Studio.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://korastudio.es/auditoria">
+
+<meta property="og:title" content="Auditoría gratis de tu negocio · Kora Studio">
+<meta property="og:description" content="35 min. Te decimos los 3 puntos donde más estás perdiendo. Sin presión comercial.">
+<meta property="og:image" content="https://korastudio.es/og-image.png">
+<meta property="og:url" content="https://korastudio.es/auditoria">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon-128.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #0057FF;
+  --blue-dark: #0040CC;
+  --blue-bg: #EEF4FF;
+  --cream: #F4F1EA;
+  --black: #0A0A0A;
+  --g900: #18181B;
+  --g700: #3F3F46;
+  --g600: #52525B;
+  --g500: #71717A;
+  --g400: #A1A1AA;
+  --g300: #D4D4D8;
+  --g200: #E4E4E7;
+  --g100: #F4F4F5;
+  --g50: #FAFAFA;
+  --white: #FFFFFF;
+  --green: #16A34A;
+  --r: 12px;
+  --rsm: 8px;
+  --rlg: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  color: var(--g900);
+  background: var(--white);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* NAV (mismo patrón que el resto del site) */
+nav#navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--g100);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 5%;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { width: 32px; height: 32px; }
+.logo-text { font-size: 17px; font-weight: 800; letter-spacing: -0.03em; color: var(--black); }
+.logo-text span { color: var(--blue); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--g600);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a.active { color: var(--blue); font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-wa {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--green);
+  padding: 8px 14px; border-radius: var(--rsm);
+  border: 1px solid var(--g200);
+}
+.nav-wa svg { width: 15px; height: 15px; }
+.hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
+.hamburger span { width: 24px; height: 2px; background: var(--g900); border-radius: 2px; }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-right { display: none; }
+  .hamburger { display: flex; }
+}
+.mobile-menu {
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0;
+  background: var(--white);
+  padding: 20px;
+  border-bottom: 1px solid var(--g200);
+  z-index: 99;
+  flex-direction: column; gap: 16px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: var(--g700); padding: 8px 0; }
+
+/* HERO */
+.hero {
+  padding: 100px 5% 70px;
+  background: linear-gradient(180deg, var(--blue-bg) 0%, var(--white) 100%);
+  text-align: center;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--g200);
+  padding: 8px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 600; color: var(--g700);
+  margin-bottom: 28px;
+}
+.hero-tag .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue);
+}
+.hero h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  max-width: 900px; margin: 0 auto 24px;
+}
+.hero h1 .accent { color: var(--blue); }
+.hero-sub {
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--g600);
+  max-width: 720px; margin: 0 auto 40px;
+  line-height: 1.55;
+}
+.hero-strip {
+  display: inline-flex; gap: 28px;
+  background: var(--white);
+  border: 1px solid var(--g200);
+  border-radius: var(--rlg);
+  padding: 20px 32px;
+  box-shadow: 0 4px 24px rgba(0,87,255,0.06);
+  flex-wrap: wrap; justify-content: center;
+}
+.hero-strip-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 600; color: var(--g700);
+}
+.hero-strip-item svg { width: 18px; height: 18px; color: var(--blue); }
+
+/* SECCIONES */
+section { padding: 80px 5%; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.section-lead {
+  font-size: 18px; color: var(--g600);
+  max-width: 720px; line-height: 1.6;
+}
+
+/* GRID DE BENEFICIOS */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 50px;
+}
+.benefit-card {
+  background: var(--g50);
+  border: 1px solid var(--g200);
+  border-radius: var(--rlg);
+  padding: 32px 28px;
+}
+.benefit-num {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 48px; font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -0.04em;
+  line-height: 1; margin-bottom: 16px;
+}
+.benefit-title {
+  font-size: 22px; font-weight: 700;
+  color: var(--black); margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.benefit-text {
+  font-size: 15px; color: var(--g600); line-height: 1.6;
+}
+
+/* FILTRO HONESTO */
+.honest {
+  background: var(--cream);
+  padding: 80px 5%;
+}
+.honest-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1100px; margin: 0 auto;
+  align-items: start;
+}
+.honest-col h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 28px; font-weight: 700;
+  margin-bottom: 24px; letter-spacing: -0.02em;
+}
+.honest-col h3.yes { color: var(--green); }
+.honest-col h3.no { color: #B91C1C; }
+.honest-list { list-style: none; }
+.honest-list li {
+  padding: 12px 0;
+  font-size: 16px; color: var(--g700);
+  display: flex; align-items: flex-start; gap: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.honest-list li::before {
+  content: ""; flex-shrink: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%; margin-top: 8px;
+}
+.honest-col .yes-list li::before { background: var(--green); }
+.honest-col .no-list li::before { background: #B91C1C; }
+
+@media (max-width: 768px) {
+  .honest-cols { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* BOOKING */
+.booking {
+  background: var(--white);
+}
+.booking-wrap {
+  max-width: 1100px; margin: 0 auto;
+  border: 1px solid var(--g200);
+  border-radius: var(--rlg);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,87,255,0.08);
+}
+.booking-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 32px 40px;
+}
+.booking-header h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 28px; font-weight: 700;
+  margin-bottom: 8px; letter-spacing: -0.02em;
+}
+.booking-header p { color: var(--g300); font-size: 15px; }
+.cal-inline-container {
+  min-height: 700px;
+  width: 100%;
+  background: var(--white);
+}
+.cal-fallback {
+  padding: 60px 40px;
+  text-align: center;
+  color: var(--g500);
+}
+.cal-fallback .pulse {
+  display: inline-block; width: 12px; height: 12px;
+  background: var(--blue); border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* FAQ */
+.faq {
+  background: var(--g50);
+}
+.faq-list {
+  max-width: 800px; margin: 50px auto 0;
+}
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--g200);
+  border-radius: var(--r);
+  padding: 24px 28px;
+  margin-bottom: 12px;
+}
+.faq-q {
+  font-size: 18px; font-weight: 700;
+  color: var(--black);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.faq-a { font-size: 15px; color: var(--g600); line-height: 1.65; }
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  color: var(--g300);
+  padding: 50px 5% 30px;
+}
+.footer-content {
+  max-width: 1100px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+.footer-brand .logo-text { color: var(--white); }
+.footer-brand p { margin-top: 12px; font-size: 14px; line-height: 1.6; max-width: 320px; }
+.footer-col h4 {
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--g400);
+  margin-bottom: 16px;
+}
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: var(--g300);
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto;
+  border-top: 1px solid var(--g700);
+  padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--g400);
+  flex-wrap: wrap; gap: 12px;
+}
+@media (max-width: 768px) {
+  .footer-content { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* Schema.org */
+[itemtype] { display: contents; }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="/" class="nav-logo">
+    <img src="favicon.png" alt="Kora Studio" width="32" height="32" decoding="async">
+    <span class="logo-text">Kora <span>Studio</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/servicios">Áreas de trabajo</a></li>
+    <li><a href="/auditoria" class="active">Auditoría</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/sobre-mi.html">Sobre mí</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/34641141195?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20de%20auditor%C3%ADa" target="_blank" rel="noopener noreferrer" class="nav-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+  <div class="hamburger" onclick="document.getElementById('mm').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mm">
+  <a href="/servicios">Áreas de trabajo</a>
+  <a href="/auditoria">Auditoría</a>
+  <a href="/blog.html">Blog</a>
+  <a href="/sobre-mi.html">Sobre mí</a>
+  <a href="https://wa.me/34641141195" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">
+    <span class="dot"></span>
+    Auditoría 100% gratuita · 35 min · videollamada
+  </div>
+  <h1>Te decimos los 3 puntos donde más estás <span class="accent">perdiendo dinero</span> en tu negocio.</h1>
+  <p class="hero-sub">35 minutos por videollamada. Sin venderte nada después si no encajamos. Te llevas un documento con lo que normalmente cobramos por decir.</p>
+  <div class="hero-strip">
+    <div class="hero-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+      35 minutos
+    </div>
+    <div class="hero-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+      0 € de coste
+    </div>
+    <div class="hero-strip-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      0 obligación después
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ TE LLEVAS -->
+<section>
+  <div class="container">
+    <div class="section-label">Qué te llevas</div>
+    <h2 class="section-title">No es una llamada de ventas.<br>Es un diagnóstico real.</h2>
+    <p class="section-lead">Si después quieres trabajar con nosotros, perfecto. Si no, te quedas con el documento y lo aplicas tú o con quien quieras. Sin tragedias.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <div class="benefit-title">Los 3 agujeros principales</div>
+        <p class="benefit-text">Los 3 puntos exactos por los que tu negocio está perdiendo tiempo, clientes o margen. Sin generalidades.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <div class="benefit-title">Qué arreglarías primero</div>
+        <p class="benefit-text">El orden de prioridad real. Lo que arreglar antes y qué ignorar de momento aunque te lo vendan otros.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <div class="benefit-title">PDF para llevarte</div>
+        <p class="benefit-text">Documento de 4-6 páginas con los hallazgos. Sirve para contratar a quien quieras, no solo a nosotros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTRO HONESTO -->
+<section class="honest">
+  <div class="container">
+    <div class="section-label">Filtro honesto</div>
+    <h2 class="section-title">Si no encajas, te lo decimos antes.</h2>
+    <p class="section-lead">No hacemos auditorías a todo el mundo. Es para no quitarte tiempo ni quitárnoslo a nosotros.</p>
+
+    <div class="honest-cols">
+      <div class="honest-col">
+        <h3 class="yes">Para quién es</h3>
+        <ul class="honest-list yes-list">
+          <li>Tienes un negocio en marcha (no idea ni proyecto).</li>
+          <li>Facturas al menos lo suficiente para sostener al dueño.</li>
+          <li>Llevas tiempo notando que algo no escala y no sabes qué.</li>
+          <li>Quieres respuestas directas, no PowerPoints.</li>
+        </ul>
+      </div>
+      <div class="honest-col">
+        <h3 class="no">Para quién NO es</h3>
+        <ul class="honest-list no-list">
+          <li>Buscas validar una idea o lanzar de cero.</li>
+          <li>Quieres "magia con IA" o "transformación digital".</li>
+          <li>Esperas resultados en 7 días.</li>
+          <li>No estás dispuesto a oír cosas que no te gustan.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="agendar">
+  <div class="booking-wrap">
+    <div class="booking-header">
+      <h3>Reserva tu hueco</h3>
+      <p>Lunes a viernes · 9:00–15:00 y 16:00–18:00 (CET)</p>
+    </div>
+
+    <!-- Cal.com inline embed -->
+    <!--
+      INSTRUCCIONES PARA ACTIVAR EL CALENDARIO REAL:
+      1. Entra en https://cal.com y crea cuenta gratis (Sign in with Google)
+      2. Conecta tu Google Calendar (kora.studio.ia@gmail.com)
+      3. Crea un nuevo "Event Type":
+         - Title: "Auditoría gratis Kora"
+         - Slug: "auditoria-kora"
+         - Duration: 35 minutes
+         - Availability: Lun-Vie 09:00-15:00 y 16:00-18:00
+         - Location: Google Meet
+         - Booking questions: nombre, email, nombre del negocio,
+           sector (dropdown: hostelería/retail/servicios/industria/otro),
+           url web actual (opcional), "¿en qué crees que estás perdiendo más?"
+      4. Copia tu URL pública (ej: cal.com/tu-usuario/auditoria-kora)
+      5. Sustituye abajo "TU-USUARIO/auditoria-kora" por la URL real
+      6. Deploy. Listo.
+    -->
+    <div id="my-cal-inline" class="cal-inline-container">
+      <div class="cal-fallback">
+        <p><span class="pulse"></span> Cargando calendario…</p>
+        <p style="margin-top:12px;font-size:13px;color:var(--g400);">Si no aparece en 5 segundos, escríbenos por WhatsApp y te buscamos hueco a mano.</p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) { a.q.push(ar); };
+        let d = C.document;
+        C.Cal = C.Cal || function () {
+          let cal = C.Cal; let ar = arguments;
+          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+          if (ar[0] === L) {
+            const api = function () { p(api, arguments); };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+            else p(cal, ar); return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      Cal("init", "auditoria-kora", {origin: "https://cal.com"});
+
+      Cal.ns["auditoria-kora"]("inline", {
+        elementOrSelector: "#my-cal-inline",
+        config: { "layout": "month_view", "theme": "light" },
+        calLink: "korastudio/auditoria-gratis"
+      });
+
+      Cal.ns["auditoria-kora"]("ui", {
+        "theme": "light",
+        "hideEventTypeDetails": false,
+        "layout": "month_view",
+        "cssVarsPerTheme": {
+          "light": { "cal-brand": "#0057FF" }
+        }
+      });
+    </script>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">Lo que preguntan siempre</div>
+    <h2 class="section-title">3 cosas antes de reservar.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">¿De verdad es gratis? ¿Dónde está el truco?</div>
+        <div class="faq-a">Sí, es gratis. El "truco" es que filtramos: si en la llamada vemos que podemos ayudarte, te proponemos trabajar juntos. Si no, te quedas el documento y tan amigos. No hay pago oculto ni follow-up insistente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Qué pasa después de la llamada?</div>
+        <div class="faq-a">Te mandamos un PDF de 4-6 páginas con los 3 hallazgos en un plazo de 48-72 horas. Si quieres trabajar con nosotros, agendamos una segunda llamada con propuesta concreta. Si no, ya está.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Y si después de oíros decido no contrataros?</div>
+        <div class="faq-a">Perfecto. El PDF es tuyo. Llévatelo a quien quieras o aplícalo tú. Si te recomendamos a alguien que encaje mejor que nosotros, te lo decimos. Lo decimos en serio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <img src="favicon.png" alt="Kora Studio" width="32" height="32">
+        <span class="logo-text">Kora <span>Studio</span></span>
+      </div>
+      <p>Digitalizamos negocios reales. Webs, redes e IA. Sin humo, sin transformación digital.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kora</h4>
+      <a href="/">Inicio</a>
+      <a href="/servicios">Áreas de trabajo</a>
+      <a href="/auditoria">Auditoría</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/sobre-mi.html">Sobre mí</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/34641141195" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="mailto:kora.studio.ia@gmail.com">Email</a>
+      <a href="/aviso-legal.html">Aviso legal</a>
+      <a href="/privacidad.html">Privacidad</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Kora Studio · Sevilla, España</span>
+    <span>Hecho con cabeza, no con humo.</span>
+  </div>
+</footer>
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Auditoría empresarial gratuita",
+  "provider": {
+    "@type": "Organization",
+    "name": "Kora Studio",
+    "url": "https://korastudio.es"
+  },
+  "areaServed": "ES",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "description": "Auditoría gratuita de 35 minutos por videollamada. Diagnóstico real de los 3 puntos críticos del negocio. Documento PDF entregable. Sin compromiso comercial."
+}
+</script>
+
+</body>
+</html>
