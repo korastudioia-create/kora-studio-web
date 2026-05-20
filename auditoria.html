@@ -491,12 +491,11 @@ footer {
       5. Sustituye abajo "TU-USUARIO/auditoria-kora" por la URL real
       6. Deploy. Listo.
     -->
-    <div id="my-cal-inline" class="cal-inline-container">
-      <div class="cal-fallback">
-        <p><span class="pulse"></span> Cargando calendario…</p>
-        <p style="margin-top:12px;font-size:13px;color:var(--g400);">Si no aparece en 5 segundos, escríbenos por WhatsApp y te buscamos hueco a mano.</p>
-      </div>
+    <div class="cal-fallback" id="cal-fallback">
+      <p><span class="pulse"></span> Cargando calendario…</p>
+      <p style="margin-top:12px;font-size:13px;color:var(--g400);">Si no aparece en 5 segundos, escríbenos por WhatsApp y te buscamos hueco a mano.</p>
     </div>
+    <div id="my-cal-inline" class="cal-inline-container"></div>
 
     <script type="text/javascript">
       (function (C, A, L) {
@@ -532,6 +531,32 @@ footer {
           "light": { "cal-brand": "#0057FF" }
         }
       });
+
+      // Ocultar el placeholder "Cargando calendario..." cuando Cal.com este listo
+      function hideCalFallback() {
+        const fb = document.getElementById('cal-fallback');
+        if (fb) fb.style.display = 'none';
+      }
+
+      Cal.ns["auditoria-kora"]("on", {
+        action: "linkReady",
+        callback: hideCalFallback
+      });
+
+      // Detectar tambien cuando Cal.com inyecte cualquier nodo en el contenedor
+      const calContainer = document.getElementById('my-cal-inline');
+      if (calContainer && 'MutationObserver' in window) {
+        const obs = new MutationObserver(() => {
+          if (calContainer.children.length > 0) {
+            hideCalFallback();
+            obs.disconnect();
+          }
+        });
+        obs.observe(calContainer, { childList: true });
+      }
+
+      // Safety net: pase lo que pase, ocultar despues de 4 segundos
+      setTimeout(hideCalFallback, 4000);
     </script>
   </div>
 </section>
