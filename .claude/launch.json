@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kora-web",
+      "runtimeExecutable": "C:/Users/Adrián Burgos/AppData/Local/Programs/Python/Python312/python.exe",
+      "runtimeArgs": ["-m", "http.server", "8766"],
+      "port": 8766
+    }
+  ]
+}

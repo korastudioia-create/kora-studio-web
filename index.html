@@ -368,13 +368,14 @@ section{padding:100px 48px}
 .port-tag{font-size:10px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:3px 9px;border-radius:99px;display:inline-block;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase}
 .port-body h3{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--black);margin-bottom:5px}
 .port-result{font-size:13px;color:var(--g500);line-height:1.5}
-.port-grid--caso{grid-template-columns:repeat(3,1fr);margin-top:40px}
-.port-card--caso{grid-column:span 2}
-.port-thumb--img{height:auto;padding:0;display:block;border-bottom:1px solid var(--g200);background:var(--g100)}
-.port-thumb--img img{width:100%;height:auto;display:block}
-.port-cta{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--blue)}
+.port-grid{grid-template-columns:repeat(2,1fr)}
+.port-card--caso{border-color:var(--blue)}
+.port-thumb--img{padding:0;overflow:hidden;border-bottom:1px solid var(--g200);background:var(--g100)}
+.port-thumb--img img{width:100%;height:160px;object-fit:cover;object-position:top center;display:block}
+.port-tag--caso{background:var(--blue);color:#fff}
+.port-cta{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:var(--blue)}
 .port-card--caso:hover .port-cta{text-decoration:underline}
-@media(max-width:900px){.port-grid--caso{grid-template-columns:1fr}.port-card--caso{grid-column:auto}}
+@media(max-width:760px){.port-grid{grid-template-columns:1fr}}
 .why{background:var(--g900);padding:100px 48px;position:relative;overflow:hidden}
 .why-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(0,87,255,0.1) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 85% 20%,rgba(0,87,255,0.06) 0%,transparent 60%)}
 .why-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
@@ -875,31 +876,22 @@ footer{background:var(--black);padding:64px 48px 36px}
 <section class="portfolio" id="casos">
   <div class="si">
     <div class="fade-up">
-      <div class="eyebrow">Caso real</div>
-      <h2 class="stitle">Un cliente, un proyecto<br>que puedes ver funcionando</h2>
-      <p class="ssub">Trabajamos solo con empresas de reciclaje. Este es uno de los proyectos entregados, en marcha y visitable hoy mismo.</p>
-    </div>
-
-    <div class="port-grid port-grid--caso">
-      <div class="port-card port-card--caso fade-up">
-        <a href="https://chatarreria-refegar.es" target="_blank" rel="noopener">
-          <div class="port-thumb port-thumb--img"><img src="img/caso-refegar.png" alt="Web de Refegar, chatarrería de Bilbao, hecha por Kora Studio" loading="lazy"></div>
-          <div class="port-body">
-            <span class="port-tag">Chatarrería · Bilbao · desde 1966</span>
-            <h3>Refegar — web orientada al proveedor</h3>
-            <p class="port-result">Tres generaciones de oficio y ninguna forma clara de que un proveedor nuevo los encontrara. Montamos su web: materiales que compran, zonas de recogida, cotización del día, báscula y certificaciones por delante, y WhatsApp directo desde cualquier página.</p>
-            <span class="port-cta">Ver chatarreria-refegar.es →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="fade-up" style="margin-top:68px">
       <div class="eyebrow">Lo que hacemos</div>
       <h2 class="stitle">Esto es lo que podemos<br>hacer por tu empresa</h2>
       <p class="ssub">Soluciones que implantamos en días, no meses. Cada una resuelve un problema concreto del sector. Sin tocar tu ERP, sin contratar a nadie.</p>
     </div>
     <div class="port-grid">
+      <div class="port-card port-card--caso fade-up">
+        <a href="https://chatarreria-refegar.es" target="_blank" rel="noopener">
+          <div class="port-thumb port-thumb--img"><img src="img/caso-refegar.png" alt="Web de Refegar, chatarrería de Bilbao, hecha por Kora Studio" loading="lazy"></div>
+          <div class="port-body">
+            <span class="port-tag port-tag--caso">Caso real · Bilbao</span>
+            <h3>Refegar — web orientada al proveedor</h3>
+            <p class="port-result">Chatarrería de 1966 con tres generaciones detrás y ninguna forma clara de que un proveedor nuevo la encontrara. Su web muestra qué materiales compran, zonas de recogida, cotización del día y WhatsApp directo.</p>
+            <span class="port-cta">Ver chatarreria-refegar.es →</span>
+          </div>
+        </a>
+      </div>
       <div class="port-card fade-up">
         <div class="port-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)">
           <svg width="200" height="56" viewBox="0 0 200 56" fill="none">
