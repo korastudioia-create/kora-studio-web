@@ -368,6 +368,17 @@ section{padding:100px 48px}
 .port-tag{font-size:10px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:3px 9px;border-radius:99px;display:inline-block;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase}
 .port-body h3{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--black);margin-bottom:5px}
 .port-result{font-size:13px;color:var(--g500);line-height:1.5}
+.kase{margin-top:44px;border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;background:var(--white)}
+.kase-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.kase-col{padding:34px 36px}
+.kase-col+.kase-col{border-left:1px solid var(--g200)}
+.kase-label{display:inline-block;font-size:10px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:3px 9px;border-radius:99px;margin-bottom:12px;letter-spacing:.05em;text-transform:uppercase}
+.kase-col p{font-size:14.5px;color:var(--g500);line-height:1.68;margin:0}
+.kase-foot{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 36px;background:var(--g900);flex-wrap:wrap}
+.kase-quote{font-size:15px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.kase-link{font-size:14px;font-weight:700;color:#60A5FA;text-decoration:none;white-space:nowrap}
+.kase-link:hover{color:#93C5FD}
+@media(max-width:760px){.kase-body{grid-template-columns:1fr}.kase-col{padding:26px 24px}.kase-col+.kase-col{border-left:0;border-top:1px solid var(--g200)}.kase-foot{padding:20px 24px}}
 .why{background:var(--g900);padding:100px 48px;position:relative;overflow:hidden}
 .why-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(0,87,255,0.1) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 85% 20%,rgba(0,87,255,0.06) 0%,transparent 60%)}
 .why-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
@@ -868,6 +879,29 @@ footer{background:var(--black);padding:64px 48px 36px}
 <section class="portfolio" id="casos">
   <div class="si">
     <div class="fade-up">
+      <div class="eyebrow">Caso real</div>
+      <h2 class="stitle">Refegar, chatarrería de Bilbao<br>con tres generaciones detrás</h2>
+      <p class="ssub">Un negocio familiar fundado en 1966 que sigue funcionando como el primer día: la báscula, el patio y el oficio. Lo que no encajaba era su presencia digital.</p>
+    </div>
+
+    <div class="kase fade-up">
+      <div class="kase-body">
+        <div class="kase-col">
+          <span class="kase-label">El punto de partida</span>
+          <p>Una empresa con más de 60 años de historia, ISO 9001 y 14001, miembro de la FER, báscula homologada y recogida en 27 municipios de Bizkaia. Todo eso existía. Lo que no existía era una forma clara de que un proveedor nuevo la encontrara y supiera qué compran, a cómo y en qué zonas.</p>
+        </div>
+        <div class="kase-col">
+          <span class="kase-label">Lo que hicimos</span>
+          <p>Web propia orientada al proveedor: materiales que compran, zonas de recogida, cotización LME visible, báscula y certificaciones por delante, y contacto directo por WhatsApp desde cualquier página. Sin tocar nada de cómo trabajan por dentro.</p>
+        </div>
+      </div>
+      <div class="kase-foot">
+        <div class="kase-quote">Tres generaciones de oficio, con una puerta de entrada a la altura.</div>
+        <a class="kase-link" href="https://chatarreria-refegar.es" target="_blank" rel="noopener">Ver el proyecto en chatarreria-refegar.es →</a>
+      </div>
+    </div>
+
+    <div class="fade-up" style="margin-top:72px">
       <div class="eyebrow">Lo que hacemos</div>
       <h2 class="stitle">Esto es lo que podemos<br>hacer por tu empresa</h2>
       <p class="ssub">Soluciones que implantamos en días, no meses. Cada una resuelve un problema concreto del sector. Sin tocar tu ERP, sin contratar a nadie.</p>
