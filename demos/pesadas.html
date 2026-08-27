@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel de planta · Kora OS</title>
+<link rel="icon" href="assets/kora-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057FF;--primary-dark:#0040CC;--primary-soft:#E7EFFF;
+  --bg:#EEF4FF;--paper:#FFF;--ink:#0A1628;--ink-soft:#1F2937;
+  --mute:#64748B;--mute-soft:#94A3B8;--line:#E5EAF2;
+  --success:#16A34A;--success-soft:#E8F7EE;--warning:#F59E0B;--warning-soft:#FEF4E2;
+  --danger:#DC2626;--danger-soft:#FDECEC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+
+.hdr{background:var(--ink);color:#fff;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:20}
+.hdr .burger{width:22px;display:flex;flex-direction:column;gap:5px;cursor:pointer}
+.hdr .burger i{height:2px;background:#fff;border-radius:2px;display:block}
+.hdr .mid{display:flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%)}
+.hdr .mid img{width:26px;height:26px;border-radius:6px}
+.hdr .mid b{font-size:14px;font-weight:700;letter-spacing:.35px}
+.hdr .mid span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.hdr .dot{width:8px;height:8px;background:var(--success);border-radius:50%}
+
+.wrap{max-width:1200px;margin:0 auto;padding:26px 22px 60px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anim{animation:up .5s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.11s}.d3{animation-delay:.17s}.d4{animation-delay:.23s}.d5{animation-delay:.29s}
+
+.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--mute)}
+h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
+.fecha{font-size:13px;color:var(--mute);margin-top:4px}
+.demo-tag{display:inline-block;background:var(--warning-soft);color:#92600A;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;vertical-align:3px;margin-left:10px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.controles{display:flex;gap:10px;align-items:center}
+.seg{position:relative;display:flex;background:var(--paper);border:.8px solid var(--line);border-radius:12px;padding:3px;gap:2px}
+.seg .pildora{position:absolute;top:3px;bottom:3px;background:var(--primary);border-radius:9px;
+  transition:left .28s cubic-bezier(.3,.9,.3,1),width .28s cubic-bezier(.3,.9,.3,1);z-index:0}
+.seg button{position:relative;z-index:1;border:0;background:none;padding:8px 15px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.5px;color:var(--mute);border-radius:9px;transition:color .2s}
+.seg button.on{color:#fff}
+.btn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:11px 20px;
+  font-size:13.5px;font-weight:700;letter-spacing:.1px;transition:background .15s,transform .1s,box-shadow .15s}
+.btn:hover{background:var(--primary-dark);box-shadow:0 8px 20px rgba(0,87,255,.28)}
+.btn:active{transform:scale(.97)}
+.btn-ghost{background:var(--paper);color:var(--ink);border:.8px solid var(--line)}
+.btn-ghost:hover{background:var(--primary-soft);box-shadow:none}
+
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:12px}
+.kpi{background:var(--paper);border:.8px solid var(--line);border-radius:16px;padding:16px;text-align:center;transition:transform .15s,box-shadow .15s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,22,40,.07)}
+.kpi .v{font-size:26px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.88px;color:var(--mute);margin-top:5px}
+.v-azul{color:var(--primary)}.v-ink{color:var(--ink)}.v-verde{color:var(--success)}
+
+.franja{background:var(--primary-soft);border:.8px solid #D6E4FF;border-radius:16px;padding:14px 20px;
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:12px}
+.franja .h{font-size:13.5px;font-weight:600;color:var(--ink)}
+.franja .h b{color:var(--primary)}
+.franja .sep{width:1px;height:22px;background:#C9DBFF}
+.franja .m{font-size:12.5px;color:var(--mute)}
+.franja .m b{color:var(--ink-soft);font-weight:600}
+
+.grid{display:grid;grid-template-columns:1fr 336px;gap:12px;align-items:start}
+.card{background:var(--paper);border:.8px solid var(--line);border-radius:16px;overflow:hidden}
+.card+.card{margin-top:12px}
+.card-h{padding:15px 18px;border-bottom:.8px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.card-h h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--mute)}
+.card-h .accion{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--primary)}
+.card-b{padding:16px 18px}
+
+table{width:100%;border-collapse:collapse}
+thead th{text-align:left;font-size:10px;font-weight:700;color:var(--mute-soft);letter-spacing:1px;
+  text-transform:uppercase;padding:10px 18px;border-bottom:.8px solid var(--line)}
+tbody td{padding:11.5px 18px;border-bottom:.8px solid #F0F4FA;font-size:13.5px;white-space:nowrap}
+tbody tr{transition:background .12s}
+tbody tr:hover{background:#FAFCFF}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.nueva{animation:entra .9s ease}
+@keyframes entra{0%{background:var(--primary-soft)}100%{background:transparent}}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.mat{font-weight:600}
+.matr{font-variant-numeric:tabular-nums;letter-spacing:.3px;color:var(--ink-soft)}
+.pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;
+  text-transform:uppercase;letter-spacing:.5px}
+.c1{background:var(--primary-soft);color:var(--primary-dark)}
+.c2{background:#F0EAFE;color:#5B32C4}
+
+.barras{display:flex;flex-direction:column;gap:12px}
+.barra .l{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px}
+.barra .l b{font-weight:600;color:var(--ink-soft)}
+.barra .l span{color:var(--mute);font-variant-numeric:tabular-nums}
+.pista{height:8px;background:#EDF1F8;border-radius:99px;overflow:hidden}
+.relleno{height:100%;border-radius:99px;background:var(--primary);width:0;transition:width .7s cubic-bezier(.3,.8,.3,1)}
+
+.alerta{display:flex;gap:10px;padding:12px 13px;border-radius:12px;margin-bottom:8px;align-items:flex-start;transition:transform .12s}
+.alerta:hover{transform:translateX(2px)}
+.alerta:last-child{margin-bottom:0}
+.alerta .ico{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.alerta b{display:block;font-size:13px;margin-bottom:2px;color:var(--ink)}
+.alerta p{font-size:12.5px;line-height:1.45;color:var(--mute)}
+.a-rojo{background:var(--danger-soft)}.a-rojo .ico{background:var(--danger);animation:latido 1.6s infinite}
+@keyframes latido{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4)}50%{box-shadow:0 0 0 5px rgba(220,38,38,0)}}
+.a-rojo b{color:var(--danger)}
+.a-ambar{background:var(--warning-soft)}.a-ambar .ico{background:var(--warning)}.a-ambar b{color:#92600A}
+.a-verde{background:var(--success-soft)}.a-verde .ico{background:var(--success)}.a-verde b{color:var(--success)}
+
+.velo{position:fixed;inset:0;background:rgba(10,22,40,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;
+  backdrop-filter:blur(2px)}
+.velo.on{display:flex}
+.velo.on .modal{animation:up .3s cubic-bezier(.2,.7,.3,1.1)}
+.modal{background:var(--paper);border-radius:20px;width:100%;max-width:470px;overflow:hidden;box-shadow:0 30px 80px rgba(10,22,40,.35)}
+.modal-h{padding:20px 24px 0}
+.modal-h .eyebrow{color:var(--primary)}
+.modal-h h3{font-size:20px;font-weight:700;margin-top:3px}
+.modal-h p{font-size:13px;color:var(--mute);margin-top:2px}
+.modal-b{padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.ancho{grid-column:span 2}
+.campo label{font-size:10px;font-weight:700;color:var(--mute);letter-spacing:1px;text-transform:uppercase}
+.campo input,.campo select{border:.8px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;
+  font-size:14px;background:var(--paper);color:var(--ink);transition:border-color .15s}
+.campo input:focus,.campo select:focus{outline:2px solid var(--primary);outline-offset:-1px}
+.calc{grid-column:span 2;background:var(--primary-soft);border-radius:12px;padding:13px 16px;
+  display:flex;justify-content:space-between;align-items:center}
+.calc span{font-size:11px;color:var(--primary-dark);font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+.calc b{font-size:24px;font-weight:800;color:var(--primary);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.modal-p{padding:16px 24px 22px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.modal-p .atajo{font-size:11px;color:var(--mute-soft)}
+.modal-p .atajo kbd{background:#F1F4F9;border:.8px solid var(--line);border-radius:5px;padding:1px 6px;font-family:inherit;font-size:10px}
+.modal-p .grupo{display:flex;gap:10px}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--ink);
+  color:#fff;font-size:13px;font-weight:600;padding:13px 22px;border-radius:12px;display:flex;gap:9px;
+  align-items:center;transition:transform .38s cubic-bezier(.34,1.4,.6,1);z-index:60}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.toast .ok{color:var(--success);font-weight:800}
+
+.pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
+@media(max-width:1080px){.kpis{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<header class="hdr">
+  <div class="burger"><i></i><i></i><i></i></div>
+  <div class="mid">
+    <img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'">
+    <div><b>Kora OS</b><span>Panel de planta</span></div>
+  </div>
+  <span class="dot" title="En línea"></span>
+</header>
+
+<div class="wrap">
+  <div class="top anim">
+    <div>
+      <div class="eyebrow">Oficina central · Vista del día</div>
+      <h1>Panel de planta<span class="demo-tag">Demo · datos de ejemplo</span></h1>
+      <p class="fecha" id="sub">Lunes, 17 de agosto · actualizado hace 40 s</p>
+    </div>
+    <div class="controles">
+      <div class="seg" id="seg">
+        <span class="pildora" id="pildora"></span>
+        <button data-c="todos" class="on">Los dos centros</button>
+        <button data-c="1">Centro 1</button>
+        <button data-c="2">Centro 2</button>
+      </div>
+      <button class="btn" id="abrir">+ Nueva pesada</button>
+    </div>
+  </div>
+
+  <div class="kpis anim d1">
+    <div class="kpi"><div class="v v-azul" id="k-n">0</div><div class="l" id="k-n-l">Pesadas hoy</div></div>
+    <div class="kpi"><div class="v v-ink" id="k-kg">0</div><div class="l">Kilos entrados</div></div>
+    <div class="kpi"><div class="v v-ink" id="k-com">0 €</div><div class="l">Comprado</div></div>
+    <div class="kpi"><div class="v v-azul" id="k-ven">0 €</div><div class="l">Vendido</div></div>
+    <div class="kpi"><div class="v v-verde" id="k-mar">0 €</div><div class="l" id="k-mar-l">Margen del día</div></div>
+  </div>
+
+  <div class="franja anim d2">
+    <div class="h">Esta semana el panel ha ahorrado <b>6 h 20 min</b> de oficina</div>
+    <div class="sep"></div>
+    <div class="m">Antes: <b>3 Excel</b> y una llamada a cada centro para cerrar el día</div>
+    <div class="sep"></div>
+    <div class="m">Ahora: <b>se cierra solo</b> a las 20:00</div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="card anim d3">
+        <div class="card-h"><h3>Pesadas de hoy</h3><span class="accion" id="tab-n">—</span></div>
+        <div style="overflow-x:auto">
+        <table>
+          <thead><tr>
+            <th>Hora</th><th>Matrícula</th><th>Cliente</th><th>Material</th>
+            <th class="num">Kg</th><th class="num">€/kg</th><th class="num">Total</th><th>Centro</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="card anim d4">
+        <div class="card-h"><h3>Entradas por material</h3><span class="accion" style="color:var(--mute-soft)">kilos de hoy</span></div>
+        <div class="card-b"><div class="barras" id="barras"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card anim d3">
+        <div class="card-h"><h3>Avisos</h3><span class="accion" style="color:var(--warning)">3 sin revisar</span></div>
+        <div class="card-b">
+          <div class="alerta a-rojo"><span class="ico"></span><div>
+            <b>Posible doble pesada</b>
+            <p>4521-JKL ha entrado dos veces con cobre en 6 minutos. Centro 1, 11:14 y 11:20.</p></div></div>
+          <div class="alerta a-ambar"><span class="ico"></span><div>
+            <b>Precio fuera de rango</b>
+            <p>Latón pagado a 4,60 €/kg en Centro 2. La referencia de hoy es 4,10 €/kg.</p></div></div>
+          <div class="alerta a-ambar"><span class="ico"></span><div>
+            <b>Cliente sin documentación</b>
+            <p>Metales Vega no tiene el contrato de tratamiento actualizado desde marzo.</p></div></div>
+          <div class="alerta a-verde"><span class="ico"></span><div>
+            <b>Centros conciliados</b>
+            <p>Las 14 pesadas de los dos centros cuadran. Sin diferencias pendientes.</p></div></div>
+        </div>
+      </div>
+
+      <div class="card anim d4">
+        <div class="card-h"><h3>Reparto por centro</h3><span class="accion" style="color:var(--mute-soft)">kilos de hoy</span></div>
+        <div class="card-b"><div class="barras" id="centros"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="pie-nota anim d5">Demo de Kora Studio · Los datos son de ejemplo y no corresponden a ninguna empresa real.</p>
+</div>
+
+<div class="velo" id="velo">
+  <div class="modal">
+    <div class="modal-h">
+      <div class="eyebrow">Puesto báscula</div>
+      <h3>Nueva pesada</h3>
+      <p>Lo que el operario rellena en la báscula</p>
+    </div>
+    <div class="modal-b">
+      <div class="campo"><label>Matrícula</label><input id="f-mat" value="7734-KLM"></div>
+      <div class="campo"><label>Cliente</label><input id="f-cli" value="Desguaces Herrera"></div>
+      <div class="campo ancho"><label>Material</label><select id="f-material"></select></div>
+      <div class="campo"><label>Kilos</label><input id="f-kg" type="number" value="480"></div>
+      <div class="campo"><label>Centro</label><select id="f-centro"><option value="1">Centro 1</option><option value="2">Centro 2</option></select></div>
+      <div class="calc"><span>Total a pagar</span><b id="f-total">0 €</b></div>
+    </div>
+    <div class="modal-p">
+      <span class="atajo"><kbd>↵</kbd> registrar · <kbd>Esc</kbd> cerrar</span>
+      <span class="grupo">
+        <button class="btn btn-ghost" id="cancelar">Cancelar</button>
+        <button class="btn" id="guardar">Registrar pesada</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span class="ok">✓</span><span>Pesada registrada y enviada a oficina</span></div>
+
+<script>
+const PRECIOS = {
+  'Cobre 1ª':6.20,'Cobre 2ª':5.70,'Cable eléctrico':2.30,'Radiadores Cu/Al':2.60,
+  'Latón':4.10,'Aluminio perfil':1.45,'Aluminio rueda':1.25,'Acero inox 304':1.05,
+  'Chatarra férrica':0.17,'Plomo':1.35,'Baterías':0.80
+};
+const MARGEN = 0.19;
+let pesadas = [
+  {h:'08:12',m:'2841-HGT',c:'Talleres Almenar',mat:'Chatarra férrica',kg:2340,ce:1},
+  {h:'08:41',m:'9017-BCD',c:'Metales Vega',mat:'Cobre 1ª',kg:185,ce:2},
+  {h:'09:05',m:'4521-JKL',c:'Particular',mat:'Aluminio perfil',kg:410,ce:1},
+  {h:'09:38',m:'6690-FRT',c:'Instalaciones Bru',mat:'Cable eléctrico',kg:620,ce:2},
+  {h:'10:02',m:'1123-MNP',c:'Desguaces Herrera',mat:'Chatarra férrica',kg:3180,ce:1},
+  {h:'10:27',m:'8845-QWE',c:'Fontanería Serna',mat:'Latón',kg:96,ce:2},
+  {h:'10:54',m:'3372-ZXC',c:'Particular',mat:'Radiadores Cu/Al',kg:143,ce:1},
+  {h:'11:14',m:'4521-JKL',c:'Particular',mat:'Cobre 2ª',kg:78,ce:1},
+  {h:'11:20',m:'4521-JKL',c:'Particular',mat:'Cobre 2ª',kg:78,ce:1},
+  {h:'11:47',m:'5508-VBN',c:'Recuperaciones Lar',mat:'Acero inox 304',kg:870,ce:2},
+  {h:'12:15',m:'2093-TYU',c:'Talleres Almenar',mat:'Baterías',kg:520,ce:1},
+  {h:'12:44',m:'7761-ASD',c:'Obras Delgado',mat:'Chatarra férrica',kg:4120,ce:2},
+  {h:'13:09',m:'3348-GHJ',c:'Particular',mat:'Plomo',kg:212,ce:1},
+  {h:'13:31',m:'9902-POI',c:'Metales Vega',mat:'Aluminio rueda',kg:355,ce:2}
+];
+let filtro = 'todos';
+const eur = n => n.toLocaleString('es-ES',{maximumFractionDigits:0}) + ' €';
+const kilos = n => n.toLocaleString('es-ES');
+const visibles = () => filtro==='todos' ? pesadas : pesadas.filter(p=>p.ce==+filtro);
+
+/* cuenta animada — t0 se fija en el primer frame y p va acotado a [0,1];
+   si llega un valor nuevo a mitad de cuenta, la anterior se cancela */
+const estadoKpi = {};
+function cuenta(id, target, fmt){
+  const el = document.getElementById(id);
+  const from = estadoKpi[id] ?? 0;
+  estadoKpi[id] = target;
+  if (el._raf){ cancelAnimationFrame(el._raf); el._raf = null; }
+  if (from === target){ el.textContent = fmt(target); return; }
+  let t0 = null;
+  const paso = t => {
+    if (t0 === null) t0 = t;
+    const p = Math.min(Math.max((t - t0)/650, 0), 1);
+    const e = 1 - Math.pow(1-p, 3);
+    el.textContent = fmt(Math.round(from + (target-from)*e));
+    if (p < 1) el._raf = requestAnimationFrame(paso);
+    else { el._raf = null; el.textContent = fmt(target); }
+  };
+  el._raf = requestAnimationFrame(paso);
+}
+
+function pintar(nuevaIdx=-1){
+  const v = visibles();
+  document.getElementById('tbody').innerHTML = v.map((p,i)=>{
+    const pr = PRECIOS[p.mat];
+    return `<tr class="${i===nuevaIdx?'nueva':''}">
+      <td>${p.h}</td><td class="matr">${p.m}</td><td>${p.c}</td>
+      <td class="mat">${p.mat}</td>
+      <td class="num">${kilos(p.kg)}</td>
+      <td class="num">${pr.toFixed(2)}</td>
+      <td class="num">${eur(pr*p.kg)}</td>
+      <td><span class="pill ${p.ce==1?'c1':'c2'}">Centro ${p.ce}</span></td>
+    </tr>`;
+  }).join('');
+
+  const kg = v.reduce((a,p)=>a+p.kg,0);
+  const com = v.reduce((a,p)=>a+PRECIOS[p.mat]*p.kg,0);
+  const ven = com*(1+MARGEN);
+  cuenta('k-n', v.length, n=>n);
+  cuenta('k-kg', kg, kilos);
+  cuenta('k-com', Math.round(com), eur);
+  cuenta('k-ven', Math.round(ven), eur);
+  cuenta('k-mar', Math.round(ven-com), eur);
+  document.getElementById('k-n-l').textContent = filtro==='todos' ? 'Pesadas · 2 centros' : 'Pesadas · Centro '+filtro;
+  document.getElementById('k-mar-l').textContent = 'Margen · '+((ven-com)/com*100).toFixed(1).replace('.',',')+' %';
+  document.getElementById('tab-n').textContent = v.length+' pesadas · '+kilos(kg)+' kg';
+
+  const porMat = {};
+  v.forEach(p=>porMat[p.mat]=(porMat[p.mat]||0)+p.kg);
+  const orden = Object.entries(porMat).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const max = orden.length? orden[0][1] : 1;
+  document.getElementById('barras').innerHTML = orden.map(([m,k])=>`
+    <div class="barra"><div class="l"><b>${m}</b><span>${kilos(k)} kg</span></div>
+    <div class="pista"><div class="relleno" data-w="${(k/max*100).toFixed(1)}"></div></div></div>`).join('');
+
+  const c1 = pesadas.filter(p=>p.ce==1).reduce((a,p)=>a+p.kg,0);
+  const c2 = pesadas.filter(p=>p.ce==2).reduce((a,p)=>a+p.kg,0);
+  const mx = Math.max(c1,c2,1);
+  document.getElementById('centros').innerHTML = [['Centro 1',c1],['Centro 2',c2]].map(([n,k])=>`
+    <div class="barra"><div class="l"><b>${n}</b><span>${kilos(k)} kg</span></div>
+    <div class="pista"><div class="relleno" data-w="${(k/mx*100).toFixed(1)}"></div></div></div>`).join('');
+
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.relleno').forEach(r=>r.style.width = r.dataset.w+'%');
+  }));
+}
+
+/* segmented con píldora deslizante */
+const seg = document.getElementById('seg'), pildora = document.getElementById('pildora');
+function moverPildora(){
+  const on = seg.querySelector('button.on');
+  pildora.style.left = on.offsetLeft+'px';
+  pildora.style.width = on.offsetWidth+'px';
+}
+seg.addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); filtro = b.dataset.c;
+  moverPildora(); pintar();
+});
+window.addEventListener('load', moverPildora);
+window.addEventListener('resize', moverPildora);
+
+/* modal */
+const velo = document.getElementById('velo');
+const sel = document.getElementById('f-material');
+sel.innerHTML = Object.keys(PRECIOS).map(m=>`<option>${m}</option>`).join('');
+sel.value = 'Cobre 1ª';
+const MATRICULAS = ['7734-KLM','5102-MZR','9448-LPT','3067-NBC','6291-KSW'];
+const CLIENTES = ['Desguaces Herrera','Particular','Talleres Almenar','Excavaciones Roldán','Metalúrgica Pinto'];
+let nAperturas = 0;
+function recalc(){
+  const kg = +document.getElementById('f-kg').value || 0;
+  document.getElementById('f-total').textContent = eur(PRECIOS[sel.value]*kg);
+}
+sel.addEventListener('change',recalc);
+document.getElementById('f-kg').addEventListener('input',recalc);
+document.getElementById('abrir').addEventListener('click',()=>{
+  document.getElementById('f-mat').value = MATRICULAS[nAperturas%MATRICULAS.length];
+  document.getElementById('f-cli').value = CLIENTES[nAperturas%CLIENTES.length];
+  document.getElementById('f-kg').value = [480,265,1120,730,340][nAperturas%5];
+  nAperturas++;
+  velo.classList.add('on'); recalc();
+  const kgInp = document.getElementById('f-kg');
+  setTimeout(()=>{kgInp.focus(); kgInp.select();}, 60);
+});
+function cerrar(){ velo.classList.remove('on'); }
+document.getElementById('cancelar').addEventListener('click',cerrar);
+velo.addEventListener('click',e=>{if(e.target===velo)cerrar()});
+document.addEventListener('keydown',e=>{
+  if (!velo.classList.contains('on')) return;
+  if (e.key==='Escape') cerrar();
+  if (e.key==='Enter'){ e.preventDefault(); registrar(); }
+});
+function registrar(){
+  const d = new Date();
+  pesadas.push({
+    h:String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'),
+    m:document.getElementById('f-mat').value, c:document.getElementById('f-cli').value,
+    mat:sel.value, kg:+document.getElementById('f-kg').value||0,
+    ce:+document.getElementById('f-centro').value
+  });
+  cerrar();
+  pintar(visibles().length-1);
+  document.getElementById('sub').textContent = 'Lunes, 17 de agosto · actualizado ahora mismo';
+  const t = document.getElementById('toast');
+  t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('on'), 2600);
+}
+document.getElementById('guardar').addEventListener('click',registrar);
+pintar();
+</script>
+</body></html>

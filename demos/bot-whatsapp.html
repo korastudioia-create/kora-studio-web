@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cualificador de leads 24/7 · Kora OS</title>
+<link rel="icon" href="assets/kora-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057FF;--primary-dark:#0040CC;--primary-soft:#E7EFFF;
+  --bg:#EEF4FF;--paper:#FFF;--ink:#0A1628;--ink-soft:#1F2937;
+  --mute:#64748B;--mute-soft:#94A3B8;--line:#E5EAF2;
+  --success:#16A34A;--success-soft:#E8F7EE;--warning:#F59E0B;--warning-soft:#FEF4E2;
+  --danger:#DC2626;
+  --wa-header:#008069;--wa-bg:#EFE7DE;--wa-mio:#D9FDD3;--wa-input:#F0F2F5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+
+.hdr{background:var(--ink);color:#fff;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:20}
+.hdr .burger{width:22px;display:flex;flex-direction:column;gap:5px;cursor:pointer}
+.hdr .burger i{height:2px;background:#fff;border-radius:2px;display:block}
+.hdr .mid{display:flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%)}
+.hdr .mid img{width:26px;height:26px;border-radius:6px}
+.hdr .mid b{font-size:14px;font-weight:700;letter-spacing:.35px}
+.hdr .mid span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.hdr .dot{width:8px;height:8px;background:var(--success);border-radius:50%}
+
+.wrap{max-width:1220px;margin:0 auto;padding:26px 22px 60px}
+.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--mute)}
+h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
+.sub{font-size:13.5px;color:var(--mute);margin-top:6px;max-width:640px;line-height:1.5}
+.demo-tag{display:inline-block;background:var(--warning-soft);color:#92600A;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;vertical-align:3px;margin-left:10px}
+
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anim{animation:up .5s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}
+
+.escenarios{display:flex;gap:10px;margin:20px 0 22px;flex-wrap:wrap}
+.esc{background:var(--paper);border:.8px solid var(--line);border-radius:14px;padding:13px 18px;
+  display:flex;align-items:center;gap:12px;text-align:left;transition:border-color .15s,transform .15s,box-shadow .15s}
+.esc:hover{border-color:var(--primary);transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,87,255,.08)}
+.esc.on{border:2px solid var(--primary);background:var(--primary-soft)}
+.esc .play{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:transform .15s}
+.esc:hover .play{transform:scale(1.08)}
+.esc b{display:block;font-size:13.5px}
+.esc span{font-size:12px;color:var(--mute)}
+.esc .directo{display:none;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--danger);text-transform:uppercase}
+.esc.playing .directo{display:inline-flex;align-items:center;gap:5px}
+.esc.playing .directo::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--danger);animation:pulso 1.1s infinite}
+@keyframes pulso{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+
+.grid{display:grid;grid-template-columns:412px 1fr;gap:18px;align-items:start}
+
+/* ═══ EL MÓVIL ═══ */
+.phone{background:#0B0F14;border-radius:46px;padding:11px;box-shadow:0 30px 70px rgba(10,22,40,.35),inset 0 0 0 2px #2a3138;position:relative}
+.phone::before{content:'';position:absolute;right:-2.5px;top:130px;width:3px;height:64px;background:#2a3138;border-radius:0 3px 3px 0}
+.phone::after{content:'';position:absolute;left:-2.5px;top:110px;width:3px;height:34px;background:#2a3138;border-radius:3px 0 0 3px}
+.screen{border-radius:37px;overflow:hidden;display:flex;flex-direction:column;height:706px;background:var(--wa-bg);position:relative}
+
+/* status bar */
+.status{background:var(--wa-header);color:#fff;display:flex;justify-content:space-between;align-items:center;
+  padding:10px 26px 0;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;position:relative}
+.status .isla{position:absolute;left:50%;transform:translateX(-50%);top:7px;width:112px;height:26px;background:#0B0F14;border-radius:14px}
+.status .der{display:flex;gap:5px;align-items:center}
+.status svg{display:block}
+
+/* cabecera WhatsApp */
+.wa-top{background:var(--wa-header);color:#fff;padding:8px 10px 10px;display:flex;align-items:center;gap:6px}
+.wa-top .atras{padding:6px 2px;display:flex;color:#fff}
+.wa-top .avatar{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.wa-top .avatar img{width:27px;height:27px}
+.wa-top .quien{flex:1;min-width:0;margin-left:4px}
+.wa-top b{font-size:15px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wa-top .estado{font-size:11.5px;opacity:.88;display:block}
+.wa-top .icos{display:flex;gap:2px}
+.wa-top .icos span{padding:7px;display:flex;color:#fff;opacity:.95}
+
+/* chat con doodle */
+.chat{flex:1;overflow-y:auto;padding:12px 12px 8px;display:flex;flex-direction:column;gap:6px;scroll-behavior:smooth;
+  background-image:radial-gradient(circle at 18% 22%,rgba(0,0,0,.028) 0 7px,transparent 8px),
+    radial-gradient(circle at 72% 9%,rgba(0,0,0,.024) 0 5px,transparent 6px),
+    radial-gradient(circle at 45% 60%,rgba(0,0,0,.026) 0 6px,transparent 7px),
+    radial-gradient(circle at 88% 44%,rgba(0,0,0,.024) 0 4px,transparent 5px),
+    radial-gradient(circle at 10% 78%,rgba(0,0,0,.026) 0 6px,transparent 7px),
+    radial-gradient(circle at 60% 90%,rgba(0,0,0,.022) 0 5px,transparent 6px);
+  background-size:210px 210px}
+.chat::-webkit-scrollbar{width:4px}
+.chat::-webkit-scrollbar-thumb{background:rgba(0,0,0,.14);border-radius:99px}
+.chip-fecha{align-self:center;background:rgba(255,255,255,.92);color:#54656F;font-size:11px;font-weight:600;
+  padding:5px 12px;border-radius:8px;box-shadow:0 1px 1px rgba(0,0,0,.06);margin-bottom:2px}
+.wa-sello{align-self:center;background:#FFF3C7;color:#5d4d1a;font-size:10.5px;padding:5px 12px;border-radius:8px;
+  margin-bottom:4px;box-shadow:0 1px 1px rgba(0,0,0,.06);text-align:center}
+
+.msg{max-width:84%;padding:7px 9px 6px;border-radius:9px;font-size:13.4px;line-height:1.38;
+  box-shadow:0 1px 1px rgba(0,0,0,.09);animation:pop .28s cubic-bezier(.2,.7,.3,1.15);position:relative;white-space:pre-line}
+@keyframes pop{from{opacity:0;transform:translateY(9px) scale(.97)}to{opacity:1;transform:none}}
+.suyo{background:#fff;align-self:flex-start;border-top-left-radius:0}
+.suyo::before{content:'';position:absolute;left:-7px;top:0;border:7px solid transparent;border-top-color:#fff;border-right-color:#fff;border-left-width:0}
+.mio{background:var(--wa-mio);align-self:flex-end;border-top-right-radius:0}
+.mio::before{content:'';position:absolute;right:-7px;top:0;border:7px solid transparent;border-top-color:var(--wa-mio);border-left-color:var(--wa-mio);border-right-width:0}
+.msg .hora{display:inline-block;font-size:10px;color:rgba(0,0,0,.38);margin-left:8px;float:right;margin-top:7px;font-variant-numeric:tabular-nums}
+.mio .hora::after{content:' ✓✓';color:#4FB6EC;font-weight:700;letter-spacing:-1px}
+.msg .foto-msg{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.05);border-radius:7px;padding:8px 10px;margin-bottom:3px}
+.msg .foto-msg svg{flex-shrink:0}
+
+.escribiendo{background:#fff;align-self:flex-start;border-radius:9px;border-top-left-radius:0;padding:12px 14px;
+  display:none;box-shadow:0 1px 1px rgba(0,0,0,.09);position:relative}
+.escribiendo::before{content:'';position:absolute;left:-7px;top:0;border:7px solid transparent;border-top-color:#fff;border-right-color:#fff;border-left-width:0}
+.escribiendo.on{display:flex;gap:4px;animation:pop .2s ease}
+.escribiendo i{width:7px;height:7px;border-radius:50%;background:#9AA6B0;animation:bounce 1.2s infinite}
+.escribiendo i:nth-child(2){animation-delay:.15s}.escribiendo i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+
+/* barra de escribir */
+.wa-input{display:flex;align-items:center;gap:7px;padding:7px 10px 9px;background:transparent}
+.wa-input .caja{flex:1;background:#fff;border-radius:22px;display:flex;align-items:center;gap:8px;padding:9px 13px;box-shadow:0 1px 1px rgba(0,0,0,.07)}
+.wa-input .caja span{color:#8696A0;font-size:14px}
+.wa-input .caja .ph{flex:1}
+.wa-input .mic{width:42px;height:42px;border-radius:50%;background:var(--wa-header);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.home-bar{width:120px;height:4px;background:rgba(0,0,0,.3);border-radius:99px;margin:2px auto 6px}
+
+/* ═══ PANEL OFICINA ═══ */
+.card{background:var(--paper);border:.8px solid var(--line);border-radius:16px;overflow:hidden}
+.card+.card{margin-top:12px}
+.card-h{padding:15px 18px;border-bottom:.8px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card-h h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--mute)}
+.card-b{padding:16px 18px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.kpi{background:var(--paper);border:.8px solid var(--line);border-radius:16px;padding:15px;text-align:center;transition:transform .15s}
+.kpi:hover{transform:translateY(-1px)}
+.kpi .v{font-size:26px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.88px;color:var(--mute);margin-top:5px}
+.v-azul{color:var(--primary)}.v-verde{color:var(--success)}.v-ambar{color:var(--warning)}
+
+.ficha{display:grid;grid-template-columns:1fr 1fr}
+.dato{padding:11px 0;border-bottom:.8px solid #F0F4FA;padding-right:14px}
+.dato label{font-size:10px;font-weight:700;color:var(--mute-soft);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:3px}
+.dato .valor{font-size:14px;font-weight:600;color:var(--mute-soft);transition:color .2s}
+.dato.lleno .valor{color:var(--ink);animation:fill .5s ease}
+@keyframes fill{from{background:var(--success-soft);border-radius:6px}to{background:transparent}}
+.chip{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:4px 10px;border-radius:6px;animation:pop .3s ease}
+.chip-hot{background:var(--danger);color:#fff}
+.chip-fuera{background:var(--warning-soft);color:#92600A}
+.nota-final{background:var(--primary-soft);border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.55;
+  color:var(--ink-soft);display:none;margin-top:14px}
+.nota-final.on{display:block;animation:pop .35s ease}
+.nota-final b{color:var(--primary)}
+.pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
+@media(max-width:1020px){.grid{grid-template-columns:1fr}.phone{max-width:412px;margin:0 auto}}
+</style></head>
+<body>
+
+<header class="hdr">
+  <div class="burger"><i></i><i></i><i></i></div>
+  <div class="mid">
+    <img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'">
+    <div><b>Kora OS</b><span>Cualificador de leads</span></div>
+  </div>
+  <span class="dot"></span>
+</header>
+
+<div class="wrap">
+  <div class="anim">
+    <div class="eyebrow">Atención automática · WhatsApp</div>
+    <h1>El que responde cuando no hay nadie<span class="demo-tag">Demo · datos de ejemplo</span></h1>
+    <p class="sub">Sábado por la noche, festivo, o dos llamadas a la vez un martes: el bot atiende, hace las preguntas correctas y deja el lead cualificado. La oficina lo encuentra todo hecho al abrir.</p>
+  </div>
+
+  <div class="escenarios anim d1">
+    <button class="esc" data-e="0"><span class="play">▶</span><span><b>Particular con un motor <span class="directo">En directo</span></b><span>Sábado · 21:34 · planta cerrada</span></span></button>
+    <button class="esc" data-e="1"><span class="play">▶</span><span><b>Trader pide cotización <span class="directo">En directo</span></b><span>Martes · 23:05 · fuera de horario</span></span></button>
+  </div>
+
+  <div class="grid">
+    <div class="phone anim d2"><div class="screen">
+      <div class="status">
+        <span id="st-hora">21:34</span>
+        <span class="isla"></span>
+        <span class="der">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="#fff"><rect x="0" y="7" width="3" height="4" rx=".8"/><rect x="4.5" y="5" width="3" height="6" rx=".8"/><rect x="9" y="2.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="0" width="3" height="11" rx=".8"/></svg>
+          <svg width="15" height="11" viewBox="0 0 15 11" fill="#fff"><path d="M7.5 9.2a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8zM7.5 5.6c-1.7 0-3.2.7-4.3 1.8l1.4 1.4a4.2 4.2 0 015.8 0l1.4-1.4A6.2 6.2 0 007.5 5.6zM7.5 2C4.7 2 2.2 3.1.4 4.9l1.4 1.4A8.2 8.2 0 017.5 4c2.2 0 4.3.9 5.7 2.3l1.4-1.4A10.2 10.2 0 007.5 2z" transform="translate(0 -2)"/></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="0" width="21" height="12" rx="3.5" fill="none" stroke="#fff" stroke-opacity=".5"/><rect x="2" y="2" width="13" height="8" rx="2" fill="#fff"/><rect x="22.5" y="3.5" width="2" height="5" rx="1" fill="#fff" fill-opacity=".5"/></svg>
+        </span>
+      </div>
+      <div class="wa-top">
+        <span class="atras"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></span>
+        <span class="avatar"><img src="assets/kora-logo.png" onerror="this.parentElement.textContent='R'"></span>
+        <span class="quien"><b>Recuperaciones del Sur</b><span class="estado" id="wa-estado">en línea</span></span>
+        <span class="icos">
+          <span><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg></span>
+          <span><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>
+          <span><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></span>
+        </span>
+      </div>
+      <div class="chat" id="chat">
+        <div class="chip-fecha" id="chip-dia">Sábado</div>
+        <div class="wa-sello" id="sello">🔒 La planta cerró a las 14:00 · responde el asistente</div>
+        <div class="escribiendo" id="escribiendo"><i></i><i></i><i></i></div>
+      </div>
+      <div class="wa-input">
+        <div class="caja">
+          <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8696A0" stroke-width="1.7"><circle cx="12" cy="12" r="9.2"/><path d="M8.4 14.2a4.6 4.6 0 007.2 0" stroke-linecap="round"/><circle cx="9" cy="9.7" r=".9" fill="#8696A0" stroke="none"/><circle cx="15" cy="9.7" r=".9" fill="#8696A0" stroke="none"/></svg></span>
+          <span class="ph">Mensaje</span>
+          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8696A0" stroke-width="1.7" stroke-linecap="round"><path d="M21 12.5l-8.5 8.5a6 6 0 01-8.5-8.5L12.5 4a4 4 0 015.7 5.7L9.7 18.2a2 2 0 01-2.8-2.8L15 7.3"/></svg></span>
+          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8696A0" stroke-width="1.7"><rect x="3" y="6" width="18" height="14" rx="2.5"/><circle cx="12" cy="13" r="3.6"/><path d="M8 6l1.2-2h5.6L16 6" stroke-linejoin="round"/></svg></span>
+        </div>
+        <span class="mic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0013 0h-1.8a4.7 4.7 0 01-9.4 0H5.5z"/><rect x="11.2" y="18" width="1.6" height="3.5" rx=".8"/></svg></span>
+      </div>
+      <div class="home-bar"></div>
+    </div></div>
+
+    <div>
+      <div class="kpis anim d2">
+        <div class="kpi"><div class="v v-azul" id="s-leads">12</div><div class="l">Leads esta semana</div></div>
+        <div class="kpi"><div class="v v-ambar" id="s-fuera">7</div><div class="l">Fuera de horario</div></div>
+        <div class="kpi"><div class="v v-verde">6 s</div><div class="l">Tiempo de respuesta</div></div>
+      </div>
+
+      <div class="card anim d3">
+        <div class="card-h"><h3>Lo que ve la oficina el lunes</h3><span id="chips"></span></div>
+        <div class="card-b">
+          <div class="ficha" id="ficha">
+            <div class="dato" data-k="nombre"><label>Contacto</label><div class="valor">—</div></div>
+            <div class="dato" data-k="tel"><label>Teléfono</label><div class="valor">—</div></div>
+            <div class="dato" data-k="material"><label>Material</label><div class="valor">—</div></div>
+            <div class="dato" data-k="cantidad"><label>Cantidad aprox.</label><div class="valor">—</div></div>
+            <div class="dato" data-k="foto"><label>Foto recibida</label><div class="valor">—</div></div>
+            <div class="dato" data-k="pobla"><label>Población</label><div class="valor">—</div></div>
+            <div class="dato" data-k="cuando"><label>Disponibilidad</label><div class="valor">—</div></div>
+            <div class="dato" data-k="accion"><label>Siguiente paso</label><div class="valor">—</div></div>
+          </div>
+          <div class="nota-final" id="nota"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="pie-nota anim d4">Demo de Kora Studio · Conversación simulada con datos de ejemplo. El guion se adapta a cada empresa: qué pregunta, qué no contesta nunca (precios de noche, por ejemplo) y cuándo pasa con una persona.</p>
+</div>
+
+<script>
+const FOTO_SVG = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#54656F" stroke-width="1.6"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10.5" r="1.7"/><path d="M4 18l5-5 3.5 3.5L16 13l4.5 4.5" stroke-linejoin="round"/></svg>';
+const ESCENARIOS = [
+{
+  hora:'21:34', dia:'Sábado', sello:'🔒 La planta cerró a las 14:00 · responde el asistente',
+  chips:'<span class="chip chip-hot">Lead caliente</span> <span class="chip chip-fuera">Fuera de horario</span>',
+  pasos:[
+    {t:'s', txt:'Hola, teneis abierto? Tengo un motor electrico grande para vender', h:'21:34'},
+    {t:'b', txt:'¡Hola! 👋 Ahora mismo estamos cerrados (abrimos el lunes a las 8:00), pero te atiendo yo y lo dejo todo listo.\n\n¿El motor es de una máquina industrial o de un electrodoméstico?', h:'21:34'},
+    {t:'s', txt:'Industrial, de una fresadora vieja del taller de mi padre', h:'21:35'},
+    {t:'b', txt:'Perfecto. ¿Me mandas una foto y me dices el peso aproximado? Así el lunes te decimos precio a primera hora, con la cotización del día.', h:'21:35'},
+    {t:'s', foto:true, txt:'Pesará unos 80 kg no estoy seguro', h:'21:37'},
+    {t:'b', txt:'Recibida ✓. Con la foto ya lo tenemos claro.\n\n¿Desde qué población nos escribes? ¿Y te viene bien acercarte, o prefieres que valoremos recogida?', h:'21:37'},
+    {t:'s', txt:'De Alcalá de Guadaíra, puedo ir yo el lunes por la mañana', h:'21:38'},
+    {t:'b', txt:'Pues te esperamos 💪 El lunes a las 8:00 te escribimos con el precio del día del cobre y el hierro, y si te encaja vienes cuando quieras.\n\n¿A nombre de quién lo apunto?', h:'21:38'},
+    {t:'s', txt:'Manolo', h:'21:39'},
+    {t:'b', txt:'Apuntado, Manolo. El lunes hablamos. ¡Buen fin de semana! 👋', h:'21:39'}
+  ],
+  ficha:{nombre:['Manolo',8],tel:['+34 6·· ·· 41 27',0],material:['Motor eléctrico industrial (fresadora)',2],
+    cantidad:['≈ 80 kg',4],foto:['✓ Sí · 21:37',4],pobla:['Alcalá de Guadaíra',6],
+    cuando:['Lunes por la mañana · viene él',6],accion:['Enviar precio del día lunes 8:00',9]},
+  nota:'<b>Lunes 8:00.</b> La oficina abre y tiene el lead entero: quién, qué, cuánto, foto y cuándo viene. Solo queda mandar el precio del día. <b>Sin el bot, este mensaje del sábado no lo habría visto nadie hasta el lunes — si el cliente no se hubiera ido antes a otra chatarrería.</b>'
+},
+{
+  hora:'23:05', dia:'Martes', sello:'🌙 Fuera de horario · responde el asistente',
+  chips:'<span class="chip chip-hot">B2B</span> <span class="chip chip-fuera">Fuera de horario</span>',
+  pasos:[
+    {t:'s', txt:'Buenas noches, soy Karim de Metalex Trading. Necesito cotización para 22 t de cobre millberry, carga en 10 días', h:'23:05'},
+    {t:'b', txt:'Buenas noches, Karim. Gracias por escribir. Tomo los datos ahora y mañana a primera hora te preparamos la cotización con el LME del día.\n\n¿Millberry calidad 99,9%? ¿Y la carga sería en vuestras instalaciones o en las nuestras?', h:'23:05'},
+    {t:'s', txt:'99,9 si. Recogeis vosotros, almacén en el puerto de Valencia', h:'23:07'},
+    {t:'b', txt:'Anotado: 22 t millberry 99,9%, recogida en puerto de Valencia, carga en 10 días.\n\n¿Pago habitual? (transferencia / carta de crédito)', h:'23:07'},
+    {t:'s', txt:'Transferencia a 15 dias', h:'23:08'},
+    {t:'b', txt:'Perfecto. Mañana entre las 8:00 y las 9:00 te llega la cotización cerrada con el LME de apertura. Si necesitáis hablar antes, este número atiende desde las 8:00.\n\nGracias, Karim. Hasta mañana 🤝', h:'23:08'}
+  ],
+  ficha:{nombre:['Karim · Metalex Trading',0],tel:['+34 6·· ·· 88 03',0],material:['Cobre millberry 99,9%',2],
+    cantidad:['22 t',0],foto:['— No necesaria (B2B)',2],pobla:['Puerto de Valencia · recogemos',2],
+    cuando:['Carga en 10 días · pago transf. 15d',4],accion:['Cotizar con LME de apertura 8:00-9:00',5]},
+  nota:'<b>Ojo al detalle:</b> el bot NO da precio de noche. El cobre cotiza a diario — comprometer un precio a las 23:05 es regalar margen. Cualifica todo, promete la cotización con el LME de apertura, y <b>el comercial la manda a las 8:00 con el margen protegido.</b>'
+}
+];
+
+const chat = document.getElementById('chat');
+const escribiendo = document.getElementById('escribiendo');
+const waEstado = document.getElementById('wa-estado');
+let timers = [];
+
+function limpiar(){
+  timers.forEach(clearTimeout); timers = [];
+  chat.querySelectorAll('.msg').forEach(m=>m.remove());
+  escribiendo.classList.remove('on');
+  waEstado.textContent = 'en línea'; waEstado.classList.remove('escribiendo');
+  document.querySelectorAll('#ficha .dato').forEach(d=>{d.classList.remove('lleno');d.querySelector('.valor').textContent='—'});
+  document.getElementById('nota').classList.remove('on');
+  document.getElementById('chips').innerHTML = '';
+  document.querySelectorAll('.esc').forEach(b=>b.classList.remove('playing'));
+}
+
+function reproducir(idx){
+  limpiar();
+  const E = ESCENARIOS[idx];
+  document.getElementById('st-hora').textContent = E.hora;
+  document.getElementById('chip-dia').textContent = E.dia;
+  document.getElementById('sello').textContent = E.sello;
+  document.querySelectorAll('.esc').forEach((b,i)=>{
+    b.classList.toggle('on', i===idx);
+    b.classList.toggle('playing', i===idx);
+  });
+  let t = 500;
+  E.pasos.forEach((p,i)=>{
+    if (p.t==='b'){
+      timers.push(setTimeout(()=>{
+        escribiendo.classList.add('on'); chat.appendChild(escribiendo);
+        waEstado.textContent = 'escribiendo…'; waEstado.classList.add('escribiendo');
+        chat.scrollTo({top:chat.scrollHeight, behavior:'smooth'});
+      }, t));
+      t += 1000;
+    }
+    timers.push(setTimeout(()=>{
+      escribiendo.classList.remove('on');
+      waEstado.textContent = 'en línea'; waEstado.classList.remove('escribiendo');
+      const div = document.createElement('div');
+      div.className = 'msg '+(p.t==='s'?'suyo':'mio');
+      const cuerpo = p.txt.replace(/\n/g,'<br>');
+      div.innerHTML = (p.foto?`<div class="foto-msg">${FOTO_SVG}<span style="font-size:12px;color:#54656F">IMG_2026·0817.jpg</span></div>`:'')
+        + cuerpo + `<span class="hora">${p.h}</span>`;
+      chat.appendChild(div);
+      chat.scrollTo({top:chat.scrollHeight, behavior:'smooth'});
+      Object.entries(E.ficha).forEach(([k,[val,paso]])=>{
+        if (paso===i){
+          const d = document.querySelector(`#ficha .dato[data-k="${k}"]`);
+          d.classList.add('lleno'); d.querySelector('.valor').textContent = val;
+        }
+      });
+      if (i===0) document.getElementById('chips').innerHTML = E.chips;
+      if (i===E.pasos.length-1){
+        timers.push(setTimeout(()=>{
+          const n = document.getElementById('nota');
+          n.innerHTML = E.nota; n.classList.add('on');
+          const sL = document.getElementById('s-leads'), sF = document.getElementById('s-fuera');
+          sL.textContent = +sL.textContent+1; sF.textContent = +sF.textContent+1;
+          document.querySelectorAll('.esc').forEach(b=>b.classList.remove('playing'));
+        }, 800));
+      }
+    }, t));
+    t += p.t==='b' ? 600 : 1600;
+  });
+}
+
+document.querySelectorAll('.esc').forEach((b,i)=>b.addEventListener('click',()=>reproducir(i)));
+setTimeout(()=>reproducir(0), 700);
+</script>
+</body></html>

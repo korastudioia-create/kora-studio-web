@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Albaranes sin teclear · Kora OS</title>
+<link rel="icon" href="assets/kora-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057FF;--primary-dark:#0040CC;--primary-soft:#E7EFFF;
+  --bg:#EEF4FF;--paper:#FFF;--ink:#0A1628;--ink-soft:#1F2937;
+  --mute:#64748B;--mute-soft:#94A3B8;--line:#E5EAF2;
+  --success:#16A34A;--success-soft:#E8F7EE;--warning:#F59E0B;--warning-soft:#FEF4E2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+.hdr{background:var(--ink);color:#fff;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:20}
+.hdr .burger{width:22px;display:flex;flex-direction:column;gap:5px;cursor:pointer}
+.hdr .burger i{height:2px;background:#fff;border-radius:2px;display:block}
+.hdr .mid{display:flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%)}
+.hdr .mid img{width:26px;height:26px;border-radius:6px}
+.hdr .mid b{font-size:14px;font-weight:700;letter-spacing:.35px}
+.hdr .mid span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.hdr .dot{width:8px;height:8px;background:var(--success);border-radius:50%}
+.wrap{max-width:1200px;margin:0 auto;padding:26px 22px 60px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anim{animation:up .5s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
+button{cursor:pointer}
+.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--mute)}
+h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
+.sub{font-size:13.5px;color:var(--mute);margin-top:6px;max-width:640px;line-height:1.5}
+.demo-tag{display:inline-block;background:var(--warning-soft);color:#92600A;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;vertical-align:3px;margin-left:10px}
+
+.grid{display:grid;grid-template-columns:430px 1fr;gap:14px;align-items:start;margin-top:22px}
+.card{background:var(--paper);border:.8px solid var(--line);border-radius:16px;overflow:hidden}
+.card+.card{margin-top:12px}
+.card-h{padding:15px 18px;border-bottom:.8px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.card-h h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--mute)}
+.card-b{padding:16px 18px}
+.btn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:12px 20px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--primary-dark)}
+.btn:disabled{opacity:.55;cursor:default}
+
+/* el albarán de papel */
+.mesa{background:#D8DEE9;border-radius:16px;padding:26px 22px;display:flex;justify-content:center}
+.papel{background:#FDFCF7;width:100%;max-width:340px;padding:20px 22px 46px;transform:rotate(-1.6deg);
+  box-shadow:0 14px 34px rgba(10,22,40,.28);position:relative;font-size:12px;color:#333;overflow:hidden}
+.papel::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 60%,rgba(255,255,255,.5) 74%,transparent 82%);pointer-events:none}
+.papel .cab{border-bottom:2px solid #444;padding-bottom:8px;margin-bottom:10px}
+.papel .cab b{font-size:14px;letter-spacing:.3px}
+.papel .cab span{display:block;font-size:10px;color:#777;margin-top:2px}
+.papel .fila{display:flex;justify-content:space-between;padding:3.5px 0;border-bottom:1px dotted #ccc}
+.papel .fila span:first-child{color:#666}
+.mano{font-family:Caveat,cursive;font-size:17px;color:#1a3d8f;font-weight:600}
+.papel table{width:100%;border-collapse:collapse;margin-top:10px}
+.papel th{font-size:9.5px;text-transform:uppercase;color:#777;border-bottom:1.5px solid #444;text-align:left;padding:3px 2px}
+.papel td{padding:5px 2px;border-bottom:1px dotted #ccc}
+.papel td:last-child,.papel th:last-child{text-align:right}
+.papel .sello{position:absolute;bottom:16px;right:18px;border:2.5px solid rgba(200,40,40,.55);color:rgba(200,40,40,.65);
+  border-radius:8px;padding:3px 10px;font-size:11px;font-weight:800;text-transform:uppercase;transform:rotate(-9deg);letter-spacing:1px}
+/* línea de escaneo + flash */
+.escaneo{position:absolute;left:0;right:0;height:56px;top:-60px;
+  background:linear-gradient(to bottom,transparent,rgba(0,87,255,.22),rgba(0,87,255,.45),rgba(0,87,255,.22),transparent);
+  display:none;pointer-events:none;z-index:2}
+.escaneando .escaneo{display:block;animation:scan 1.6s ease-in-out}
+@keyframes scan{from{top:-60px}to{top:105%}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;border-radius:16px;z-index:3}
+.flasheando .flash{animation:flash .45s ease-out}
+@keyframes flash{0%{opacity:0}18%{opacity:.95}100%{opacity:0}}
+.foto-chip{display:none;font-size:11px;font-weight:600;background:var(--success-soft);color:var(--success);
+  padding:4px 10px;border-radius:6px;align-items:center;gap:5px}
+.foto-chip.on{display:inline-flex;animation:up .3s ease}
+
+/* panel de extracción */
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.campo label{font-size:10px;font-weight:700;color:var(--mute);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:5px}
+.campo .caja{border:.8px solid var(--line);border-radius:12px;padding:10px 13px;font-size:14px;font-weight:600;
+  color:var(--mute-soft);min-height:41px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.campo.ok .caja{color:var(--ink);animation:fill .4s ease}
+@keyframes fill{from{background:var(--success-soft)}to{background:transparent}}
+.conf{font-size:10px;font-weight:700;color:var(--success);white-space:nowrap}
+.lineas{margin-top:14px}
+.lineas table{width:100%;border-collapse:collapse}
+.lineas th{text-align:left;font-size:10px;font-weight:700;color:var(--mute-soft);letter-spacing:1px;text-transform:uppercase;padding:8px 10px;border-bottom:.8px solid var(--line)}
+.lineas td{padding:9px 10px;border-bottom:.8px solid #F0F4FA;font-size:13.5px}
+.lineas .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.lineas tr.ok td{animation:fill .5s ease}
+.total-caja{margin-top:12px;background:var(--primary-soft);border-radius:12px;padding:12px 16px;display:none;justify-content:space-between;align-items:center}
+.total-caja.on{display:flex;animation:fill .5s ease}
+.total-caja span{font-size:11px;font-weight:700;color:var(--primary-dark);text-transform:uppercase;letter-spacing:.8px}
+.total-caja b{font-size:22px;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.kpi{background:var(--paper);border:.8px solid var(--line);border-radius:16px;padding:15px;text-align:center}
+.kpi .v{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.kpi .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.88px;color:var(--mute);margin-top:5px}
+.v-azul{color:var(--primary)}.v-verde{color:var(--success)}.v-ink{color:var(--ink)}
+
+.reg tbody td{padding:10px 16px;border-bottom:.8px solid #F0F4FA;font-size:13px;white-space:nowrap}
+.reg thead th{text-align:left;font-size:10px;font-weight:700;color:var(--mute-soft);letter-spacing:1px;text-transform:uppercase;padding:9px 16px;border-bottom:.8px solid var(--line)}
+.reg tr.nueva td{animation:fill .7s ease}
+.estado-chip{font-size:10px;font-weight:700;text-transform:uppercase;background:var(--success-soft);color:var(--success);padding:3px 9px;border-radius:6px}
+.pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
+@media(max-width:1020px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<header class="hdr">
+  <div class="burger"><i></i><i></i><i></i></div>
+  <div class="mid">
+    <img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'">
+    <div><b>Kora OS</b><span>Albaranes</span></div>
+  </div>
+  <span class="dot"></span>
+</header>
+
+<div class="wrap">
+  <div class="eyebrow">Oficina · Papel fuera</div>
+  <h1>Albaranes sin teclear<span class="demo-tag">Demo · datos de ejemplo</span></h1>
+  <p class="sub">El operario hace una foto al albarán desde el móvil. El sistema lee proveedor, fecha, materiales y kilos, y lo deja registrado. Lo que eran 10 minutos de teclear por albarán pasan a ser 10 segundos de revisar.</p>
+
+  <div class="grid">
+    <div class="anim d1">
+      <div class="card">
+        <div class="card-h"><h3>El albarán que llega en el camión</h3></div>
+        <div class="mesa" style="position:relative"><div class="flash"></div><div class="papel" id="papel">
+          <div class="escaneo"></div>
+          <div class="cab"><b id="p-prov">TRANSPORTES Y DERRIBOS GARCÉS S.L.</b><span>Pol. Ind. La Red · Sevilla · CIF B-91·······</span></div>
+          <div class="fila"><span>Albarán nº</span><span class="mano" id="p-num">A-4471</span></div>
+          <div class="fila"><span>Fecha</span><span class="mano" id="p-fecha">17/08/26</span></div>
+          <div class="fila"><span>Matrícula</span><span class="mano" id="p-matr">4482-KTD</span></div>
+          <table><thead><tr><th>Material</th><th>Kg</th></tr></thead>
+            <tbody id="p-lineas">
+              <tr><td class="mano">Chatarra mezcla obra</td><td class="mano">3.140</td></tr>
+              <tr><td class="mano">Viga hierro</td><td class="mano">1.820</td></tr>
+              <tr><td class="mano">Cable cobre</td><td class="mano">96</td></tr>
+            </tbody></table>
+          <div class="sello">Recibido</div>
+        </div></div>
+        <div class="card-b" style="display:flex;gap:10px">
+          <button class="btn" id="foto" style="flex:1">📷 Hacer foto y leer albarán</button>
+          <button class="btn" id="otro" style="background:var(--paper);color:var(--ink);border:.8px solid var(--line)">Otro albarán</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="kpis anim d1">
+        <div class="kpi"><div class="v v-azul" id="s-hoy">14</div><div class="l">Albaranes hoy</div></div>
+        <div class="kpi"><div class="v v-verde">3,2 h</div><div class="l">Ahorradas esta semana</div></div>
+        <div class="kpi"><div class="v v-ink">0</div><div class="l">Errores de tecleo</div></div>
+      </div>
+
+      <div class="card anim d2">
+        <div class="card-h"><h3>Lo que el sistema ha leído</h3><span style="display:flex;gap:8px;align-items:center"><span class="foto-chip" id="foto-chip">📎 IMG_4471.jpg</span><span id="leido-estado" style="font-size:12px;color:var(--mute-soft)">esperando foto…</span></span></div>
+        <div class="card-b">
+          <div class="campos">
+            <div class="campo" data-k="prov"><label>Proveedor</label><div class="caja"><span>—</span><span class="conf"></span></div></div>
+            <div class="campo" data-k="num"><label>Nº albarán</label><div class="caja"><span>—</span><span class="conf"></span></div></div>
+            <div class="campo" data-k="fecha"><label>Fecha</label><div class="caja"><span>—</span><span class="conf"></span></div></div>
+            <div class="campo" data-k="matr"><label>Matrícula</label><div class="caja"><span>—</span><span class="conf"></span></div></div>
+          </div>
+          <div class="lineas">
+            <table><thead><tr><th>Material detectado</th><th>Se registra como</th><th class="num">Kg</th></tr></thead>
+              <tbody id="l-lineas"><tr><td colspan="3" style="color:var(--mute-soft);font-size:13px">Las líneas del albarán aparecerán aquí…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="total-caja" id="total"><span>Total del albarán</span><b id="total-kg">—</b></div>
+        </div>
+      </div>
+
+      <div class="card reg anim d3">
+        <div class="card-h"><h3>Registrados hoy</h3><span style="font-size:12px;color:var(--mute-soft)">últimos 4</span></div>
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th>Hora</th><th>Proveedor</th><th>Nº</th><th class="num" style="text-align:right">Kg</th><th></th></tr></thead>
+          <tbody id="registrados">
+            <tr><td>12:44</td><td>Obras Delgado</td><td>OD-118</td><td class="num" style="text-align:right">4.120</td><td><span class="estado-chip">Ligado a pesada</span></td></tr>
+            <tr><td>11:52</td><td>Metalúrgica Pinto</td><td>MP-2260</td><td class="num" style="text-align:right">1.870</td><td><span class="estado-chip">Ligado a pesada</span></td></tr>
+            <tr><td>10:31</td><td>Excavaciones Roldán</td><td>EX-903</td><td class="num" style="text-align:right">6.400</td><td><span class="estado-chip">Ligado a pesada</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="pie-nota">Demo de Kora Studio · Datos de ejemplo. En producción, la foto se hace desde el móvil del operario y la revisión es un vistazo: los campos dudosos vienen marcados.</p>
+</div>
+
+<script>
+const ALBARANES = [
+ {prov:'TRANSPORTES Y DERRIBOS GARCÉS S.L.', provCorto:'Derribos Garcés', num:'A-4471', fecha:'17/08/26', matr:'4482-KTD',
+  lineas:[['Chatarra mezcla obra','Chatarra férrica mezcla','3.140'],['Viga hierro','Viga de hierro','1.820'],['Cable cobre','Cable eléctrico (Cu)','96']]},
+ {prov:'DESMONTAJES INDUSTRIALES CANO', provCorto:'Desmontajes Cano', num:'DC-0912', fecha:'17/08/26', matr:'7209-JWZ',
+  lineas:[['Motor electrico','Motor eléctrico (RAEE)','410'],['Chapa aluminio','Aluminio chapa','780'],['Inox tuberia','Acero inox 304','265']]},
+ {prov:'CONTENEDORES HNOS. VALLE', provCorto:'Hnos. Valle', num:'V-3306', fecha:'17/08/26', matr:'2551-MDR',
+  lineas:[['Mezcla contenedor obra','Chatarra férrica mezcla','5.230'],['Radiadores','Radiadores Cu/Al','188']]}
+];
+let idx = 0, ocupado = false;
+const $ = s => document.querySelector(s);
+
+function pintaPapel(){
+  const a = ALBARANES[idx];
+  $('#p-prov').textContent = a.prov;
+  $('#p-num').textContent = a.num;
+  $('#p-fecha').textContent = a.fecha;
+  $('#p-matr').textContent = a.matr;
+  $('#p-lineas').innerHTML = a.lineas.map(l=>`<tr><td class="mano">${l[0]}</td><td class="mano">${l[2]}</td></tr>`).join('');
+  // reset panel
+  document.querySelectorAll('.campo').forEach(c=>{c.classList.remove('ok');c.querySelector('.caja span').textContent='—';c.querySelector('.conf').textContent=''});
+  $('#l-lineas').innerHTML = '<tr><td colspan="3" style="color:var(--mute-soft);font-size:13px">Las líneas del albarán aparecerán aquí…</td></tr>';
+  $('#total').classList.remove('on');
+  $('#leido-estado').textContent = 'esperando foto…';
+  $('#foto-chip').classList.remove('on');
+}
+
+$('#otro').addEventListener('click',()=>{ if(ocupado) return; idx = (idx+1)%ALBARANES.length; pintaPapel(); });
+
+$('#foto').addEventListener('click',()=>{
+  if (ocupado) return; ocupado = true;
+  const a = ALBARANES[idx];
+  const btn = $('#foto'); btn.disabled = true; btn.textContent = 'Leyendo…';
+  $('#leido-estado').textContent = 'analizando la foto…';
+  const mesa = document.querySelector('.mesa');
+  mesa.classList.remove('flasheando'); void mesa.offsetWidth; mesa.classList.add('flasheando');
+  const chip = $('#foto-chip');
+  chip.textContent = '📎 IMG_'+a.num.replace(/\D/g,'')+'.jpg';
+  setTimeout(()=>chip.classList.add('on'), 420);
+  const papel = $('#papel'); papel.classList.remove('escaneando'); void papel.offsetWidth; papel.classList.add('escaneando');
+
+  const campos = [['prov',a.provCorto,'99%'],['num',a.num,'98%'],['fecha',a.fecha,'99%'],['matr',a.matr,'97%']];
+  campos.forEach((c,i)=>setTimeout(()=>{
+    const el = document.querySelector(`.campo[data-k="${c[0]}"]`);
+    el.classList.add('ok');
+    el.querySelector('.caja span').textContent = c[1];
+    el.querySelector('.conf').textContent = '✓ '+c[2];
+  }, 1700 + i*350));
+
+  setTimeout(()=>{
+    papel.classList.remove('escaneando');
+    $('#l-lineas').innerHTML = '';
+    a.lineas.forEach((l,i)=>setTimeout(()=>{
+      $('#l-lineas').insertAdjacentHTML('beforeend',
+        `<tr class="ok"><td>${l[0]}</td><td style="font-weight:600">${l[1]}</td><td class="num">${l[2]}</td></tr>`);
+      if (i===a.lineas.length-1){
+        const tot = a.lineas.reduce((s,x)=>s+parseInt(x[2].replace('.','')),0);
+        $('#total-kg').textContent = tot.toLocaleString('es-ES')+' kg';
+        $('#total').classList.add('on');
+        $('#leido-estado').textContent = 'leído en 4 segundos · revisar y listo';
+        // añadir a registrados
+        const d = new Date();
+        const h = String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+        $('#registrados').insertAdjacentHTML('afterbegin',
+          `<tr class="nueva"><td>${h}</td><td>${a.provCorto}</td><td>${a.num}</td><td class="num" style="text-align:right">${tot.toLocaleString('es-ES')}</td><td><span class="estado-chip">Ligado a pesada</span></td></tr>`);
+        $('#s-hoy').textContent = +$('#s-hoy').textContent + 1;
+        btn.disabled = false; btn.textContent = '📷 Hacer foto y leer albarán';
+        ocupado = false;
+      }
+    }, 400*i));
+  }, 3300);
+});
+pintaPapel();
+</script>
+</body></html>

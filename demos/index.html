@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demos · Kora Studio</title>
+<link rel="icon" href="assets/kora-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057FF;--primary-dark:#0040CC;--primary-soft:#E7EFFF;
+  --bg:#EEF4FF;--paper:#FFF;--ink:#0A1628;--ink-soft:#1F2937;
+  --mute:#64748B;--mute-soft:#94A3B8;--line:#E5EAF2;
+  --success:#16A34A;--success-soft:#E8F7EE;--warning:#F59E0B;--warning-soft:#FEF4E2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+.hdr{background:var(--ink);color:#fff;height:56px;display:flex;align-items:center;justify-content:center;gap:10px;position:sticky;top:0}
+.hdr img{width:26px;height:26px;border-radius:6px}
+.hdr b{font-size:14px;font-weight:700;letter-spacing:.35px}
+.hdr span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.wrap{max-width:1060px;margin:0 auto;padding:48px 22px 70px}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.anim{animation:up .55s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--mute)}
+h1{font-size:36px;font-weight:800;letter-spacing:-.03em;margin-top:6px}
+.sub{font-size:15px;color:var(--mute);margin-top:8px;max-width:600px;line-height:1.55}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+a.demo{background:var(--paper);border:.8px solid var(--line);border-radius:16px;padding:24px;
+  text-decoration:none;color:inherit;display:block;transition:border-color .18s,transform .18s,box-shadow .18s}
+a.demo:hover{border-color:var(--primary);transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,87,255,.10)}
+.demo .cab{display:flex;align-items:center;justify-content:space-between}
+.demo .num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--primary)}
+.demo .ico{width:42px;height:42px;border-radius:12px;background:var(--primary-soft);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;transition:transform .18s}
+a.demo:hover .ico{transform:scale(1.08)}
+.demo h2{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:6px 0 8px}
+.demo p{font-size:13.5px;color:var(--mute);line-height:1.55}
+.demo .para{margin-top:14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--mute-soft)}
+.demo .abrir{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--primary)}
+.demo .abrir i{font-style:normal;transition:transform .18s}
+a.demo:hover .abrir i{transform:translateX(4px)}
+.sellos{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.sello{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;background:var(--paper);
+  border:.8px solid var(--line);color:var(--mute);padding:7px 13px;border-radius:99px}
+.pie{margin-top:40px;font-size:12.5px;color:var(--mute-soft);text-align:center;line-height:1.6}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header class="hdr">
+  <img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'">
+  <div><b>Kora Studio</b><span>Demos</span></div>
+</header>
+<div class="wrap">
+  <div class="anim">
+    <div class="eyebrow">Automatización e IA · Sector del reciclaje</div>
+    <h1>Lo que montamos, funcionando</h1>
+    <p class="sub">Cuatro sistemas reales con datos de ejemplo. Todo lo que ves se monta encima de lo que la empresa ya usa — no sustituye a nada.</p>
+  </div>
+
+  <div class="grid">
+    <a class="demo anim d1" href="pesadas.html">
+      <div class="cab"><div class="num">Demo 01</div>
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M6.3 5.6l2 2.2M17.7 5.6l-2 2.2"/><path d="M4 21h16M7 21l1.6-8h6.8L17 21"/><circle cx="12" cy="4" r="1.2" fill="currentColor" stroke="none"/></svg></span></div>
+      <h2>Panel de planta y consolidación</h2>
+      <p>Las pesadas de todos los centros en una pantalla: material, kilos, precios y margen del día. Con avisos de doble pesada y precios fuera de rango.</p>
+      <div class="para">Para recicladoras con más de un centro</div>
+      <span class="abrir">Abrir demo <i>→</i></span>
+    </a>
+    <a class="demo anim d2" href="bot-whatsapp.html">
+      <div class="cab"><div class="num">Demo 02</div>
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1121 11.5z"/><path d="M8.5 10.5h7M8.5 14h4.5"/></svg></span></div>
+      <h2>El que responde cuando no hay nadie</h2>
+      <p>Un WhatsApp que atiende de noche, en festivo o cuando entran dos llamadas a la vez. Cualifica el lead y la oficina lo encuentra todo hecho.</p>
+      <div class="para">Para cualquier empresa que pierda llamadas</div>
+      <span class="abrir">Abrir demo <i>→</i></span>
+    </a>
+    <a class="demo anim d3" href="trazabilidad.html">
+      <div class="cab"><div class="num">Demo 03</div>
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="5.5" r="2.2"/><circle cx="18.5" cy="12" r="2.2"/><circle cx="7.5" cy="19" r="2.2"/><path d="M7.6 6.4l8.6 4.4M16.5 13.4l-7 4.4"/></svg></span></div>
+      <h2>Trazabilidad de material</h2>
+      <p>Cada kilo ligado a su albarán, su tratamiento y su salida. El dossier de inspección se genera en un clic, no en una semana de buscar papeles.</p>
+      <div class="para">Para gestores autorizados</div>
+      <span class="abrir">Abrir demo <i>→</i></span>
+    </a>
+    <a class="demo anim d4" href="albaranes.html">
+      <div class="cab"><div class="num">Demo 04</div>
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3.5"/><path d="M3 10.5h4M3 13.5h4" stroke-opacity=".4"/></svg></span></div>
+      <h2>Albaranes sin teclear</h2>
+      <p>Foto al albarán desde el móvil y el sistema lee proveedor, materiales y kilos. De 10 minutos de teclear a 10 segundos de revisar.</p>
+      <div class="para">Para cualquier planta con papel</div>
+      <span class="abrir">Abrir demo <i>→</i></span>
+    </a>
+    <a class="demo anim d4" href="radar-precios.html">
+      <div class="cab"><div class="num">Demo 05</div>
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 6-8"/><path d="M17 6h4v4"/><circle cx="19" cy="18" r="2.4"/><path d="M19 14.8v-1.2M19 22.4v-1.2M22.2 18h-1.2M16.8 18h-1.2" stroke-opacity=".5"/></svg></span></div>
+      <h2>El radar que avisa solo</h2>
+      <p>Vigila el precio del cobre y tu cartera. Cuando cruza tu umbral o un buen cliente deja de venir, te llega un WhatsApp con la cifra delante.</p>
+      <div class="para">Para recicladoras con stock y cartera</div>
+      <span class="abrir">Abrir demo <i>→</i></span>
+    </a>
+    <a class="demo anim d5" href="memoria-anual.html">
+      <div class="cab"><div class="num">Demo 06</div>
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12.4l2.6 2.6 5-5.4"/></svg></span></div>
+      <h2>La memoria anual, en un clic</h2>
+      <p>El año entero ya está registrado: la memoria se monta sola, cuadrada. Y las licencias avisan 60, 30 y 7 días antes de caducar.</p>
+      <div class="para">Para gestores autorizados</div>
+      <span class="abrir">Abrir demo <i>→</i></span>
+    </a>
+  </div>
+
+  <div class="sellos anim d5">
+    <span class="sello">⚡ Funciona sin internet</span>
+    <span class="sello">🔒 Cero dependencias</span>
+    <span class="sello">🎛 Se adapta a cada empresa</span>
+    <span class="sello">🧩 Se monta encima de vuestro programa</span>
+  </div>
+
+  <p class="pie">Kora Studio · korastudio.es · 641 14 11 95<br>Todos los datos de estas demos son de ejemplo. Cada sistema se adapta a la empresa: materiales, precios, flujos y programa de gestión existente.</p>
+</div>
+</body></html>

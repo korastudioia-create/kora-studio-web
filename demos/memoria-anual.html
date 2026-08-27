@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Memoria anual y licencias · Kora OS</title>
+<link rel="icon" href="assets/kora-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057FF;--primary-dark:#0040CC;--primary-soft:#E7EFFF;
+  --bg:#EEF4FF;--paper:#FFF;--ink:#0A1628;--ink-soft:#1F2937;
+  --mute:#64748B;--mute-soft:#94A3B8;--line:#E5EAF2;
+  --success:#16A34A;--success-soft:#E8F7EE;--warning:#F59E0B;--warning-soft:#FEF4E2;
+  --danger:#DC2626;--danger-soft:#FDECEC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.hdr{background:var(--ink);color:#fff;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:20}
+.hdr .burger{width:22px;display:flex;flex-direction:column;gap:5px;cursor:pointer}
+.hdr .burger i{height:2px;background:#fff;border-radius:2px;display:block}
+.hdr .mid{display:flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%)}
+.hdr .mid img{width:26px;height:26px;border-radius:6px}
+.hdr .mid b{font-size:14px;font-weight:700;letter-spacing:.35px}
+.hdr .mid span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.hdr .dot{width:8px;height:8px;background:var(--success);border-radius:50%}
+.wrap{max-width:1240px;margin:0 auto;padding:26px 22px 60px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anim{animation:up .5s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--mute)}
+h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
+.sub{font-size:13.5px;color:var(--mute);margin-top:6px;max-width:660px;line-height:1.5}
+.demo-tag{display:inline-block;background:var(--warning-soft);color:#92600A;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;vertical-align:3px;margin-left:10px}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 12px}
+.kpi{background:var(--paper);border:.8px solid var(--line);border-radius:16px;padding:15px;text-align:center;transition:transform .15s}
+.kpi:hover{transform:translateY(-1px)}
+.kpi .v{font-size:26px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.88px;color:var(--mute);margin-top:5px}
+.v-azul{color:var(--primary)}.v-ink{color:var(--ink)}.v-verde{color:var(--success)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.card{background:var(--paper);border:.8px solid var(--line);border-radius:16px;overflow:hidden}
+.card-h{padding:15px 18px;border-bottom:.8px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.card-h h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--mute)}
+.card-b{padding:20px 22px}
+
+/* anillo memoria */
+.memoria{display:flex;gap:26px;align-items:center}
+.anillo{position:relative;width:170px;height:170px;flex-shrink:0}
+.anillo svg{transform:rotate(-90deg)}
+.anillo .fondo{fill:none;stroke:#EDF1F8;stroke-width:13}
+.anillo .avance{fill:none;stroke:var(--primary);stroke-width:13;stroke-linecap:round;
+  stroke-dasharray:452;stroke-dashoffset:452;transition:stroke-dashoffset .55s cubic-bezier(.3,.7,.3,1)}
+.anillo .centro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.anillo .pct{font-size:34px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.anillo .pct-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--mute)}
+.anillo.listo .avance{stroke:var(--success)}
+.mem-info{flex:1;min-width:0}
+.mem-info h4{font-size:19px;font-weight:800;letter-spacing:-.015em}
+.mem-info .fase{font-size:13px;color:var(--mute);margin-top:6px;min-height:20px;display:flex;align-items:center;gap:8px}
+.mem-info .fase .rueda{width:13px;height:13px;border:2.5px solid var(--primary-soft);border-top-color:var(--primary);border-radius:50%;animation:gira .7s linear infinite;display:none}
+.mem-info .fase.girando .rueda{display:block}
+@keyframes gira{to{transform:rotate(360deg)}}
+.btn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:12px 22px;font-size:13.5px;font-weight:700;margin-top:14px;transition:background .15s,box-shadow .15s}
+.btn:hover{background:var(--primary-dark);box-shadow:0 8px 20px rgba(0,87,255,.28)}
+.btn:disabled{opacity:.55;box-shadow:none}
+.resultado{display:none;margin-top:14px;background:var(--success-soft);border:.8px solid #C9EBD6;border-radius:12px;padding:13px 15px;font-size:13px;line-height:1.5}
+.resultado.on{display:block;animation:pop .35s ease}
+.resultado b{color:var(--success)}
+.piezas{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pieza{font-size:10.5px;font-weight:700;background:var(--paper);border:.8px solid #C9EBD6;color:var(--success);
+  padding:4px 10px;border-radius:6px;opacity:0;transform:translateY(5px);transition:all .3s}
+.pieza.on{opacity:1;transform:none}
+
+/* comparativa antes/después */
+.antes-despues{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.ad{border-radius:12px;padding:13px 15px;text-align:center}
+.ad .n{font-size:23px;font-weight:800;letter-spacing:-.02em}
+.ad .t{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-top:3px}
+.ad.antes{background:#F4F6FB;color:var(--mute)}
+.ad.despues{background:var(--primary-soft);color:var(--primary-dark)}
+
+/* semáforo licencias */
+.lic{display:flex;align-items:center;gap:13px;padding:13px 18px;border-bottom:.8px solid #F0F4FA}
+.lic:last-child{border-bottom:0}
+.lic .sem{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.sem.v{background:var(--success)}
+.sem.a{background:var(--warning);animation:latido 1.6s infinite}
+.sem.r{background:var(--danger);animation:latido 1.1s infinite}
+@keyframes latido{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.35)}50%{box-shadow:0 0 0 6px rgba(220,38,38,0)}}
+.lic .que{flex:1;min-width:0}
+.lic b{font-size:13.5px;display:block}
+.lic span{font-size:11.5px;color:var(--mute)}
+.lic .plazo{font-size:11px;font-weight:800;padding:4px 11px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.plazo.v{background:var(--success-soft);color:var(--success)}
+.plazo.a{background:var(--warning-soft);color:#92600A}
+.plazo.r{background:var(--danger-soft);color:var(--danger)}
+.aviso-pie{padding:13px 18px;background:#FAFBFE;border-top:.8px solid var(--line);font-size:12px;color:var(--mute);line-height:1.55}
+.aviso-pie b{color:var(--ink-soft)}
+.pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
+@media(max-width:1020px){.grid{grid-template-columns:1fr}.memoria{flex-direction:column;text-align:center}.kpis{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<header class="hdr">
+  <div class="burger"><i></i><i></i><i></i></div>
+  <div class="mid">
+    <img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'">
+    <div><b>Kora OS</b><span>Cumplimiento</span></div>
+  </div>
+  <span class="dot"></span>
+</header>
+
+<div class="wrap">
+  <div class="anim">
+    <div class="eyebrow">Gestor autorizado · Papeleo normativo</div>
+    <h1>La memoria anual, en un clic<span class="demo-tag">Demo · datos de ejemplo</span></h1>
+    <p class="sub">Todo el año ya está registrado — pesadas, DI, albaranes, salidas. La memoria se monta sola con esos datos. Y las licencias avisan antes de caducar, no después.</p>
+  </div>
+
+  <div class="kpis anim d1">
+    <div class="kpi"><div class="v v-ink">1.412</div><div class="l">Movimientos en 2026</div></div>
+    <div class="kpi"><div class="v v-azul">11</div><div class="l">Códigos LER distintos</div></div>
+    <div class="kpi"><div class="v v-verde">0</div><div class="l">Huecos en la cadena</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card anim d2">
+      <div class="card-h"><h3>Memoria anual 2026</h3><span style="font-size:11px;color:var(--mute-soft)">para la consejería</span></div>
+      <div class="card-b">
+        <div class="memoria">
+          <div class="anillo" id="anillo">
+            <svg width="170" height="170" viewBox="0 0 170 170">
+              <circle class="fondo" cx="85" cy="85" r="72"/>
+              <circle class="avance" id="avance" cx="85" cy="85" r="72"/>
+            </svg>
+            <div class="centro"><span class="pct" id="pct">0%</span><span class="pct-l" id="pct-l">sin generar</span></div>
+          </div>
+          <div class="mem-info">
+            <h4>De 40 horas a un clic</h4>
+            <div class="fase" id="fase"><span class="rueda"></span><span id="fase-txt">Pulsa el botón y mira.</span></div>
+            <button class="btn" id="generar">Generar memoria 2026</button>
+            <div class="resultado" id="resultado">
+              <b>✓ Memoria lista</b> · 84 páginas · 1.412 movimientos · balance cuadrado
+              <div class="piezas" id="piezas">
+                <span class="pieza">Tabla por código LER</span>
+                <span class="pieza">Balance de masas</span>
+                <span class="pieza">DI anexados</span>
+                <span class="pieza">Gestores de destino</span>
+                <span class="pieza">PDF firmable</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="antes-despues">
+          <div class="ad antes"><div class="n">40 h</div><div class="t">Antes · recapitular a mano</div></div>
+          <div class="ad despues"><div class="n">1 clic</div><div class="t">Ahora · ya estaba registrado</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card anim d3">
+      <div class="card-h"><h3>Semáforo de plazos</h3><span style="font-size:11px;color:var(--mute-soft)">licencias · seguros · equipos</span></div>
+      <div>
+        <div class="lic"><span class="sem r"></span>
+          <span class="que"><b>Certificado báscula · Centro 2</b><span>calibración anual obligatoria</span></span>
+          <span class="plazo r">CADUCÓ hace 6 días</span></div>
+        <div class="lic"><span class="sem a"></span>
+          <span class="que"><b>Seguro de responsabilidad ambiental</b><span>renovación con la aseguradora</span></span>
+          <span class="plazo a">vence en 12 días</span></div>
+        <div class="lic"><span class="sem a"></span>
+          <span class="que"><b>ITV camión 8812-LFC</b><span>vehículo de salidas</span></span>
+          <span class="plazo a">vence en 24 días</span></div>
+        <div class="lic"><span class="sem v"></span>
+          <span class="que"><b>Autorización de gestor de residuos</b><span>renovación ante la consejería</span></span>
+          <span class="plazo v">vence en 8 meses</span></div>
+        <div class="lic"><span class="sem v"></span>
+          <span class="que"><b>Contrato ADR transporte</b><span>consejero de seguridad</span></span>
+          <span class="plazo v">vence en 5 meses</span></div>
+        <div class="aviso-pie">🔔 Cada plazo avisa por WhatsApp <b>60, 30 y 7 días antes</b>. La báscula del Centro 2 habría avisado hace dos meses.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="pie-nota">Demo de Kora Studio · Datos de ejemplo. La memoria sale del registro diario — si la trazabilidad está al día, el papeleo anual deja de existir como problema.</p>
+</div>
+
+<script>
+const FASES = [
+  ['Leyendo las 1.412 pesadas del año…', 22],
+  ['Cruzando DI con albaranes…', 45],
+  ['Montando tablas por código LER…', 68],
+  ['Cuadrando balance de masas…', 86],
+  ['Generando PDF…', 100]
+];
+let corriendo = false;
+document.getElementById('generar').addEventListener('click', ()=>{
+  if (corriendo) return; corriendo = true;
+  const btn = document.getElementById('generar');
+  const avance = document.getElementById('avance');
+  const pct = document.getElementById('pct'), pctL = document.getElementById('pct-l');
+  const fase = document.getElementById('fase'), faseTxt = document.getElementById('fase-txt');
+  const res = document.getElementById('resultado');
+  const anillo = document.getElementById('anillo');
+  btn.disabled = true; res.classList.remove('on'); anillo.classList.remove('listo');
+  document.querySelectorAll('.pieza').forEach(p=>p.classList.remove('on'));
+  fase.classList.add('girando');
+  pctL.textContent = 'generando…';
+  avance.style.strokeDashoffset = 452; pct.textContent = '0%';
+  FASES.forEach(([txt,p],i)=>{
+    setTimeout(()=>{
+      faseTxt.textContent = txt;
+      avance.style.strokeDashoffset = 452*(1-p/100);
+      pct.textContent = p+'%';
+      if (i===FASES.length-1){
+        setTimeout(()=>{
+          fase.classList.remove('girando');
+          faseTxt.textContent = 'Hecho. Un año entero, cuadrado.';
+          pctL.textContent = 'memoria lista';
+          anillo.classList.add('listo');
+          res.classList.add('on');
+          document.querySelectorAll('.pieza').forEach((pz,j)=>setTimeout(()=>pz.classList.add('on'), 120*j));
+          btn.disabled = false; btn.textContent = '↻ Volver a generar';
+          corriendo = false;
+        }, 650);
+      }
+    }, 620*(i+1));
+  });
+});
+</script>
+</body></html>
