@@ -164,13 +164,14 @@ h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
 <div class="wrap">
   <div class="anim">
     <div class="eyebrow">Atención automática · WhatsApp</div>
-    <h1>El que responde cuando no hay nadie<span class="demo-tag">Demo · datos de ejemplo</span></h1>
+    <h1>El que responde cuando nadie puede contestar<span class="demo-tag">Demo · datos de ejemplo</span></h1>
     <p class="sub">Sábado por la noche, festivo, o dos llamadas a la vez un martes: el bot atiende, hace las preguntas correctas y deja el lead cualificado. La oficina lo encuentra todo hecho al abrir.</p>
   </div>
 
   <div class="escenarios anim d1">
     <button class="esc" data-e="0"><span class="play">▶</span><span><b>Particular con un motor <span class="directo">En directo</span></b><span>Sábado · 21:34 · planta cerrada</span></span></button>
     <button class="esc" data-e="1"><span class="play">▶</span><span><b>Trader pide cotización <span class="directo">En directo</span></b><span>Martes · 23:05 · fuera de horario</span></span></button>
+    <button class="esc" data-e="2"><span class="play">▶</span><span><b>Obra con cable, en horario <span class="directo">En directo</span></b><span>Martes · 11:20 · báscula llena, teléfono ocupado</span></span></button>
   </div>
 
   <div class="grid">
@@ -219,7 +220,7 @@ h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
       </div>
 
       <div class="card anim d3">
-        <div class="card-h"><h3>Lo que ve la oficina el lunes</h3><span id="chips"></span></div>
+        <div class="card-h"><h3>Lo que encuentra la oficina</h3><span id="chips"></span></div>
         <div class="card-b">
           <div class="ficha" id="ficha">
             <div class="dato" data-k="nombre"><label>Contacto</label><div class="valor">—</div></div>
@@ -278,6 +279,24 @@ const ESCENARIOS = [
     cantidad:['22 t',0],foto:['— No necesaria (B2B)',2],pobla:['Puerto de Valencia · recogemos',2],
     cuando:['Carga en 10 días · pago transf. 15d',4],accion:['Cotizar con LME de apertura 8:00-9:00',5]},
   nota:'<b>Ojo al detalle:</b> el bot NO da precio de noche. El cobre cotiza a diario — comprometer un precio a las 23:05 es regalar margen. Cualifica todo, promete la cotización con el LME de apertura, y <b>el comercial la manda a las 8:00 con el margen protegido.</b>'
+},
+{
+  hora:'11:20', dia:'Martes', sello:'📞 Báscula llena y teléfono ocupado · responde el asistente',
+  chips:'<span class="chip chip-hot">Lead caliente</span> <span class="chip chip-fuera">Oficina ocupada</span>',
+  pasos:[
+    {t:'s', txt:'Hola, somos Instalaciones Vega. Estamos desmontando una nave en Dos Hermanas y hay cable, cuadros eléctricos y bandeja. ¿Hacéis recogida en obra?', h:'11:20'},
+    {t:'b', txt:'¡Buenos días! 👋 Sí, recogemos en obra. Te tomo los datos ahora y lo dejamos cerrado.\n\n¿Qué cantidad hay aproximadamente? ¿Y el cable es sobre todo de cobre o va mezclado con aluminio?', h:'11:20'},
+    {t:'s', txt:'Unos 600-700 kg de cable, cobre casi todo. Y 4 cuadros grandes', h:'11:22'},
+    {t:'b', txt:'Perfecto. ¿Me mandas un par de fotos del acopio? Con eso os digo si va contenedor o furgón.\n\n¿Y para cuándo tiene que estar fuera de la obra?', h:'11:22'},
+    {t:'s', foto:true, txt:'El viernes tiene que estar la nave vacía', h:'11:24'},
+    {t:'b', txt:'Recibidas ✓. Con ese volumen os encaja un contenedor de 5 m³: entrega mañana a primera hora y retirada el jueves, y vais sobrados para el viernes.\n\n¿A nombre de quién hago la orden? ¿Y la dirección exacta de la nave?', h:'11:24'},
+    {t:'s', txt:'Sergio. Polígono La Isla, calle Torre 14', h:'11:25'},
+    {t:'b', txt:'Anotado, Sergio: contenedor mañana 8:30 en P.I. La Isla, c/ Torre 14, retirada el jueves. El cable se liquida con la cotización del día, pesado en báscula homologada.\n\nTe llega la confirmación de ruta en un rato. ¡Gracias! 💪', h:'11:25'}
+  ],
+  ficha:{nombre:['Sergio · Instalaciones Vega',6],tel:['+34 6·· ·· 55 09',0],material:['Cable Cu + cuadros eléctricos + bandeja',2],
+    cantidad:['≈ 700 kg',2],foto:['✓ Sí · 11:24',4],pobla:['Dos Hermanas · P.I. La Isla, c/ Torre 14',6],
+    cuando:['Contenedor mañana 8:30 · retirada jueves',6],accion:['Orden de contenedor + confirmar ruta',7]},
+  nota:'<b>Las 11:20 de un martes.</b> No hace falta que sea de noche: dos conversaciones a la vez con una persona en oficina = una perdida. El bot atiende la segunda, la tercera y la décima — <b>en horario, fuera de horario y en agosto</b> — y la báscula no se para.'
 }
 ];
 
