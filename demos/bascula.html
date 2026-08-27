@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Báscula y ticket automático · Kora OS</title>
+<link rel="icon" href="assets/kora-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057FF;--primary-dark:#0040CC;--primary-soft:#E7EFFF;
+  --bg:#EEF4FF;--paper:#FFF;--ink:#0A1628;--ink-soft:#1F2937;
+  --mute:#64748B;--mute-soft:#94A3B8;--line:#E5EAF2;
+  --success:#16A34A;--success-soft:#E8F7EE;--warning:#F59E0B;--warning-soft:#FEF4E2;
+  --danger:#DC2626;
+  --lcd-bg:#0B1A12;--lcd:#38F58C;--lcd-dim:#123322;
+  --wa-header:#008069;--wa-bg:#EFE7DE;--wa-mio:#D9FDD3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+
+.hdr{background:var(--ink);color:#fff;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:20}
+.hdr .burger{width:22px;display:flex;flex-direction:column;gap:5px}
+.hdr .burger i{height:2px;background:#fff;border-radius:2px;display:block}
+.hdr .mid{display:flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%)}
+.hdr .mid img{width:26px;height:26px;border-radius:6px}
+.hdr .mid b{font-size:14px;font-weight:700;letter-spacing:.35px}
+.hdr .mid span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.hdr .dot{width:8px;height:8px;background:var(--success);border-radius:50%}
+
+.wrap{max-width:1220px;margin:0 auto;padding:26px 22px 60px}
+.eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--mute)}
+h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
+.sub{font-size:13.5px;color:var(--mute);margin-top:6px;max-width:660px;line-height:1.5}
+.demo-tag{display:inline-block;background:var(--warning-soft);color:#92600A;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;vertical-align:3px;margin-left:10px}
+
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anim{animation:up .5s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}
+
+.barra{display:flex;gap:10px;margin:20px 0 22px;flex-wrap:wrap;align-items:center}
+.btn{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:12px 22px;font-weight:700;font-size:14px;
+  display:inline-flex;align-items:center;gap:9px;transition:background .15s,transform .15s}
+.btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn:disabled{background:var(--mute-soft);cursor:default;transform:none}
+.reloj{font-size:12.5px;color:var(--mute);display:flex;align-items:center;gap:7px}
+.reloj b{color:var(--ink);font-variant-numeric:tabular-nums}
+.directo{display:none;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--danger);text-transform:uppercase;
+  align-items:center;gap:5px}
+.directo.on{display:inline-flex}
+.directo::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--danger);animation:pulso 1.1s infinite}
+@keyframes pulso{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+
+.grid{display:grid;grid-template-columns:1fr 372px;gap:18px;align-items:start}
+.grid>*{min-width:0}
+
+/* ═══ LA BÁSCULA ═══ */
+.bascula{background:var(--lcd-bg);border-radius:18px;padding:22px 24px 20px;position:relative;overflow:hidden;min-width:0}
+.bascula::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);pointer-events:none}
+.b-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.b-marca{color:#5c7a6a;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px}
+.b-estado{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#5c7a6a;
+  display:flex;align-items:center;gap:7px}
+.b-estado i{width:8px;height:8px;border-radius:50%;background:#2c4a38;display:block;transition:background .3s}
+.b-estado.estable{color:var(--lcd)}
+.b-estado.estable i{background:var(--lcd);box-shadow:0 0 10px var(--lcd)}
+.lcd{font-variant-numeric:tabular-nums;font-weight:800;color:var(--lcd);letter-spacing:-.02em;
+  font-size:clamp(46px,11vw,86px);line-height:1;text-shadow:0 0 26px rgba(56,245,140,.35);
+  display:flex;align-items:baseline;gap:10px;transition:color .3s}
+.lcd .u{font-size:.32em;font-weight:700;letter-spacing:.06em;color:#5fbf8c}
+.lcd.sube{color:#8dfcb8}
+.b-pie{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+.b-dato{min-width:0}
+.b-dato .k{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#4f6f5e}
+.b-dato .v{font-size:14px;font-weight:700;color:#b9e8cd;margin-top:3px;font-variant-numeric:tabular-nums}
+.b-dato .v.esperando{color:#3f5f4e}
+
+/* ═══ PASOS ═══ */
+.pasos{background:var(--paper);border:.8px solid var(--line);border-radius:16px;margin-top:14px;overflow:hidden}
+.paso{display:flex;gap:14px;padding:13px 18px;border-bottom:.8px solid var(--line);align-items:flex-start;
+  opacity:.4;transition:opacity .35s,background .35s}
+.paso:last-child{border-bottom:0}
+.paso.on{opacity:1;background:var(--primary-soft)}
+.paso.hecho{opacity:1}
+.paso .n{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--mute);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;transition:background .3s,color .3s}
+.paso.on .n{background:var(--primary);color:#fff}
+.paso.hecho .n{background:var(--success);color:#fff}
+.paso .t{flex:1;min-width:0}
+.paso .t b{display:block;font-size:13.5px}
+.paso .t span{font-size:12.5px;color:var(--mute);display:block;margin-top:1px}
+.paso .marca{font-size:11px;font-weight:700;color:var(--success);white-space:nowrap;opacity:0;transition:opacity .3s;
+  font-variant-numeric:tabular-nums}
+.paso.hecho .marca{opacity:1}
+
+/* ═══ TICKET ═══ */
+.card{background:var(--paper);border:.8px solid var(--line);border-radius:16px;overflow:hidden;min-width:0}
+.card-h{padding:14px 18px;border-bottom:.8px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card-h h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--mute)}
+.card-b{padding:16px 18px}
+.chip{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;padding:4px 9px;border-radius:6px;white-space:nowrap}
+.chip-ok{background:var(--success-soft);color:#116B3A}
+.chip-wait{background:var(--warning-soft);color:#92600A}
+
+.tk{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.tk:last-of-type{border-bottom:0}
+.tk .k{color:var(--mute);flex-shrink:0}
+.tk .v{font-weight:700;text-align:right;font-variant-numeric:tabular-nums;opacity:0;transform:translateY(-3px);
+  transition:opacity .3s,transform .3s;word-break:break-word}
+.tk .v.on{opacity:1;transform:none}
+.tk .v.esp{opacity:1;color:var(--mute-soft);font-weight:500}
+.neto{background:var(--ink);color:#fff;border-radius:12px;padding:14px 16px;margin:14px 0 0;
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;opacity:0;transform:scale(.97);
+  transition:opacity .4s,transform .4s}
+.neto.on{opacity:1;transform:none}
+.neto .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.5)}
+.neto .v{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.neto .imp{font-size:15px;font-weight:700;color:#7FE3A8;font-variant-numeric:tabular-nums}
+
+/* ═══ MÓVIL DEL CLIENTE ═══ */
+.movil{background:#0B0F14;border-radius:30px;padding:8px;margin-top:14px;box-shadow:0 22px 50px rgba(10,22,40,.28)}
+.pantalla{border-radius:23px;overflow:hidden;background:var(--wa-bg);min-height:212px;display:flex;flex-direction:column}
+.wa-top{background:var(--wa-header);color:#fff;padding:9px 12px;display:flex;align-items:center;gap:9px}
+.wa-top .av{width:30px;height:30px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wa-top .av img{width:21px;height:21px}
+.wa-top b{font-size:13px;display:block}
+.wa-top span{font-size:10.5px;opacity:.85}
+.wa-chat{flex:1;padding:12px 11px;display:flex;flex-direction:column;gap:7px}
+.wa-vacio{margin:auto;color:#9a9186;font-size:11.5px;text-align:center;padding:0 20px;line-height:1.5}
+.burb{background:var(--wa-mio);align-self:flex-end;max-width:92%;border-radius:9px;border-top-right-radius:0;
+  padding:8px 10px 6px;font-size:12.5px;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.09);white-space:pre-line;
+  animation:pop .3s cubic-bezier(.2,.7,.3,1.15)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+.burb .h{display:block;text-align:right;font-size:9.5px;color:rgba(0,0,0,.38);margin-top:5px;font-variant-numeric:tabular-nums}
+.burb .h::after{content:' ✓✓';color:#4FB6EC;font-weight:700;letter-spacing:-1px}
+.burb .doc{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.05);border-radius:7px;padding:8px 10px;margin-bottom:5px}
+.burb .doc b{font-size:11.5px}
+.burb .doc span{font-size:10px;color:rgba(0,0,0,.45);display:block}
+
+/* ═══ COMPARATIVA ═══ */
+.franja{background:var(--primary-soft);border-radius:14px;padding:15px 20px;margin-top:14px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.franja .h{font-size:14px;font-weight:700}
+.franja .h b{color:var(--primary)}
+.franja .sep{width:1px;height:22px;background:#C9DBFF}
+.franja .m{font-size:12.5px;color:var(--mute)}
+.franja .m b{color:var(--ink)}
+
+.pie-nota{margin-top:22px;font-size:11.5px;color:var(--mute-soft);text-align:center;line-height:1.55}
+
+img,svg,video{max-width:100%;height:auto}
+
+@media(max-width:1020px){.grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .wrap{padding:16px 12px 40px}
+  h1{font-size:23px}
+  .bascula{padding:18px 16px 16px}
+  .b-pie{gap:14px}
+  .franja{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px}
+  .franja .sep{display:none}
+  .barra{gap:8px}
+  .btn{width:100%;justify-content:center}
+  .paso{padding:11px 14px;gap:11px}
+}
+</style>
+</head><body>
+
+<header class="hdr">
+  <div class="burger"><i></i><i></i><i></i></div>
+  <div class="mid">
+    <img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'">
+    <div><b>Kora OS</b><span>Báscula</span></div>
+  </div>
+  <span class="dot"></span>
+</header>
+
+<div class="wrap">
+  <div class="anim d1">
+    <div class="eyebrow">Entrada de material · báscula homologada</div>
+    <h1>El camión sale, y el ticket ya está en su WhatsApp<span class="demo-tag">Demo · datos de ejemplo</span></h1>
+    <p class="sub">Doble pesada, tara, neto, precio del día y albarán. Lo que hoy son dos apuntes a mano y una llamada, aquí ocurre solo mientras el camión maniobra.</p>
+  </div>
+
+  <div class="barra anim d1">
+    <button class="btn" id="play">▶ Entra el camión</button>
+    <span class="directo" id="dir">En directo</span>
+    <span class="reloj">Tiempo de papeleo: <b id="crono">—</b></span>
+  </div>
+
+  <div class="grid">
+    <div class="anim d2">
+      <div class="bascula">
+        <div class="b-top">
+          <span class="b-marca">Báscula puente · 60 t</span>
+          <span class="b-estado" id="b-estado"><i></i><span id="b-estado-t">En reposo</span></span>
+        </div>
+        <div class="lcd" id="lcd">0<span class="u">kg</span></div>
+        <div class="b-pie">
+          <div class="b-dato"><div class="k">Matrícula</div><div class="v esperando" id="d-matr">—</div></div>
+          <div class="b-dato"><div class="k">Cliente</div><div class="v esperando" id="d-cli">—</div></div>
+          <div class="b-dato"><div class="k">Material</div><div class="v esperando" id="d-mat">—</div></div>
+        </div>
+      </div>
+
+      <div class="pasos" id="pasos">
+        <div class="paso" data-p="0"><span class="n">1</span><span class="t"><b>Entra en báscula</b><span>La cámara lee la matrícula y busca al cliente</span></span><span class="marca" id="m0"></span></div>
+        <div class="paso" data-p="1"><span class="n">2</span><span class="t"><b>Peso bruto estable</b><span>El indicador manda el peso directo, sin teclearlo</span></span><span class="marca" id="m1"></span></div>
+        <div class="paso" data-p="2"><span class="n">3</span><span class="t"><b>Descarga y clasificación</b><span>Se registra el material y quién lo verifica</span></span><span class="marca" id="m2"></span></div>
+        <div class="paso" data-p="3"><span class="n">4</span><span class="t"><b>Segunda pesada · tara</b><span>Neto calculado solo: bruto menos tara</span></span><span class="marca" id="m3"></span></div>
+        <div class="paso" data-p="4"><span class="n">5</span><span class="t"><b>Precio del día e importe</b><span>Toma la cotización vigente, no la de la semana pasada</span></span><span class="marca" id="m4"></span></div>
+        <div class="paso" data-p="5"><span class="n">6</span><span class="t"><b>Albarán y ticket al cliente</b><span>Se genera y se envía antes de que salga de la campa</span></span><span class="marca" id="m5"></span></div>
+      </div>
+
+      <div class="franja" id="franja" style="opacity:0;transition:opacity .5s">
+        <div class="h">Antes: <b>3 min 40 s</b> por camión. Ahora: <b>0</b>.</div>
+        <div class="sep"></div>
+        <div class="m">Con <b>18 entradas al día</b> son <b>más de 4 horas</b> de oficina cada semana</div>
+      </div>
+    </div>
+
+    <div class="anim d3">
+      <div class="card">
+        <div class="card-h"><h3>Albarán de entrada</h3><span class="chip chip-wait" id="tk-chip">En curso</span></div>
+        <div class="card-b">
+          <div class="tk"><span class="k">Nº albarán</span><span class="v esp" id="t-num">—</span></div>
+          <div class="tk"><span class="k">Cliente</span><span class="v esp" id="t-cli">—</span></div>
+          <div class="tk"><span class="k">Matrícula</span><span class="v esp" id="t-matr">—</span></div>
+          <div class="tk"><span class="k">Material</span><span class="v esp" id="t-mat">—</span></div>
+          <div class="tk"><span class="k">Bruto</span><span class="v esp" id="t-bruto">—</span></div>
+          <div class="tk"><span class="k">Tara</span><span class="v esp" id="t-tara">—</span></div>
+          <div class="tk"><span class="k">Precio aplicado</span><span class="v esp" id="t-precio">—</span></div>
+          <div class="neto" id="t-neto">
+            <div><div class="k">Neto</div><div class="v" id="t-neto-kg">— kg</div></div>
+            <div class="imp" id="t-imp">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="movil">
+        <div class="pantalla">
+          <div class="wa-top">
+            <div class="av"><img src="assets/kora-logo.png" alt="" onerror="this.style.display='none'"></div>
+            <div><b>Recuperaciones del Sur</b><span id="wa-est">en línea</span></div>
+          </div>
+          <div class="wa-chat" id="wa-chat">
+            <div class="wa-vacio" id="wa-vacio">El ticket le llega al transportista<br>en cuanto la báscula cierra la operación</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="pie-nota">Demo de Kora Studio · Datos de ejemplo. El sistema se monta <b>encima de la báscula y del programa que ya usáis</b> — no sustituye al indicador homologado ni cambia cómo pesáis. Cada empresa tiene su flujo: esto es un ejemplo, el vuestro se monta a medida.</p>
+</div>
+
+<script>
+const $ = s => document.getElementById(s);
+const OP = {
+  matr:'4482-KTD', cli:'Transportes y Derribos Garcés S.L.', mat:'Chatarra férrica mezcla',
+  bruto:24680, tara:8420, precio:0.17, num:'E-2026/1184', hora:'11:42'
+};
+const NETO = OP.bruto - OP.tara;
+const IMPORTE = NETO * OP.precio;
+const fmt = n => n.toLocaleString('es-ES');
+const eur = n => n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €';
+
+let timers = [], rafId = null, corriendo = false;
+
+function limpiar(){
+  timers.forEach(clearTimeout); timers = [];
+  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+  $('lcd').innerHTML = '0<span class="u">kg</span>';
+  $('lcd').classList.remove('sube');
+  $('b-estado').classList.remove('estable');
+  $('b-estado-t').textContent = 'En reposo';
+  ['d-matr','d-cli','d-mat'].forEach(k => { $(k).textContent = '—'; $(k).classList.add('esperando'); });
+  document.querySelectorAll('.paso').forEach(p => p.classList.remove('on','hecho'));
+  document.querySelectorAll('.marca').forEach(m => m.textContent = '');
+  ['t-num','t-cli','t-matr','t-mat','t-bruto','t-tara','t-precio'].forEach(k => {
+    $(k).textContent = '—'; $(k).classList.add('esp'); $(k).classList.remove('on');
+  });
+  $('t-neto').classList.remove('on');
+  $('tk-chip').className = 'chip chip-wait'; $('tk-chip').textContent = 'En curso';
+  $('wa-chat').innerHTML = '<div class="wa-vacio" id="wa-vacio">El ticket le llega al transportista<br>en cuanto la báscula cierra la operación</div>';
+  $('franja').style.opacity = '0';
+}
+
+/* Cuenta segura: t0 dentro del primer frame, progreso acotado, rAF anterior cancelado */
+function contar(desde, hasta, ms, cb){
+  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+  let t0 = null;
+  const paso = ts => {
+    if (t0 === null) t0 = ts;
+    let p = (ts - t0) / ms;
+    if (p < 0) p = 0; if (p > 1) p = 1;
+    const suave = 1 - Math.pow(1 - p, 3);
+    const v = Math.round(desde + (hasta - desde) * suave);
+    $('lcd').innerHTML = fmt(v) + '<span class="u">kg</span>';
+    if (p < 1) rafId = requestAnimationFrame(paso);
+    else { rafId = null; if (cb) cb(); }
+  };
+  rafId = requestAnimationFrame(paso);
+}
+
+function dato(id, txt){ const e = $(id); e.textContent = txt; e.classList.remove('esperando'); }
+function campo(id, txt){ const e = $(id); e.textContent = txt; e.classList.remove('esp'); e.classList.add('on'); }
+function pasoOn(i){ document.querySelectorAll('.paso').forEach(p => p.classList.remove('on'));
+  document.querySelector('.paso[data-p="'+i+'"]').classList.add('on'); }
+function pasoHecho(i, marca){
+  const p = document.querySelector('.paso[data-p="'+i+'"]');
+  p.classList.remove('on'); p.classList.add('hecho');
+  $('m'+i).textContent = marca;
+}
+function T(fn, ms){ timers.push(setTimeout(fn, ms)); }
+
+function estable(si){
+  $('b-estado').classList.toggle('estable', si);
+  $('b-estado-t').textContent = si ? 'Peso estable' : 'Pesando…';
+}
+
+function reproducir(){
+  if (corriendo) return;
+  corriendo = true;
+  limpiar();
+  $('play').disabled = true; $('play').textContent = 'En marcha…';
+  $('dir').classList.add('on');
+
+  /* 1 · entra y lee matrícula */
+  T(() => { pasoOn(0); estable(false); }, 300);
+  T(() => { dato('d-matr', OP.matr); campo('t-matr', OP.matr); }, 1100);
+  T(() => {
+    dato('d-cli', OP.cli.split(' S.L.')[0]);
+    campo('t-cli', OP.cli);
+    campo('t-num', OP.num);
+    pasoHecho(0, '✓ 1,4 s');
+  }, 1700);
+
+  /* 2 · peso bruto */
+  T(() => { pasoOn(1); $('lcd').classList.add('sube'); contar(0, OP.bruto, 2400); }, 2000);
+  T(() => {
+    $('lcd').classList.remove('sube'); estable(true);
+    campo('t-bruto', fmt(OP.bruto) + ' kg');
+    pasoHecho(1, '✓ sin teclear');
+  }, 4500);
+
+  /* 3 · descarga */
+  T(() => { pasoOn(2); estable(false); }, 4900);
+  T(() => { dato('d-mat', OP.mat); campo('t-mat', OP.mat); pasoHecho(2, '✓ verificado'); }, 6200);
+
+  /* 4 · tara */
+  T(() => { pasoOn(3); contar(OP.bruto, OP.tara, 2000); }, 6600);
+  T(() => {
+    estable(true);
+    campo('t-tara', fmt(OP.tara) + ' kg');
+    $('t-neto-kg').textContent = fmt(NETO) + ' kg';
+    $('t-neto').classList.add('on');
+    pasoHecho(3, '✓ neto solo');
+  }, 8700);
+
+  /* 5 · precio */
+  T(() => { pasoOn(4); }, 9000);
+  T(() => {
+    campo('t-precio', OP.precio.toLocaleString('es-ES',{minimumFractionDigits:2}) + ' €/kg · cotización de hoy');
+    $('t-imp').textContent = eur(IMPORTE);
+    pasoHecho(4, '✓ precio de hoy');
+  }, 9900);
+
+  /* 6 · albarán y WhatsApp */
+  T(() => { pasoOn(5); $('wa-est').textContent = 'escribiendo…'; }, 10300);
+  T(() => {
+    $('wa-est').textContent = 'en línea';
+    const v = document.getElementById('wa-vacio'); if (v) v.remove();
+    $('wa-chat').insertAdjacentHTML('beforeend',
+      '<div class="burb"><div class="doc">' +
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#54656F" stroke-width="1.6">' +
+      '<path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/>' +
+      '<path d="M9 13h6M9 17h4" stroke-linecap="round"/></svg>' +
+      '<div><b>Albarán ' + OP.num + '.pdf</b><span>142 kB · PDF</span></div></div>' +
+      'Entrada registrada ✅\n' + fmt(NETO) + ' kg netos de ' + OP.mat.toLowerCase() +
+      '\nImporte: ' + eur(IMPORTE) +
+      '\n\nTe adjunto el albarán firmado. ¡Buen viaje!' +
+      '<span class="h">' + OP.hora + '</span></div>');
+    pasoHecho(5, '✓ enviado');
+    $('tk-chip').className = 'chip chip-ok';
+    $('tk-chip').textContent = 'Cerrado y enviado';
+  }, 11600);
+
+  /* cierre */
+  T(() => {
+    $('franja').style.opacity = '1';
+    $('crono').textContent = '—'; $('crono').style.color = ''; $('crono').style.color = 'var(--success)';
+    $('crono').textContent = '0,0 s';
+    $('dir').classList.remove('on');
+    $('play').disabled = false; $('play').textContent = '▶ Repetir';
+    corriendo = false;
+  }, 12400);
+}
+
+$('play').addEventListener('click', reproducir);
+/* arranque solo, para que quien abra el enlace lo vea sin tocar nada */
+setTimeout(reproducir, 900);
+</script>
+</body></html>
