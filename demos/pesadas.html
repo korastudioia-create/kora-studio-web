@@ -143,6 +143,31 @@ tbody tr.nueva{animation:entra .9s ease}
 
 .pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
 @media(max-width:1080px){.kpis{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}}
+/* MOVIL KORA */
+@media(max-width:640px){
+  .wrap{padding:16px 12px 40px}
+  h1{font-size:23px}
+  .kpis{grid-template-columns:repeat(2,1fr);gap:8px}
+  .kpi .n{font-size:21px}
+  .tabla-wrap,.tabla-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{min-width:620px}
+  .papel,.modal-box{width:auto;max-width:100%}
+  .barras,.avisos{grid-template-columns:1fr}
+  .toolbar{flex-wrap:wrap;gap:8px}
+  .franja{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px}
+  .franja .sep{display:none}
+  .franja .m{padding-left:0}
+  .controles{flex-wrap:wrap;gap:8px;width:100%}
+  .seg{flex:1 1 100%;justify-content:space-between}
+  .seg button{flex:1;font-size:11.5px;padding:7px 4px;white-space:nowrap}
+  .controles .btn{flex:1 1 100%;justify-content:center}
+}
+
+/* FIX GRID: sin min-width:0 los hijos de un grid no se dejan encoger y desbordan */
+.grid>*{min-width:0}
+.card{min-width:0;overflow:hidden}
+.card>div[style*='overflow-x']{max-width:100%}
+img,svg,video{max-width:100%;height:auto}
 </style></head>
 <body>
 

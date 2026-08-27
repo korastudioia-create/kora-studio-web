@@ -102,6 +102,22 @@ h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
 .estado-chip{font-size:10px;font-weight:700;text-transform:uppercase;background:var(--success-soft);color:var(--success);padding:3px 9px;border-radius:6px}
 .pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
 @media(max-width:1020px){.grid{grid-template-columns:1fr}}
+/* MOVIL KORA */
+@media(max-width:640px){
+  .wrap{padding:16px 12px 40px}
+  h1{font-size:23px}
+  .mesa,.papel{width:auto;max-width:100%}
+  .campos{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr;gap:8px}
+  .tabla-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{min-width:520px}
+}
+
+/* FIX GRID: sin min-width:0 los hijos de un grid no se dejan encoger y desbordan */
+.grid>*{min-width:0}
+.card{min-width:0;overflow:hidden}
+.card>div[style*='overflow-x']{max-width:100%}
+img,svg,video{max-width:100%;height:auto}
 </style></head>
 <body>
 

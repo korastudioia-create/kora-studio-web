@@ -44,6 +44,12 @@ a.demo:hover .abrir i{transform:translateX(4px)}
   border:.8px solid var(--line);color:var(--mute);padding:7px 13px;border-radius:99px}
 .pie{margin-top:40px;font-size:12.5px;color:var(--mute-soft);text-align:center;line-height:1.6}
 @media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+/* FIX GRID: sin min-width:0 los hijos de un grid no se dejan encoger y desbordan */
+.grid>*{min-width:0}
+.card{min-width:0;overflow:hidden}
+.card>div[style*='overflow-x']{max-width:100%}
+img,svg,video{max-width:100%;height:auto}
 </style></head>
 <body>
 <header class="hdr">

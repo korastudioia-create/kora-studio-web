@@ -90,6 +90,12 @@ svg text{font-family:Inter,system-ui,sans-serif}
 .cli .accion.hecho{background:var(--success-soft);border-color:#C9EBD6;color:var(--success)}
 .pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
 @media(max-width:1060px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+
+/* FIX GRID: sin min-width:0 los hijos de un grid no se dejan encoger y desbordan */
+.grid>*{min-width:0}
+.card{min-width:0;overflow:hidden}
+.card>div[style*='overflow-x']{max-width:100%}
+img,svg,video{max-width:100%;height:auto}
 </style></head>
 <body>
 

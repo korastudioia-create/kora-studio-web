@@ -101,6 +101,12 @@ h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-top:4px}
 .aviso-pie b{color:var(--ink-soft)}
 .pie-nota{margin-top:22px;font-size:12px;color:var(--mute-soft);text-align:center}
 @media(max-width:1020px){.grid{grid-template-columns:1fr}.memoria{flex-direction:column;text-align:center}.kpis{grid-template-columns:1fr}}
+
+/* FIX GRID: sin min-width:0 los hijos de un grid no se dejan encoger y desbordan */
+.grid>*{min-width:0}
+.card{min-width:0;overflow:hidden}
+.card>div[style*='overflow-x']{max-width:100%}
+img,svg,video{max-width:100%;height:auto}
 </style></head>
 <body>
 
