@@ -24,7 +24,7 @@
 
   <url>
     <loc>https://korastudio.es/blog.html</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -80,9 +80,30 @@
 
   <url>
     <loc>https://korastudio.es/blog/transformacion-digital-empresa-reciclaje.html</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+
+  <url>
+    <loc>https://korastudio.es/blog/automatizacion-procesos-chatarreria.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://korastudio.es/blog/ahorrar-tiempo-administracion-desguace.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://korastudio.es/blog/software-gestion-residuos-inteligencia-artificial.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "kora-web",
-      "runtimeExecutable": "C:/Users/Adrián Burgos/AppData/Local/Programs/Python/Python312/python.exe",
-      "runtimeArgs": ["-m", "http.server", "8766"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/adria/AppData/Local/Temp/claude/C--Users-adria--claude/464e0065-1311-4a09-bbbe-f92796919c53/scratchpad/serve.js", "C:/Users/adria/Projects/kora-studio-web", "8766"],
       "port": 8766
     }
   ]
