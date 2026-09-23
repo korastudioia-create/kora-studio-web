@@ -17,7 +17,19 @@
     {"source": "/blog/chatgpt-vs-claude-vs-gemini", "destination": "/blog/alertas-precio-lme-reciclaje", "permanent": true},
     {"source": "/blog/chatgpt-vs-claude-vs-gemini.html", "destination": "/blog/alertas-precio-lme-reciclaje", "permanent": true},
     {"source": "/blog/automatizar-leads-inmobiliaria", "destination": "/blog/gestion-vfu-nfu-raee-automatizada", "permanent": true},
-    {"source": "/blog/automatizar-leads-inmobiliaria.html", "destination": "/blog/gestion-vfu-nfu-raee-automatizada", "permanent": true}
+    {"source": "/blog/automatizar-leads-inmobiliaria.html", "destination": "/blog/gestion-vfu-nfu-raee-automatizada", "permanent": true},
+    {"source": "/demos/bascula", "destination": "https://kora-os-demo.vercel.app/sala", "permanent": false},
+    {"source": "/demos/bascula.html", "destination": "https://kora-os-demo.vercel.app/sala", "permanent": false},
+    {"source": "/demos/pesadas", "destination": "https://kora-os-demo.vercel.app/sala", "permanent": false},
+    {"source": "/demos/pesadas.html", "destination": "https://kora-os-demo.vercel.app/sala", "permanent": false},
+    {"source": "/demos/resenas", "destination": "/demos", "permanent": false},
+    {"source": "/demos/resenas.html", "destination": "/demos", "permanent": false},
+    {"source": "/demos/trazabilidad", "destination": "/demos", "permanent": false},
+    {"source": "/demos/trazabilidad.html", "destination": "/demos", "permanent": false},
+    {"source": "/demos/albaranes", "destination": "/demos", "permanent": false},
+    {"source": "/demos/albaranes.html", "destination": "/demos", "permanent": false},
+    {"source": "/demos/memoria-anual", "destination": "/demos", "permanent": false},
+    {"source": "/demos/memoria-anual.html", "destination": "/demos", "permanent": false}
   ],
   "headers": [
     {
