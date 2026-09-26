@@ -566,6 +566,7 @@ footer{background:var(--black);padding:64px 48px 36px}
   .contact-grid{gap:20px}
 }
 
+.services-grid.four{grid-template-columns:repeat(2,1fr)}
 /* ── Kora OS ── */
 .kos{background:var(--blue-light);padding:100px 48px}
 .kos-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
@@ -811,52 +812,38 @@ footer{background:var(--black);padding:64px 48px 36px}
 <section class="services" id="soluciones">
   <div class="si">
     <div class="fade-up">
-      <div class="eyebrow">Lo que hacemos</div>
-      <h2 class="stitle">6 áreas donde la IA quita horas, multas y<br>toneladas perdidas a tu chatarrería o recicladora</h2>
-      <p class="ssub">No vendemos tecnología. Vendemos que no pierdas operaciones de noche, que tu administrativa deje de teclear albaranes a mano y que enero deje de ser el mes de la memoria ambiental. Cuéntanos cómo operas y te decimos por dónde tiene más sentido empezar.</p>
+      <div class="eyebrow">Lo que ya quitamos de en medio</div>
+      <h2 class="stitle">Cuatro cosas que hoy se hacen a mano<br>en casi todas las plantas</h2>
+      <p class="ssub">No es un catálogo: son los sistemas que ya tenemos funcionando en empresas del sector. Cada uno se puede probar. Si tu cuello de botella es otro, cuéntanoslo: casi siempre se puede quitar de en medio.</p>
     </div>
-    <div class="services-grid">
+    <div class="services-grid four">
       <div class="srv-card fade-up">
         <div class="srv-num">01</div>
-        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 5h16v10H7l-4 4V5z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 9h8M7 12h5" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <h3>Captación y ventas</h3>
-        <p>Los proveedores que llaman de noche ya no se van a la competencia. Cualificador AI en WhatsApp, cotización automática con precios LME y chatbot web que trabaja cuando tú no puedes.</p>
-        <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 19V3M3 19h16" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/><rect x="6" y="11" width="3" height="5" stroke="#0057FF" stroke-width="1.7"/><rect x="11" y="7" width="3" height="9" stroke="#0057FF" stroke-width="1.7"/><rect x="16" y="4" width="3" height="12" stroke="#0057FF" stroke-width="1.7"/></svg></div>
+        <h3>La báscula y la oficina, conectadas</h3>
+        <p>El pesador pesa en la tablet y la pesada llega sola a la oficina, que la cierra y saca la factura de compra. Libro registro, tarifas y panel del dueño. Es Kora OS, en uso diario en una recicladora de Sevilla.</p>
+        <a href="https://kora-os-demo.vercel.app/sala" target="_blank" rel="noopener" class="srv-link">Probar la demo →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">02</div>
-        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" stroke="#0057FF" stroke-width="1.7"/><path d="M11 1v3M11 18v3M1 11h3M18 11h3M4.2 4.2l2.1 2.1M15.7 15.7l2.1 2.1M4.2 17.8l2.1-2.1M15.7 6.3l2.1-2.1" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <h3>Operaciones diarias</h3>
-        <p>Fin a las 2 horas diarias pasando albaranes a mano. OCR que lee papel, foto o PDF y lo vuelca al sistema. Trazabilidad entrada-salida y stock visible desde el móvil en tiempo real.</p>
-        <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 5h16v10H7l-4 4V5z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 9h8M7 12h5" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>Atender a proveedores cuando no hay nadie</h3>
+        <p>Un asistente en la web o en WhatsApp que responde a las 9 de la noche, da el precio del día con la tabla que actualiza la oficina y deja la recogida apuntada. En Refegar lleva funcionando desde septiembre.</p>
+        <a href="/demos/bot-whatsapp" class="srv-link">Probar la demo →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">03</div>
-        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 5v6c0 4.5 3.5 8 8 9 4.5-1 8-4.5 8-9V5l-8-3z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Cumplimiento normativo</h3>
-        <p>La memoria anual ambiental se genera sola con los datos que ya tienes. Alertas automáticas antes de que venza cualquier licencia. Nunca más un fin de semana rellenando formularios ni una multa por un papel olvidado.</p>
-        <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M13 2H5a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V7l-5-5z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><path d="M13 2v5h5M8 12h6M8 15.5h4" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>Recogidas, albaranes y registros ISO sin papel</h3>
+        <p>La oficina apunta el servicio, el chófer lo ve en el móvil y al volver quedan hechos el albarán y los registros que pide la ISO. Lo que antes eran tres libretas y un Excel.</p>
+        <a href="#casos" class="srv-link">Ver el caso de Refegar →</a>
       </div>
       <div class="srv-card fade-up">
         <div class="srv-num">04</div>
-        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11v6a2 2 0 002 2h12a2 2 0 002-2v-6" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/><path d="M16 7l-5-5-5 5M11 2v13" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Marketing y reputación local</h3>
-        <p>Cuando alguien busca "precio chatarra Murcia" o "recicladora cobre Valencia", apareces tú primero. Web B2B optimizada, Google My Business activo y reseñas que llegan solas después de cada operación.</p>
-        <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
-      </div>
-      <div class="srv-card fade-up">
-        <div class="srv-num">05</div>
-        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#0057FF" stroke-width="1.7"/><path d="M2 11h18M11 2c2.5 3 4 6 4 9s-1.5 6-4 9c-2.5-3-4-6-4-9s1.5-6 4-9z" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Trade internacional</h3>
-        <p>Abre mercados en Europa, Asia y Turquía sin contratar a nadie nuevo. Comunicación multidioma automatizada y toda la documentación de exportación —packing list, certificados, fichas— lista en minutos.</p>
-        <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
-      </div>
-      <div class="srv-card fade-up">
-        <div class="srv-num">06</div>
-        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 19V3M3 19h16" stroke="#0057FF" stroke-width="1.7" stroke-linecap="round"/><rect x="6" y="11" width="3" height="5" stroke="#0057FF" stroke-width="1.7"/><rect x="11" y="7" width="3" height="9" stroke="#0057FF" stroke-width="1.7"/><rect x="16" y="4" width="3" height="12" stroke="#0057FF" stroke-width="1.7"/></svg></div>
-        <h3>Análisis y datos</h3>
-        <p>Sabes exactamente qué material entra, qué margen deja y qué clientes llevan meses sin llamar. Alertas de precios LME, dashboard ejecutivo y conexión contable con Sage, A3 o Holded. Nada de gestionar a ojo.</p>
-        <a href="/servicios#areas" class="srv-link">Ver soluciones →</a>
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 6h11v9H2zM13 9h4l3 3v3h-7z" stroke="#0057FF" stroke-width="1.7" stroke-linejoin="round"/><circle cx="6" cy="17" r="2" stroke="#0057FF" stroke-width="1.7"/><circle cx="16" cy="17" r="2" stroke="#0057FF" stroke-width="1.7"/></svg></div>
+        <h3>Transporte: viajes, albaranes y avisos de ITV</h3>
+        <p>Cada conductor sube su viaje con la foto del albarán; la oficina valida, agrupa y factura. La app avisa antes de que caduque una ITV o un seguro. En uso con nueve camiones.</p>
+        <a href="https://transkora-demo.vercel.app/login" target="_blank" rel="noopener" class="srv-link">Probar la demo →</a>
       </div>
     </div>
     <div style="text-align:center;margin-top:48px" class="fade-up">
